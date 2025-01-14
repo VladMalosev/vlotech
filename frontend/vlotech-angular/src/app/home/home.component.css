@@ -1,9 +1,11 @@
 /* General Page Styling */
+
 html, body {
   height: 100%;
   margin: 0;
   font-family: 'Arial', sans-serif;
   color: #333;
+  overflow:hidden;
 }
 
 .home-page {
@@ -87,16 +89,99 @@ html, body {
   object-fit: contain;
 }
 
-.category-card h3 {
-  margin: 10px 0;
-  font-size: 1.2rem;
-  color: #1e3a8a;
+
+/* Brand Deals Slider */
+.brand-slider {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+
 }
 
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+/* Indicators */
+.indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: white;
+  transform: scale(1.2);
+
+}
+
+
+
+
 /* Mobile responsiveness for categories */
+
+@media (max-width: 1440px) {
+
+  .brand-slider {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
 @media (max-width: 768px) {
   .category-list {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .indicators {
+    bottom: 15px;
+    gap: 6px;
+  }
+
+  .brand-slider {
+    aspect-ratio: 4 / 3;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+  .brand-slider {
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
 }
 
@@ -107,6 +192,20 @@ html, body {
 
   .category-card {
     max-width: 100%;
+  }
+
+  .indicators {
+    bottom: 10px;
+    gap: 4px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+  .brand-slider {
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
 }
 

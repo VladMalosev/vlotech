@@ -6,6 +6,25 @@
     <button class="shop-now-btn">Shop Now</button>
   </div>
 
+<!--  Brand Slider-->
+  <div class="brand-slider">
+    <div class="slider-track" [style.transform]="sliderTransform" [style.transition]="sliderTransition">
+      <div class="slide" *ngFor="let banner of banners; let i = index" [class.active]="i === currentSlide">
+        <img [src]="banner.src" [alt]="banner.alt" />
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Slide Indicators -->
+  <div class="indicators">
+    <span class="dot" *ngFor="let banner of banners; let i = index" [class.active]="i === currentSlide" (click)="goToSlide(i)"></span>
+  </div>
+</div>
+
+
   <!-- Categories Section -->
   <div class="categories">
     <h2>Shop by Category</h2>
@@ -45,4 +64,5 @@
     <p>Sign up now to receive the latest deals and offers.</p>
     <button class="sign-up-btn">Sign Up</button>
   </div>
-</div>
+
+

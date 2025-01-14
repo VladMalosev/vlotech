@@ -1,7 +1,21 @@
+
+
+.free-delivery-banner {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
 .header {
   background-color: #000000;
   color: white;
   padding: 5px 20px;
+
 }
 
 .header .container {
@@ -60,7 +74,7 @@
   overflow: hidden;
   border: 1px solid #ccc;
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
 }
 
 .search-bar input {
