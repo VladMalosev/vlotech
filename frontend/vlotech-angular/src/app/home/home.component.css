@@ -1,0 +1,146 @@
+/* General Page Styling */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.banner {
+  background: linear-gradient(to right, #1e3a8a, #3b82f6);
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+  flex-grow: 0;
+}
+
+.banner h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.banner p {
+  font-size: 1.5rem;
+  margin: 10px 0 20px;
+}
+
+.shop-now-btn {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #1e3a8a;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.shop-now-btn:hover {
+  background-color: #e0f2ff;
+}
+
+
+/* Categories Section */
+.categories {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f0f4f8;
+}
+
+.categories h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.category-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+}
+
+.category-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+
+.category-card h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: #1e3a8a;
+}
+
+/* Mobile responsiveness for categories */
+@media (max-width: 768px) {
+  .category-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .category-list {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card {
+    max-width: 100%;
+  }
+}
+
+
+/*call to action*/
+.cta {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(to right, #3b82f6, #60a5fa);
+  color: white;
+}
+
+.cta h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.cta p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.sign-up-btn {
+  padding: 10px 20px;
+  background-color: white;
+  color: #3b82f6;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sign-up-btn:hover {
+  background-color: #e0f2ff;
+}
+

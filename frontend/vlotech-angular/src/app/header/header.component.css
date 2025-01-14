@@ -1,0 +1,146 @@
+.header {
+  background-color: #000000;
+  color: white;
+  padding: 5px 20px;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 15px;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav a {
+  display: inline-block;
+  width: 30px; /* Adjust as per your icon size */
+  height: 30px;
+  transition: transform 0.2s ease; /* Hover effect */
+}
+
+.nav a:hover {
+  transform: scale(1.1);
+}
+
+.nav img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  filter: invert(100%);
+}
+
+.header .nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.header .nav a:hover {
+  color: #1e3a8a;
+}
+
+
+/* Search Bar Styling */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 50px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 700px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  font-size: 1rem;
+  flex-grow: 1;
+}
+
+.search-bar button {
+  background-color: #60a5fa;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.search-bar button:hover {
+  background-color: #3b82f6;
+}
+
+
+/* Hamburger Menu Styling */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navigation {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .search-bar {
+    margin-top: 10px;
+    width: 100%;
+    display: none;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
