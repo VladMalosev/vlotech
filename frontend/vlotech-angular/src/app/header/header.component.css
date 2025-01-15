@@ -1,30 +1,62 @@
+/* Free Delivery Banner */
 
 
 .free-delivery-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1010;
   background-color: rgb(255, 255, 255);
   color: black;
   text-align: center;
   font-size: 1rem;
   font-weight: bold;
-  top: 0;
-  left: 0;
-  z-index: 10;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
+.free-delivery-banner.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Header */
 .header {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   background-color: #000000;
   color: white;
-  padding: 5px 20px;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+}
 
+.header.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.header.no-banner {
+  top: 0;
+  transition: top 0.1s ease;
+}
+
+
+/* Prevent content overlap */
+.content {
+  margin-top: 120px;
 }
 
 .header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .logo {
+  margin-left: 10px;
   font-size: 15px;
 }
 
@@ -36,9 +68,9 @@
 
 .nav a {
   display: inline-block;
-  width: 30px; /* Adjust as per your icon size */
+  width: 30px;
   height: 30px;
-  transition: transform 0.2s ease; /* Hover effect */
+  transition: transform 0.2s ease;
 }
 
 .nav a:hover {
@@ -75,6 +107,8 @@
   border: 1px solid #ccc;
   width: 100%;
   max-width: 600px;
+  margin-left: 60px;
+
 }
 
 .search-bar input {
@@ -124,6 +158,94 @@
   background-color: white;
   border-radius: 2px;
 }
+
+
+/* Mega Menu Styling */
+.mega-menu {
+  background-color: #000;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 0;
+  border-top: 1px solid #444;
+}
+
+
+.main-menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 20px;
+  list-style: none;
+  margin: 0;
+}
+
+.main-menu li {
+  position: relative;
+}
+
+.main-menu a {
+  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.main-menu a:hover {
+  color: #60a5fa;
+}
+
+/* Submenu Styling */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  display: none;
+  flex-direction: column;
+  z-index: 100;
+
+}
+
+.submenu a {
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.submenu a:hover {
+  background-color: #f0f4f8;
+  color: #1e3a8a;
+}
+
+/* Show Submenu on Hover */
+.main-menu li:hover .submenu {
+  display: flex;
+}
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+  .main-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .submenu {
+    position: relative;
+    top: auto;
+    left: auto;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+
+
 
 
 /* Mobile Responsive Design */

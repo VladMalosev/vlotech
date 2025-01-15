@@ -1,0 +1,130 @@
+.product-list-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: 200px;
+  font-family: 'Arial', sans-serif;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.filter-sidebar {
+  width: 20%;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.ads-sidebar {
+  width: 20%;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 55%;
+
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.product-image {
+  width: 80%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #666;
+}
+
+.product-price {
+  font-size: 16px;
+  color: #333;
+}
+
+.product-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .product-list-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .products {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filter-sidebar,
+  .ads-sidebar {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.pagination-btn {
+  padding: 10px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pagination-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+

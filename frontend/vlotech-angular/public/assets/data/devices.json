@@ -1,0 +1,1082 @@
+[
+    {
+        "Name": "Webcam Trust Exis",
+        "Link": "https://www.euronics.ee/en/it/devices/webcams/17003/webcam-trust-exis",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/25575-1-medium.jpg",
+        "Price": "19.99",
+        "Brand": "Trust",
+        "Product Code": "17003",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech MK270, RUS, black - Wireless Desktop",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-004518/logitech-mk270-rus-black-wireless-desktop",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/179084-logitech-wireless-desktop-mk270-1-medium.png",
+        "Price": "44.99",
+        "Brand": "Logitech",
+        "Product Code": "920-004518",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Blue Snowball iCE, USB, white - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/988-000181/blue-snowball-ice-usb-white-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/251633-240989-medium.png",
+        "Price": "39.99",
+        "Brand": "Blue",
+        "Product Code": "988-000181",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer DeathAdder V3 Pro Fortnite Edition - Wireless Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/rz01-04630700-r3m1/razer-deathadder-v3-pro-fortnite-edition-wireless-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/391349-588963-medium.png",
+        "Price": "99.99",
+        "Brand": "Razer",
+        "Product Code": "RZ01-04630700-R3M1",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer Goliathus Extended Chroma Fortnite Edition, blue - Mousepad",
+        "Link": "https://www.euronics.ee/en/it/it-accessories/other/rz02-02500800-r3m1/razer-goliathus-extended-chroma-fortnite-edition-blue-mousepad",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/394828-594566-medium.png",
+        "Price": "69.99",
+        "Brand": "Razer",
+        "Product Code": "RZ02-02500800-R3M1",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Blue Snowball, USB, white - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/988-000187/blue-snowball-usb-white-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/286354-433406-medium.png",
+        "Price": "39.99",
+        "Brand": "Blue",
+        "Product Code": "988-000187",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech M705 Marathon, gray - Wireless Laser Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-001949/logitech-m705-marathon-gray-wireless-laser-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/149479-logitech-m705-marathon-1-medium.png",
+        "Price": "54.99",
+        "Brand": "Logitech",
+        "Product Code": "910-001949",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Z313 2.1, black - PC Speakers",
+        "Link": "https://www.euronics.ee/en/it/devices/computer-speakers/980-000413/logitech-z313-2-1-black-pc-speakers",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/19212-1-medium.jpg",
+        "Price": "59.99",
+        "Brand": "Logitech",
+        "Product Code": "980-000413",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G305, black - Wireless Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-005283/logitech-g305-black-wireless-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/195809-logitech-g305-black-1-medium.png",
+        "Price": "49.99",
+        "Brand": "Logitech",
+        "Product Code": "910-005283",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Slim Combo MK295, SWE, black - Wireless Desktop",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-009810/logitech-slim-combo-mk295-swe-black-wireless-desktop",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/262391-398902-medium.png",
+        "Price": "49.99",
+        "Brand": "Logitech",
+        "Product Code": "920-009810",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech StreamCam, FHD, black - Webcam",
+        "Link": "https://www.euronics.ee/en/it/devices/webcams/960-001281/logitech-streamcam-fhd-black-webcam",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/256228-391006-medium.png",
+        "Price": "159.99",
+        "Brand": "Logitech",
+        "Product Code": "960-001281",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Slim Combo MK470, SWE, gray - Wireless Desktop",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-009200/logitech-slim-combo-mk470-swe-gray-wireless-desktop",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/336002-356863-medium.png",
+        "Price": "59.99",
+        "Brand": "Logitech",
+        "Product Code": "920-009200",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech MX Vertical Advanced Ergonomic, black - Wireless Laser Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-005448/logitech-mx-vertical-advanced-ergonomic-black-wireless-laser-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/212164-1535134606000-img-1053783-copy-medium.png",
+        "Price": "119.99",
+        "Brand": "Logitech",
+        "Product Code": "910-005448",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G703 LightSpeed, black - Wireless Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-005640/logitech-g703-lightspeed-black-wireless-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/224554-719efvq1tjl.-sl1500--medium.png",
+        "Price": "109.99",
+        "Brand": "Logitech",
+        "Product Code": "910-005640",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Slim Combo MK470, SWE, white - Wireless Desktop",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-009201/logitech-slim-combo-mk470-swe-white-wireless-desktop",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/233906-356867-medium.png",
+        "Price": "59.99",
+        "Brand": "Logitech",
+        "Product Code": "920-009201",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "JBL PBM100, 6,3 mm, black - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/jblpbm100blk/jbl-pbm100-6-3-mm-black-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/267126-406056-medium.png",
+        "Price": "39.99",
+        "Brand": "JBL",
+        "Product Code": "JBLPBM100BLK",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Slim Combo MK295, SWE, white - Wireless Desktop",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-009830/logitech-slim-combo-mk295-swe-white-wireless-desktop",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/262396-398912-medium.png",
+        "Price": "49.99",
+        "Brand": "Logitech",
+        "Product Code": "920-009830",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "RODE NT-USB Mini, USB, USB-C, black - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/ntusbmini/rode-nt-usb-mini-usb-usb-c-black-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/277000-420007-medium.png",
+        "Price": "119.99",
+        "Brand": "RODE",
+        "Product Code": "NTUSBMINI",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G102 LightSync, white - Wired Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-005824/logitech-g102-lightsync-white-wired-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/256531-391460-medium.png",
+        "Price": "24.99",
+        "Brand": "Logitech",
+        "Product Code": "910-005824",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "JBL Quantum Stream, USB, black - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/jblqstreamblk/jbl-quantum-stream-usb-black-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/311083-468590-medium.png",
+        "Price": "59.99",
+        "Brand": "JBL",
+        "Product Code": "JBLQSTREAMBLK",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech StreamCam, FHD, white - Webcam",
+        "Link": "https://www.euronics.ee/en/it/devices/webcams/960-001297/logitech-streamcam-fhd-white-webcam",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/256232-391014-medium.png",
+        "Price": "159.99",
+        "Brand": "Logitech",
+        "Product Code": "960-001297",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G305, purple - Wireless Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-006022/logitech-g305-purple-wireless-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/263214-400095-medium.png",
+        "Price": "49.99",
+        "Brand": "Logitech",
+        "Product Code": "910-006022",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Brio 500, FHD, black - Webcam",
+        "Link": "https://www.euronics.ee/en/it/devices/webcams/960-001422/logitech-brio-500-fhd-black-webcam",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/330251-496577-medium.png",
+        "Price": "139.99",
+        "Brand": "Logitech",
+        "Product Code": "960-001422",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech ERGO K860, SWE, black - Wireless Keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-009168/logitech-ergo-k860-swe-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/262414-398922-medium.png",
+        "Price": "129.99",
+        "Brand": "Logitech",
+        "Product Code": "920-009168",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G305, blue - Wireless Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-006014/logitech-g305-blue-wireless-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/263218-400103-medium.png",
+        "Price": "49.99",
+        "Brand": "Logitech",
+        "Product Code": "910-006014",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G102 LightSync, purple - Wired Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-005854/logitech-g102-lightsync-purple-wired-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/264030-401528-medium.png",
+        "Price": "24.99",
+        "Brand": "Logitech",
+        "Product Code": "910-005854",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "RODE Lavalier GO, 3.5 mm, black - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/lavgo/rode-lavalier-go-3-5-mm-black-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/276996-419999-medium.png",
+        "Price": "69.99",
+        "Brand": "RODE",
+        "Product Code": "LAVGO",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Blue Yeti, USB, silver - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/988-000238/blue-yeti-usb-silver-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/251618-384654-medium.png",
+        "Price": "139.99",
+        "Brand": "Blue",
+        "Product Code": "988-000238",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Blue Yeti, USB, white - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/988-000533/blue-yeti-usb-white-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/370278-433396-medium.png",
+        "Price": "139.99",
+        "Brand": "Blue",
+        "Product Code": "988-000533",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G640, black - Mouse Pad",
+        "Link": "https://www.euronics.ee/en/it/it-accessories/other/943-000799/logitech-g640-black-mouse-pad",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/372766-497992-medium.png",
+        "Price": "29.99",
+        "Brand": "Logitech",
+        "Product Code": "943-000799",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Blue Yeti, USB, pink - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/988-000534/blue-yeti-usb-pink-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/369691-556745-medium.png",
+        "Price": "139.99",
+        "Brand": "Blue",
+        "Product Code": "988-000534",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Brio 500, FHD, white - Webcam",
+        "Link": "https://www.euronics.ee/en/it/devices/webcams/960-001428/logitech-brio-500-fhd-white-webcam",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/330257-496589-medium.png",
+        "Price": "139.99",
+        "Brand": "Logitech",
+        "Product Code": "960-001428",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech PRO X TKL, US, white - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012148/logitech-pro-x-tkl-us-white-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/367759-553763-medium.png",
+        "Price": "229.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012148",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech PRO X 60, SWE, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-011909/logitech-pro-x-60-swe-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/384136-577517-medium.png",
+        "Price": "199.99",
+        "Brand": "Logitech",
+        "Product Code": "920-011909",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Brio 500, FHD, rose - Webcam",
+        "Link": "https://www.euronics.ee/en/it/devices/webcams/960-001421/logitech-brio-500-fhd-rose-webcam",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/330256-496587-medium.png",
+        "Price": "139.99",
+        "Brand": "Logitech",
+        "Product Code": "960-001421",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G515 Lightspeed, Linear, SWE, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012552/logitech-g515-lightspeed-linear-swe-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/390971-588252-medium.png",
+        "Price": "149.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012552",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G515 Lightspeed, Tactile, SWE, white - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012551/logitech-g515-lightspeed-tactile-swe-white-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/390980-588270-medium.png",
+        "Price": "149.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012551",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Yeti GX, black - USB Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/988-000569/logitech-yeti-gx-black-usb-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/397243-598121-medium.png",
+        "Price": "159.99",
+        "Brand": "Logitech",
+        "Product Code": "988-000569",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech PRO X TKL, US, pink - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012159/logitech-pro-x-tkl-us-pink-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/367758-553761-medium.png",
+        "Price": "229.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012159",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X, tactile, SWE, black - Keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012940/logitech-g915-x-tactile-swe-black-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/397848-599033-medium.png",
+        "Price": "199.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012940",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Pro 2 Lightspeed, black - Wireless mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-007295/logitech-pro-2-lightspeed-black-wireless-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/397933-599179-medium.png",
+        "Price": "139.99",
+        "Brand": "Logitech",
+        "Product Code": "910-007295",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, TKL, tactile, SWE, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012719/logitech-g915-x-lightspeed-tkl-tactile-swe-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/398035-599297-medium.png",
+        "Price": "229.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012719",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G309 Lightspeed, black - Wireless mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-007199/logitech-g309-lightspeed-black-wireless-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/390986-588282-medium.png",
+        "Price": "89.99",
+        "Brand": "Logitech",
+        "Product Code": "910-007199",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech MK470 Slim Combo, US, black - Wireless Desktop",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-009204/logitech-mk470-slim-combo-us-black-wireless-desktop",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/246712-356863-medium.png",
+        "Price": "59.99",
+        "Brand": "Logitech",
+        "Product Code": "920-009204",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech PRO X 60, SWE, white - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-011928/logitech-pro-x-60-swe-white-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/384148-577529-medium.png",
+        "Price": "199.99",
+        "Brand": "Logitech",
+        "Product Code": "920-011928",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech PRO X 60, US, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-011911/logitech-pro-x-60-us-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/384130-577517-medium.png",
+        "Price": "199.99",
+        "Brand": "Logitech",
+        "Product Code": "920-011911",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech PRO X 60, US, white - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-011930/logitech-pro-x-60-us-white-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/384142-577529-medium.png",
+        "Price": "199.99",
+        "Brand": "Logitech",
+        "Product Code": "920-011930",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G515 Lightspeed, Tactile, SWE, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012550/logitech-g515-lightspeed-tactile-swe-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/390974-588258-medium.png",
+        "Price": "149.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012550",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, tactile, SWE, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012674/logitech-g915-x-lightspeed-tactile-swe-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/398024-599240-medium.png",
+        "Price": "249.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012674",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Pro 2 Lightspeed, white - Wireless mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-007302/logitech-pro-2-lightspeed-white-wireless-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/397945-599191-medium.png",
+        "Price": "139.99",
+        "Brand": "Logitech",
+        "Product Code": "910-007302",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Pro 2 Lightspeed, pink - Wireless mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-007309/logitech-pro-2-lightspeed-pink-wireless-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/397964-599228-medium.png",
+        "Price": "139.99",
+        "Brand": "Logitech",
+        "Product Code": "910-007309",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, TKL, clicky, SWE, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012756/logitech-g915-x-lightspeed-tkl-clicky-swe-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/398056-599297-medium.png",
+        "Price": "229.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012756",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Yeti GX, white - USB Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/988-000576/logitech-yeti-gx-white-usb-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/399921-602557-medium.png",
+        "Price": "159.99",
+        "Brand": "Logitech",
+        "Product Code": "988-000576",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, tactile, SWE, white - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012688/logitech-g915-x-lightspeed-tactile-swe-white-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/398020-599264-medium.png",
+        "Price": "249.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012688",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, clicky, SWE, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012707/logitech-g915-x-lightspeed-clicky-swe-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/397996-599240-medium.png",
+        "Price": "249.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012707",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Blue Yeti ORB, white - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/988-000558/logitech-blue-yeti-orb-white-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/398424-599964-medium.png",
+        "Price": "79.99",
+        "Brand": "Logitech",
+        "Product Code": "988-000558",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, TKL, linear, SWE, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012746/logitech-g915-x-lightspeed-tkl-linear-swe-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/398047-599297-medium.png",
+        "Price": "229.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012746",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X, tactile, US, black - Keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012942/logitech-g915-x-tactile-us-black-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/397853-599033-medium.png",
+        "Price": "199.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012942",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G309 Lightspeed, white - Wireless mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-007207/logitech-g309-lightspeed-white-wireless-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/390959-588230-medium.png",
+        "Price": "89.99",
+        "Brand": "Logitech",
+        "Product Code": "910-007207",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, linear, US, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012698/logitech-g915-x-lightspeed-linear-us-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/397986-599240-medium.png",
+        "Price": "249.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012698",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, TKL, tactile, SWE, white - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012735/logitech-g915-x-lightspeed-tkl-tactile-swe-white-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/398041-599309-medium.png",
+        "Price": "229.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012735",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, TKL, tactile, US, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012721/logitech-g915-x-lightspeed-tkl-tactile-us-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/398001-599272-medium.png",
+        "Price": "229.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012721",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, TKL, tactile, US, white - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012737/logitech-g915-x-lightspeed-tkl-tactile-us-white-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/398008-599285-medium.png",
+        "Price": "229.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012737",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, TKL, linear, US, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012747/logitech-g915-x-lightspeed-tkl-linear-us-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/398014-599272-medium.png",
+        "Price": "229.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012747",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, tactile, US, white - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012690/logitech-g915-x-lightspeed-tactile-us-white-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/397982-599264-medium.png",
+        "Price": "249.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012690",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G915 X Lightspeed, tactile, US, black - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012676/logitech-g915-x-lightspeed-tactile-us-black-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/397970-599240-medium.png",
+        "Price": "249.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012676",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G515 Lightspeed, Tactile, US, white - Wireless keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-012539/logitech-g515-lightspeed-tactile-us-white-wireless-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/390983-588276-medium.png",
+        "Price": "149.99",
+        "Brand": "Logitech",
+        "Product Code": "920-012539",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech M185, gray/black - Wireless Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-002238/logitech-m185-gray-black-wireless-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/45440-1-medium.jpg",
+        "Price": "17.99",
+        "Brand": "Logitech",
+        "Product Code": "910-002238",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Z906 5.1, black - PC Speakers",
+        "Link": "https://www.euronics.ee/en/it/devices/computer-speakers/980-000468/logitech-z906-5-1-black-pc-speakers",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/34828-logitech-z906-medium.jpg",
+        "Price": "399.99",
+        "Brand": "Logitech",
+        "Product Code": "980-000468",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech M185, gray/red - Wireless Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-002240/logitech-m185-gray-red-wireless-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/45433-1-medium.jpg",
+        "Price": "17.99",
+        "Brand": "Logitech",
+        "Product Code": "910-002240",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "SteelSeries Rival 3, black - Wired Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/62513/steelseries-rival-3-black-wired-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/243919-372496-medium.png",
+        "Price": "39.99",
+        "Brand": "SteelSeries",
+        "Product Code": "62513",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G502 Hero, black - Wired Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-005471/logitech-g502-hero-black-wired-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/286274-433265-medium.png",
+        "Price": "54.99",
+        "Brand": "Logitech",
+        "Product Code": "910-005471",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech M185, gray/blue - Wireless Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-002239/logitech-m185-gray-blue-wireless-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/45431-1-medium.jpg",
+        "Price": "17.99",
+        "Brand": "Logitech",
+        "Product Code": "910-002239",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "SteelSeries Rival 3 Wireless, black - Wireless Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/62521/steelseries-rival-3-wireless-black-wireless-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/265551-403579-medium.png",
+        "Price": "59.99",
+        "Brand": "SteelSeries",
+        "Product Code": "62521",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Z533, black - PC Speakers",
+        "Link": "https://www.euronics.ee/en/it/devices/computer-speakers/980-001054/logitech-z533-black-pc-speakers",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/140549-logitech-medium.png",
+        "Price": "129.99",
+        "Brand": "Logitech",
+        "Product Code": "980-001054",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "SteelSeries Apex 3, SWE, black - Keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/64803/steelseries-apex-3-swe-black-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/244510-373201-medium.png",
+        "Price": "64.99",
+        "Brand": "SteelSeries",
+        "Product Code": "64803",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Wireless router TP-Link TL-MR6400 (4G LTE)",
+        "Link": "https://www.euronics.ee/en/it/devices/networking-devices/tl-mr6400/wireless-router-tp-link-tl-mr6400-4g-lte",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/217970-tl-mr6400-eu-3.0-01-large-1541681374587z-medium.png",
+        "Price": "70.99",
+        "Brand": "TP-Link",
+        "Product Code": "TL-MR6400",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech C270, HD, black - Webcam",
+        "Link": "https://www.euronics.ee/en/it/devices/webcams/960-001063/logitech-c270-hd-black-webcam",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/141499-1-medium.png",
+        "Price": "39.99",
+        "Brand": "Logitech",
+        "Product Code": "960-001063",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G502 LightSpeed, black - Wireless Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-005568/logitech-g502-lightspeed-black-wireless-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/224549-51e0bhsroml.-sl1000--medium.png",
+        "Price": "149.99",
+        "Brand": "Logitech",
+        "Product Code": "910-005568",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech M330 Silent Plus, black - Wireless Optical Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/910-004909/logitech-m330-silent-plus-black-wireless-optical-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/189606-logitech-m330plus-black-medium.jpg",
+        "Price": "29.99",
+        "Brand": "Logitech",
+        "Product Code": "910-004909",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Wi-Fi range extender TP-Link AC750 Dual Band",
+        "Link": "https://www.euronics.ee/en/it/devices/networking-devices/re200/wi-fi-range-extender-tp-link-ac750-dual-band",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/172841-tplink-wifi-extender-1-medium.png",
+        "Price": "26.99",
+        "Brand": "TP-Link",
+        "Product Code": "RE200",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "WiFi router TP-Link AC750 Dual Band",
+        "Link": "https://www.euronics.ee/en/it/devices/networking-devices/archer-c20/wifi-router-tp-link-ac750-dual-band",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/173183-tplink-archerc20-1-medium.png",
+        "Price": "25.99",
+        "Brand": "TP-Link",
+        "Product Code": "ARCHER-C20",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech MK270, SWE, black - Wireless Desktop",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-004535/logitech-mk270-swe-black-wireless-desktop",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/176718-logitech-wireless-desktop-mk270-1-medium.png",
+        "Price": "29.99",
+        "Brand": "Logitech",
+        "Product Code": "920-004535",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Wi-Fi USB adapter TP-Link AC1300",
+        "Link": "https://www.euronics.ee/en/it/devices/networking-devices/archer-t4u/wi-fi-usb-adapter-tp-link-ac1300",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/384724-578543-medium.png",
+        "Price": "25.99",
+        "Brand": "TP-Link",
+        "Product Code": "ARCHER-T4U",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "WiFi router TP-Link Archer AX1500",
+        "Link": "https://www.euronics.ee/en/it/devices/networking-devices/archerax1500/wifi-router-tp-link-archer-ax1500",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/269571-409623-medium.png",
+        "Price": "51.99",
+        "Brand": "TP-Link",
+        "Product Code": "ARCHERAX1500",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Z207 2.0, white - PC Speakers",
+        "Link": "https://www.euronics.ee/en/it/devices/computer-speakers/980-001292/logitech-z207-2-0-white-pc-speakers",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/174103-logitech-z207-white-1-medium.png",
+        "Price": "69.99",
+        "Brand": "Logitech",
+        "Product Code": "980-001292",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Network extension adapter TP-Link AV600 Powerline Starter Kit",
+        "Link": "https://www.euronics.ee/en/it/devices/networking-devices/tl-pa4010pkit/network-extension-adapter-tp-link-av600-powerline-starter-kit",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/291563-441257-medium.png",
+        "Price": "47.99",
+        "Brand": "TP-Link",
+        "Product Code": "TL-PA4010PKIT",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "TP-Link TL-SG1008D V8; black - Switch",
+        "Link": "https://www.euronics.ee/en/it/devices/networking-devices/tl-sg1008d/tp-link-tl-sg1008d-v8-black-switch",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/178466-tplink-tl-sg1008d-switch-1-medium.png",
+        "Price": "23.99",
+        "Brand": "TP-Link",
+        "Product Code": "TL-SG1008D",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "USB Wi-Fi adapter TP-Link AC600 T2U Nano",
+        "Link": "https://www.euronics.ee/en/it/devices/networking-devices/archer-t2unano/usb-wi-fi-adapter-tp-link-ac600-t2u-nano",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/237897-363720-medium.png",
+        "Price": "11.99",
+        "Brand": "TP-Link",
+        "Product Code": "ARCHER-T2UNANO",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "TP-Link Deco M4, 2-Pack, white - Wireless Home Mesh System",
+        "Link": "https://www.euronics.ee/en/it/devices/networking-devices/decom4/tp-link-deco-m4-2-pack-white-wireless-home-mesh-system",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/217978-decom402large-1541491501395l-medium.png",
+        "Price": "79.99",
+        "Brand": "TP-Link",
+        "Product Code": "DECOM4",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Z407, 2.1, Bluetooth, black - PC Speakers",
+        "Link": "https://www.euronics.ee/en/it/devices/computer-speakers/980-001348/logitech-z407-2-1-bluetooth-black-pc-speakers",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/275858-418256-medium.png",
+        "Price": "99.99",
+        "Brand": "Logitech",
+        "Product Code": "980-001348",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Blue Yeti Nano, 3.5 mm, USB, black - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/988-000401/blue-yeti-nano-3-5-mm-usb-black-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/286892-434254-medium.png",
+        "Price": "99.99",
+        "Brand": "Blue",
+        "Product Code": "988-000401",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer Cobra, black - Wired mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/rz01-04650100-r3m1/razer-cobra-black-wired-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/355838-535824-medium.png",
+        "Price": "49.99",
+        "Brand": "Razer",
+        "Product Code": "RZ01-04650100-R3M1",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Brio 100, FHD, graphite - Webcam",
+        "Link": "https://www.euronics.ee/en/it/devices/webcams/960-001585/logitech-brio-100-fhd-graphite-webcam",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/360444-542727-medium.png",
+        "Price": "49.99",
+        "Brand": "Logitech",
+        "Product Code": "960-001585",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Blue Yeti Nano, USB, gray - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/988-000205/blue-yeti-nano-usb-gray-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/287553-343522-medium.png",
+        "Price": "99.99",
+        "Brand": "Blue",
+        "Product Code": "988-000205",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Wireless router TP-Link Archer A6",
+        "Link": "https://www.euronics.ee/en/it/devices/networking-devices/archera6/wireless-router-tp-link-archer-a6",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/399169-601326-medium.png",
+        "Price": "39.99",
+        "Brand": "TP-Link",
+        "Product Code": "ARCHERA6",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer BlackWidow V4 X, Green Switch, mechanical, SWE, black - Keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/rz03-04700600-r3n1/razer-blackwidow-v4-x-green-switch-mechanical-swe-black-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/362100-542058-medium.png",
+        "Price": "149.99",
+        "Brand": "Razer",
+        "Product Code": "RZ03-04700600-R3N1",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Trust Taxon, 2K QHD, black - Webcam",
+        "Link": "https://www.euronics.ee/en/it/devices/webcams/24732/trust-taxon-2k-qhd-black-webcam",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/360311-542505-medium.png",
+        "Price": "59.99",
+        "Brand": "Trust",
+        "Product Code": "24732",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Trust GXT 258W FYRU, USB, white - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/24257/trust-gxt-258w-fyru-usb-white-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/332094-499252-medium.png",
+        "Price": "79.99",
+        "Brand": "Trust",
+        "Product Code": "24257",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer Cobra Pro, black - Wireless mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/rz01-04660100-r3g1/razer-cobra-pro-black-wireless-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/355830-535809-medium.png",
+        "Price": "149.99",
+        "Brand": "Razer",
+        "Product Code": "RZ01-04660100-R3G1",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer Huntsman V3 Pro TKL, SWE, black - Mechanical keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/rz03-04980600-r3n1/razer-huntsman-v3-pro-tkl-swe-black-mechanical-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/371402-559486-medium.png",
+        "Price": "249.99",
+        "Brand": "Razer",
+        "Product Code": "RZ03-04980600-R3N1",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "RODE X XCM-50, condenser, USB, black - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/xcm50/rode-x-xcm-50-condenser-usb-black-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/335278-503928-medium.png",
+        "Price": "149.99",
+        "Brand": "RODE",
+        "Product Code": "XCM50",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech Brio 100, FHD, white - Webcam",
+        "Link": "https://www.euronics.ee/en/it/devices/webcams/960-001617/logitech-brio-100-fhd-white-webcam",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/360445-542729-medium.png",
+        "Price": "49.99",
+        "Brand": "Logitech",
+        "Product Code": "960-001617",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer BlackWidow V4, Green Switch, mechanical, SWE, black - Keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/rz03-04690600-r3n1/razer-blackwidow-v4-green-switch-mechanical-swe-black-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/359957-542018-medium.png",
+        "Price": "189.99",
+        "Brand": "Razer",
+        "Product Code": "RZ03-04690600-R3N1",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "JBL Quantum Stream Wireless Lightning, black - Wireless Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/jblstrmwllghtblk/jbl-quantum-stream-wireless-lightning-black-wireless-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/377813-568675-medium.png",
+        "Price": "129.99",
+        "Brand": "JBL",
+        "Product Code": "JBLSTRMWLLGHTBLK",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer Huntsman V3 Pro Mini, SWE, black - Mechanical keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/rz03-04990600-r3n1/razer-huntsman-v3-pro-mini-swe-black-mechanical-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/371398-559480-medium.png",
+        "Price": "209.99",
+        "Brand": "Razer",
+        "Product Code": "RZ03-04990600-R3N1",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "RODE Podcaster, USB, white - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/podcaster/rode-podcaster-usb-white-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/262463-398999-medium.png",
+        "Price": "199.99",
+        "Brand": "RODE",
+        "Product Code": "PODCASTER",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech MK270, US, black - Wireless Desktop",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-004508/logitech-mk270-us-black-wireless-desktop",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/211834-logitech-wireless-desktop-mk270-1-medium.png",
+        "Price": "29.99",
+        "Brand": "Logitech",
+        "Product Code": "920-004508",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "RODE Wireless PRO, 3.5 mm, USB-C, black - Wireless microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/wipro/rode-wireless-pro-3-5-mm-usb-c-black-wireless-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/365888-551605-medium.png",
+        "Price": "499.99",
+        "Brand": "RODE",
+        "Product Code": "WIPRO",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer Seiren BT, Bluetooth, black - Wireless Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/rz19-04150100-r3m1/razer-seiren-bt-bluetooth-black-wireless-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/317518-478142-medium.png",
+        "Price": "99.99",
+        "Brand": "Razer",
+        "Product Code": "RZ19-04150100-R3M1",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "RODE NT1 5th Generation, black - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/nt1gen5b/rode-nt1-5th-generation-black-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/348766-524641-medium.png",
+        "Price": "249.99",
+        "Brand": "RODE",
+        "Product Code": "NT1GEN5B",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech G240, black - Mouse Pad",
+        "Link": "https://www.euronics.ee/en/it/it-accessories/other/943-000785/logitech-g240-black-mouse-pad",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/372757-497994-medium.png",
+        "Price": "9.99",
+        "Brand": "Logitech",
+        "Product Code": "943-000785",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Trust Teza, 4K Ultra HD, black - Webcam",
+        "Link": "https://www.euronics.ee/en/it/devices/webcams/24280/trust-teza-4k-ultra-hd-black-webcam",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/360301-542485-medium.png",
+        "Price": "79.99",
+        "Brand": "Trust",
+        "Product Code": "24280",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer Huntsman Mini Mercury Edition, Red Switch, RUS, white - Wired keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/rz03-03392200-r3r1/razer-huntsman-mini-mercury-edition-red-switch-rus-white-wired-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/375178-565454-medium.png",
+        "Price": "139.99",
+        "Brand": "Razer",
+        "Product Code": "RZ03-03392200-R3R1",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Trust GXT 866 Torix, SWE, black - Mechanical keyboard",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/25453/trust-gxt-866-torix-swe-black-mechanical-keyboard",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/381250-573934-medium.png",
+        "Price": "69.99",
+        "Brand": "Trust",
+        "Product Code": "25453",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "RODE X XDM-100, dynamic, USB, black - Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/xdm100/rode-x-xdm-100-dynamic-usb-black-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/335296-503947-medium.png",
+        "Price": "299.99",
+        "Brand": "RODE",
+        "Product Code": "XDM100",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "JBL Quantum Stream Wireless USB-C, black - Wireless Microphone",
+        "Link": "https://www.euronics.ee/en/audio/other-audio/microphones/jblstrmwlusbcblk/jbl-quantum-stream-wireless-usb-c-black-wireless-microphone",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/377814-568677-medium.png",
+        "Price": "99.99",
+        "Brand": "JBL",
+        "Product Code": "JBLSTRMWLUSBCBLK",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer DeathAdder V3 Hyperspeed, black - Wireless Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/rz01-05140100-r3g1/razer-deathadder-v3-hyperspeed-black-wireless-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/397379-598345-medium.png",
+        "Price": "119.99",
+        "Brand": "Razer",
+        "Product Code": "RZ01-05140100-R3G1",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Logitech K400 Plus, US, gray - Wireless Keyboard With Touchpad",
+        "Link": "https://www.euronics.ee/en/it/devices/keyboards/920-007145/logitech-k400-plus-us-gray-wireless-keyboard-with-touchpad",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/211868-k400-blk-1-medium.png",
+        "Price": "54.99",
+        "Brand": "Logitech",
+        "Product Code": "920-007145",
+        "Availability": "in stock"
+    },
+    {
+        "Name": "Razer Basilisk V3 35K, black - Mouse",
+        "Link": "https://www.euronics.ee/en/it/devices/mice/rz01-05230100-r3m1/razer-basilisk-v3-35k-black-mouse",
+        "Image URL": "https://www.euronics.ee/UserFiles/Products/Images/399424-601796-medium.png",
+        "Price": "79.99",
+        "Brand": "Razer",
+        "Product Code": "RZ01-05230100-R3M1",
+        "Availability": "in stock"
+    }
+]

@@ -1,11 +1,10 @@
 <!--free delivery banner-->
-<div class="free-delivery-banner">
-  <p>Free delivery for orders over 100$ and within Europe!</p>
+<div [class.hidden]="isBannerHidden" class="free-delivery-banner">
+  <p>Free delivery for orders over 100€ and within Europe!</p>
 </div>
 
 
-<header class="header">
-  <div class="container">
+<header [class.hidden]="isHeaderHidden" [class.no-banner]="isBannerHidden" class="header">  <div class="container">
     <div class="logo">
       <h1 style="font-family: 'Californian FB'">VloTech.ee</h1>
     </div>
@@ -43,5 +42,43 @@
     </nav>
 
 
+
+
+  </div>
+
+  <!-- Mega Menu Section -->
+  <div class="mega-menu">
+    <ul class="main-menu">
+      <li>
+        <a href="#">All Products</a>
+        <div class="submenu">
+          <a href="#">Laptops</a>
+          <a href="#">Desktops</a>
+          <a href="#">Monitors</a>
+          <a href="#">Keyboards</a>
+          <a href="#">Mice</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Phones</a>
+        <div class="submenu">
+          <a href="#">Smartphones</a>
+          <a href="#">Feature Phones</a>
+          <a href="#">Accessories</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Best Offers</a>
+      </li>
+      <li>
+        <a href="#">Winter Deals</a>
+      </li>
+      <li>
+        <a href="#">Gift Cards</a>
+      </li>
+      <li>
+        <a href="#">Outlet</a>
+      </li>
+    </ul>
   </div>
 </header>
