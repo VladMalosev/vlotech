@@ -6,15 +6,23 @@
 
 <header [class.hidden]="isHeaderHidden" [class.no-banner]="isBannerHidden" class="header">  <div class="container">
     <div class="logo">
-      <h1 style="font-family: 'Californian FB'">VloTech.ee</h1>
+      <a href="/" style="text-decoration: none; color: white">
+      <h1  style="font-family: 'Californian FB'">VloTech.ee</h1>
+      </a>
     </div>
 
-    <div class="search-bar">
-      <input type="text" placeholder="Search for products..."/>
-      <button type="button">
-        <img src="assets/icons/search.png" alt="Search Icon" />
-      </button>
-    </div>
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search for products..."
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="onSearch()"
+    />
+    <button type="button" (click)="onSearch()">
+      <img src="assets/icons/search.png" alt="Search Icon" />
+    </button>
+  </div>
+
 
 
     <!-- Hamburger Menu -->

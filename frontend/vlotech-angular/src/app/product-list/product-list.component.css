@@ -1,32 +1,50 @@
 .product-list-container {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
   margin-top: 200px;
   font-family: 'Arial', sans-serif;
-  flex-wrap: wrap;
   width: 100%;
 }
-.filter-sidebar {
-  width: 20%;
-  background-color: #f4f4f4;
-  padding: 10px;
-  border-radius: 5px;
-}
 
+.filter-sidebar,
 .ads-sidebar {
   width: 20%;
   background-color: #f4f4f4;
   padding: 10px;
   border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+}
+
+.sort-container {
+  display: flex;
+
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sort-label {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.sort-select {
+  padding: 5px 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .products {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* Four items per row */
   gap: 20px;
-  width: 55%;
-
+  width: 100%;
 }
 
 .product-card {
@@ -36,13 +54,13 @@
   border-radius: 8px;
   background-color: #fff;
   cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 
 .product-image {
   width: 80%;
@@ -66,16 +84,6 @@
   color: #333;
 }
 
-.product-btn {
-  margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
 /* Responsive Design */
 @media (max-width: 1024px) {
   .product-list-container {
@@ -85,21 +93,25 @@
   }
 
   .products {
-    width: 100%;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Two items per row */
   }
 
   .filter-sidebar,
   .ads-sidebar {
     width: 100%;
   }
+
+  .main-content {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
   .products {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* One item per row */
   }
 }
+
 
 .pagination {
   display: flex;

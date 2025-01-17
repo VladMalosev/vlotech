@@ -1,19 +1,76 @@
 <div class="product-list-container">
-  <!-- Left Sidebar for Filters -->
-  <div class="filter-sidebar"></div>
 
-  <!-- Products Display -->
-  <div class="products">
-    <div class="product-card" *ngFor="let product of pagProducts" (click)="navigateToProductDetails()">
-      <img [src]="product['Image URL']" alt="{{ product['Name'] }}" class="product-image" />
-      <h4 class="product-name">{{ product['Name'] }}</h4>
-      <p class="product-description">Brand: {{ product['Brand'] }}</p>
-      <p class="product-price">Price: €{{ product['Price'] }}</p>
-      <p class="product-availability">Availability: {{ product['Availability'] }}</p>
+  <!-- Add the Header Component at the Top -->
+  <app-header (searchEvent)="onSearch($event)"></app-header>
+
+  <!-- Left Sidebar for Filters -->
+  <div class="filter-sidebar">
+    <h3 class="filter-title">Filters</h3>
+
+    <!-- Brand Filter -->
+    <div class="filter-group">
+      <h4 class="filter-subtitle">Brand</h4>
+      <div class="filter-item">
+        <input type="checkbox" id="brand1" name="brand1" />
+        <label for="brand1">Brand 1</label>
+      </div>
+      <div class="filter-item">
+        <input type="checkbox" id="brand2" name="brand2" />
+        <label for="brand2">Brand 2</label>
+      </div>
+      <div class="filter-item">
+        <input type="checkbox" id="brand3" name="brand3" />
+        <label for="brand3">Brand 3</label>
+      </div>
+    </div>
+
+    <!-- Availability Filter -->
+    <div class="filter-group">
+      <h4 class="filter-subtitle">Availability</h4>
+      <div class="filter-item">
+        <input type="radio" id="in-stock" name="availability" />
+        <label for="in-stock">In Stock</label>
+      </div>
+      <div class="filter-item">
+        <input type="radio" id="out-of-stock" name="availability" />
+        <label for="out-of-stock">Out of Stock</label>
+      </div>
+    </div>
+
+    <!-- Reset Filters Button -->
+    <button class="filter-reset-btn">Reset Filters</button>
+  </div>
+
+  <!-- Main Section with Sorting Dropdown and Products -->
+  <div class="main-content">
+    <!-- Sorting Dropdown -->
+    <div class="sort-container">
+      <label for="sort" class="sort-label">Sort by:</label>
+      <select id="sort" class="sort-select" (change)="onSortChange($event)">
+        <option value="name">Name (A-Z)</option>
+        <option value="priceAsc">Price (Low to High)</option>
+        <option value="priceDesc">Price (High to Low)</option>
+        <option value="brand">Brand (A-Z)</option>
+      </select>
+    </div>
+
+    <!-- Products Display -->
+    <div class="products">
+      <div
+        class="product-card"
+        *ngFor="let product of pagProducts"
+        (click)="navigateToProductDetails()"
+      >
+        <img [src]="product['Image URL']" alt="{{ product['Name'] }}" class="product-image" />
+        <h4 class="product-name">{{ product['Name'] }}</h4>
+        <p class="product-description">Brand: {{ product['Brand'] }}</p>
+        <p class="product-price">Price: €{{ product['Price'] }}</p>
+        <p class="product-availability">Availability: {{ product['Availability'] }}</p>
+      </div>
     </div>
   </div>
 
-  <!-- Right Sidebar for Ads (Empty for now) -->
+  <!-- Right Sidebar for Ads -->
   <div class="ads-sidebar"></div>
 </div>
 
@@ -26,7 +83,7 @@
   >
     Previous
   </button>
-  <span>Page {{ currPage }} of {{ Math.ceil(products.length / itemsPerPage) }}</span>
+  <span>Page {{ currPage }} of {{ Math.ceil(filteredProducts.length / itemsPerPage) }}</span>
   <button
     (click)="nextPage()"
     [disabled]="currPage === Math.ceil(products.length / itemsPerPage)"
