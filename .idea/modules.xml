@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/backend/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend/backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/vlotech.iml" filepath="$PROJECT_DIR$/vlotech.iml" />
       <module fileurl="file://$PROJECT_DIR$/frontend/vlotech-angular.iml" filepath="$PROJECT_DIR$/frontend/vlotech-angular.iml" />
     </modules>
