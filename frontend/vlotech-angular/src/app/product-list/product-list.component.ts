@@ -13,9 +13,13 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class ProductListComponent implements OnInit {
   products: any[] = [];
+  materials: any[] = []; // placeholders
+  colors: any[] = ['Red', 'Blue', 'Green']; // example color options
+  sizes: any[] = ['S', 'M', 'L', 'XL']; // example size options
   filteredProducts: any[] = [];
   pagProducts: any[] = [];
   searchTerm: string = '';
+  activeFilters: { [key: string]: boolean } = {};
 
   currPage: number = 1;
   itemsPerPage: number = 40;
@@ -38,6 +42,12 @@ export class ProductListComponent implements OnInit {
       // Load JSON data only once if not loaded
       if (!this.dataLoaded) {
         this.loadJSONData('assets/data/laptop.json');
+        this.loadJSONData('assets/data/accessories.json');
+        this.loadJSONData('assets/data/desktops.json');
+        this.loadJSONData('assets/data/devices.json');
+        this.loadJSONData('assets/data/smartwatches.json');
+        this.loadJSONData('assets/data/laptop.json');
+        this.loadJSONData('assets/data/tv.json');
       } else {
         this.updateFilteredProducts();
         this.updatePagination();
@@ -54,8 +64,8 @@ export class ProductListComponent implements OnInit {
           }
           return product;
         });
-        this.products = cleanedData; // Replace old products array
-        this.dataLoaded = true; // Mark data as loaded
+        this.products = [...this.products, ...cleanedData]; // Append new data to the products array
+        this.dataLoaded = true;
 
         // After loading, update filtered products and pagination
         this.updateFilteredProducts();
@@ -151,6 +161,34 @@ export class ProductListComponent implements OnInit {
   navigateToProductDetails(): void {
     // to-do
   }
+
+  toggleFilter(filter: string): void {
+    console.log('Toggling filter: ', filter);  // Add a log here to check if it's triggered.
+    this.activeFilters[filter] = !this.activeFilters[filter];
+
+    // Check if the activeFilters state is being updated correctly
+    console.log('activeFilters: ', this.activeFilters); // This will give us a quick look at the filter status
+
+    const filterElement = document.getElementById(filter);
+    if (filterElement) {
+      console.log('Toggling element: ', filterElement);
+      const parentFilterElement = filterElement?.parentElement;
+      if (parentFilterElement) {
+        console.log('Toggling parent element: ', parentFilterElement);
+        parentFilterElement.classList.toggle('active', this.activeFilters[filter]);
+      }    }
+  }
+
+
+
+  isActive(option: string): boolean {
+    return this.activeFilters[option] === true;
+  }
+
+  setActive(option: string): void {
+    this.activeFilters[option] = !this.activeFilters[option];
+  }
+
 
 
   protected readonly Math = Math;

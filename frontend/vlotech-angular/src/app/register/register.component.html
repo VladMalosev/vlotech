@@ -1,1 +1,95 @@
-<p>register works!</p>
+<div class="container">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <div class="row">
+    <!-- Banner Section -->
+    <div class="banner">
+      <!-- Decorative Background Pattern -->
+      <div class="pattern"></div>
+      <h1 class="headline">Create an Account</h1>
+      <p class="subheadline">Sign up to enjoy exclusive services and offers. It's quick and easy!</p>
+    </div>
+
+    <!-- Registration Form Section -->
+    <div class="form-section">
+      <form (ngSubmit)="onSubmit()">
+        <!-- First Name -->
+        <div class="input-group">
+          <input id="firstName" type="text" name="firstname" placeholder="First Name" required />
+        </div>
+
+        <!-- Last Name -->
+        <div class="input-group">
+          <input id="lastName" type="text" name="lastname" placeholder="Last Name" required />
+        </div>
+
+        <!-- Email -->
+        <div class="input-group">
+          <input id="email" type="email" name="email" placeholder="Email Address" required />
+        </div>
+
+
+        <!--Phone -->
+        <div class="input-group">
+          <input id="phone" type="text" name="phone" placeholder="Phone Number" required />
+        </div>
+
+        <!-- Password -->
+        <div class="input-group">
+          <input id="password" type="password" name="password" placeholder="Password" required />
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="input-group">
+          <input
+            id="passwordConfirmation"
+            type="password"
+            name="passwordConfirmation"
+            placeholder="Confirm Password"
+            required
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn">Create Account</button>
+      </form>
+
+
+      <div class="striped">
+        <span class="striped-line"></span>
+        <span class="striped-text">Or</span>
+        <span class="striped-line"></span>
+      </div>
+
+      <div class="method">
+        <!-- Google Login Button -->
+        <div class="method-control">
+          <a href="#" class="method-action">
+            <i class="fab fa-google"></i> <!-- Google icon from Font Awesome -->
+            <span>Sign in with Google</span>
+          </a>
+        </div>
+
+        <!-- Facebook Login Button -->
+        <div class="method-control">
+          <a href="#" class="method-action">
+            <i class="fab fa-facebook"></i> <!-- Facebook icon from Font Awesome -->
+            <span>Sign in with Facebook</span>
+          </a>
+        </div>
+
+        <!-- Apple Login Button -->
+        <div class="method-control">
+          <a href="#" class="method-action">
+            <i class="fab fa-apple"></i> <!-- Apple icon from Font Awesome -->
+            <span>Sign in with Apple</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p> Already have an account? <a href="/login" class="text text-links">Log in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

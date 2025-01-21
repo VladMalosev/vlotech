@@ -6,40 +6,118 @@
   <!-- Left Sidebar for Filters -->
   <div class="filter-sidebar">
     <h3 class="filter-title">Filters</h3>
+    <span class="line"></span>
+
 
     <!-- Brand Filter -->
     <div class="filter-group">
-      <h4 class="filter-subtitle">Brand</h4>
-      <div class="filter-item">
-        <input type="checkbox" id="brand1" name="brand1" />
-        <label for="brand1">Brand 1</label>
-      </div>
-      <div class="filter-item">
-        <input type="checkbox" id="brand2" name="brand2" />
-        <label for="brand2">Brand 2</label>
-      </div>
-      <div class="filter-item">
-        <input type="checkbox" id="brand3" name="brand3" />
-        <label for="brand3">Brand 3</label>
+      <h4 class="filter-subtitle expandable" (click)="toggleFilter('brand')">
+        Brand
+        <span class="btn-section">
+      {{ activeFilters['brand'] ? '-' : '+' }}
+    </span>
+      </h4>
+      <div class="expandable-content" id="brand">
+        <div class="filter-item">
+          <input type="checkbox" id="brand1" name="brand1" />
+          <label for="brand1">Brand 1</label>
+        </div>
+        <div class="filter-item">
+          <input type="checkbox" id="brand2" name="brand2" />
+          <label for="brand2">Brand 2</label>
+        </div>
+        <div class="filter-item">
+          <input type="checkbox" id="brand3" name="brand3" />
+          <label for="brand3">Brand 3</label>
+        </div>
       </div>
     </div>
+    <span class="line"></span>
 
     <!-- Availability Filter -->
     <div class="filter-group">
-      <h4 class="filter-subtitle">Availability</h4>
-      <div class="filter-item">
-        <input type="radio" id="in-stock" name="availability" />
-        <label for="in-stock">In Stock</label>
-      </div>
-      <div class="filter-item">
-        <input type="radio" id="out-of-stock" name="availability" />
-        <label for="out-of-stock">Out of Stock</label>
+      <h4 class="filter-subtitle expandable" (click)="toggleFilter('availability')">Availability <span class="btn-section">
+        {{ activeFilters['availability'] ? '-' : '+' }}
+      </span></h4>
+      <div class="expandable-content" id="availability">
+        <div class="filter-item">
+          <input type="radio" id="in-stock" name="availability" />
+          <label for="in-stock">In Stock</label>
+        </div>
+        <div class="filter-item">
+          <input type="radio" id="out-of-stock" name="availability" />
+          <label for="out-of-stock">Out of Stock</label>
+        </div>
       </div>
     </div>
+    <span class="line"></span>
+
+    <!-- Color Filter -->
+    <div class="filter-group">
+      <h4 class="filter-subtitle expandable" (click)="toggleFilter('color')">Color <span class="btn-section">
+        {{ activeFilters['color'] ? '-' : '+' }}
+      </span></h4>
+      <div class="expandable-content" id="color">
+        <div class="wrapper">
+          <!-- Loop color options -->
+          <a href="#" class="color-picker" *ngFor="let color of colors" [ngClass]="{ selected: isActive(color) }" (click)="setActive(color)"></a>
+        </div>
+      </div>
+    </div>
+    <span class="line"></span>
+
+    <!-- Size Filter -->
+    <div class="filter-group">
+      <h4 class="filter-subtitle expandable" (click)="toggleFilter('size')">Size <span class="btn-section">
+        {{ activeFilters['size'] ? '-' : '+' }}
+      </span></h4>
+
+    </div>
+    <span class="line"></span>
+
+    <!-- Material Filter -->
+    <div class="filter-group">
+      <h4 class="filter-subtitle expandable" (click)="toggleFilter('material')">Material <span class="btn-section">
+        {{ activeFilters['material'] ? '-' : '+' }}
+      </span></h4>
+      <div class="expandable-content" id="material">
+        <div *ngFor="let material of materials" class="checkbox">
+          <label>
+            <input type="checkbox" />
+            <span class="checkbox-material"><span class="check"></span></span> {{ material }}
+          </label>
+        </div>
+      </div>
+    </div>
+    <span class="line"></span>
+
+    <!-- Feature Filter -->
+    <div class="filter-group">
+      <h4 class="filter-subtitle expandable" (click)="toggleFilter('feature')">Feature <span class="btn-section">
+        {{ activeFilters['feature'] ? '-' : '+' }}
+      </span></h4>
+      <div class="expandable-content" id="feature">
+        <!-- Add feature filter options here -->
+      </div>
+    </div>
+    <span class="line"></span>
+
+    <!-- Feeling Filter -->
+    <div class="filter-group">
+      <h4 class="filter-subtitle expandable" (click)="toggleFilter('feeling')">Feeling <span class="btn-section">
+        {{ activeFilters['feeling'] ? '-' : '+' }}
+      </span></h4>
+      <div class="expandable-content" id="feeling">
+        <!-- Add feeling filter options here -->
+      </div>
+    </div>
+    <span class="line"></span>
 
     <!-- Reset Filters Button -->
     <button class="filter-reset-btn">Reset Filters</button>
   </div>
+
+
 
   <!-- Main Section with Sorting Dropdown and Products -->
   <div class="main-content">
