@@ -8,25 +8,25 @@
         </p>
       </div>
 
-      <form name="signin" class="form">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
         <!-- Email Input -->
         <div class="input-control">
           <label for="email" class="input-label" hidden>Email Address</label>
-          <input type="email" name="email" id="email" class="input-field" placeholder="Email Address">
+          <input type="email" name="email" id="email" class="input-field" placeholder="Email Address" formControlName="email" >
         </div>
 
         <!-- Password Input -->
         <div class="input-control">
           <label for="password" class="input-label" hidden>Password</label>
-          <input type="password" name="password" id="password" class="input-field" placeholder="Password">
+          <input type="password" name="password" id="password" class="input-field" placeholder="Password" formControlName="password">
         </div>
 
+        <!-- Forgot Password Link -->
         <a href="#" class="text text-links forgot-password">Forgot Password</a>
 
-        <!-- Forgot Password Link -->
 
         <div class="input-control horizontal">
-          <input type="submit" name="submit" class="input-submit" value="Sign In" disabled>
+          <button type="submit" [disabled]="loginForm.invalid" class="input-submit">Sign In</button>
         </div>
       </form>
 
