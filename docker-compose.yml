@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./frontend/vlotech-angular
+    ports:
+      - "4200:4200"
+    networks:
+      - vlotech-network
+    depends_on:
+      - backend
+
+
+
+  backend:
+    build:
+      context: ./java-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/vlotech
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    networks:
+      - vlotech-network
+
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: vlotech
+    ports:
+      - "5432:5432"
+    networks:
+      - vlotech-network
+
+networks:
+  vlotech-network:
+    driver: bridge
+
