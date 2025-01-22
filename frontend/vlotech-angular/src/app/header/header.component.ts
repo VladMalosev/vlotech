@@ -20,26 +20,18 @@ export class HeaderComponent {
   // Inject Router into the constructor
   constructor(private router: Router) {}
 
+
   @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  onScroll(): void {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
 
-    // Hide the banner first
-    if (currentScroll > 150) {
-      this.isBannerHidden = true;
-    } else {
-      this.isBannerHidden = false;
-    }
+    // Hide the free banner when scrolled 100px
+    this.isBannerHidden = scrollY > 100;
 
-    // Then hide the header after banner
-    if (currentScroll > 300) {
-      this.isHeaderHidden = true;
-    } else {
-      this.isHeaderHidden = false;
-    }
-
-    this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    // Hide the header when scrolled 300px
+    this.isHeaderHidden = scrollY > 300;
   }
+
 
   onSearch(): void {
     this.searchEvent.emit(this.searchTerm);

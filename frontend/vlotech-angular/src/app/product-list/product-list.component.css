@@ -1,7 +1,7 @@
 .product-list-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 200px;
+
   font-family: 'Arial', sans-serif;
   width: 100%;
 }

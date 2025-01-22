@@ -8,9 +8,9 @@ import {ProductDetailsComponent} from './product-details/product-details.compone
 
 export const routes: Routes = [
   { path: 'product/:id', component: ProductDetailsComponent },  // Dynamic route with product ID
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'search', component: ProductListComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'home' }
 ];

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-product-list',
-  imports: [FormsModule, CommonModule, HttpClientModule, HeaderComponent],
+  imports: [FormsModule, CommonModule],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })

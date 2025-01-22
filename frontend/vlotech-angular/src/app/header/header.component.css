@@ -2,7 +2,7 @@
 
 
 .free-delivery-banner {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -15,6 +15,7 @@
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
+
 .free-delivery-banner.hidden {
   transform: translateY(-100%);
   opacity: 0;
@@ -22,8 +23,8 @@
 
 /* Header */
 .header {
-  position: fixed;
-  top: 50px;
+  position: relative;
+
   left: 0;
   width: 100%;
   z-index: 1000;

@@ -11,46 +11,39 @@
 
     <!-- Registration Form Section -->
     <div class="form-section">
-      <form (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
         <!-- First Name -->
         <div class="input-group">
-          <input id="firstName" type="text" name="firstname" placeholder="First Name" required />
+          <input id="firstName" type="text" name="firstName" [(ngModel)]="user.firstName" placeholder="First Name" required />
         </div>
 
         <!-- Last Name -->
         <div class="input-group">
-          <input id="lastName" type="text" name="lastname" placeholder="Last Name" required />
+          <input id="lastName" type="text" name="lastName" [(ngModel)]="user.lastName" placeholder="Last Name" required />
         </div>
 
         <!-- Email -->
         <div class="input-group">
-          <input id="email" type="email" name="email" placeholder="Email Address" required />
+          <input id="email" type="email" name="email" [(ngModel)]="user.email" placeholder="Email Address" required />
         </div>
 
-
-        <!--Phone -->
+        <!-- Phone -->
         <div class="input-group">
-          <input id="phone" type="text" name="phone" placeholder="Phone Number" required />
+          <input id="phone" type="text" name="phone" [(ngModel)]="user.phoneNumber" placeholder="Phone Number" />
         </div>
 
         <!-- Password -->
         <div class="input-group">
-          <input id="password" type="password" name="password" placeholder="Password" required />
+          <input id="password" type="password" name="password" [(ngModel)]="user.password" placeholder="Password" required />
         </div>
 
         <!-- Confirm Password -->
         <div class="input-group">
-          <input
-            id="passwordConfirmation"
-            type="password"
-            name="passwordConfirmation"
-            placeholder="Confirm Password"
-            required
-          />
+          <input id="passwordConfirmation" type="password" name="passwordConfirmation" [(ngModel)]="passwordConfirmation" placeholder="Confirm Password" required/>
         </div>
 
         <!-- Submit Button -->
-        <button type="submit" class="btn">Create Account</button>
+        <button type="submit" class="btn" [disabled]="!registerForm.form.valid || passwordMismatch()">Create Account</button>
       </form>
 
 

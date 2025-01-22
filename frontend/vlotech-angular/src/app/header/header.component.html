@@ -4,7 +4,8 @@
 </div>
 
 
-<header [class.hidden]="isHeaderHidden" [class.no-banner]="isBannerHidden" class="header">  <div class="container">
+<header [class.hidden]="isHeaderHidden" [class.sticky]="isBannerHidden && !isHeaderHidden" class="header">
+  <div class="container">
     <div class="logo">
       <a href="/" style="text-decoration: none; color: white">
       <h1  style="font-family: 'Californian FB'">VloTech.ee</h1>
