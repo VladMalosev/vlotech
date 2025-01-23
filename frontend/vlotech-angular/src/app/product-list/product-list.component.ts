@@ -5,6 +5,11 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 
+interface ProductResponse {
+  content: any[];
+}
+
+
 @Component({
   selector: 'app-product-list',
   imports: [FormsModule, CommonModule],
@@ -41,13 +46,7 @@ export class ProductListComponent implements OnInit {
 
       // Load JSON data only once if not loaded
       if (!this.dataLoaded) {
-        this.loadJSONData('assets/data/laptop.json');
-        this.loadJSONData('assets/data/accessories.json');
-        this.loadJSONData('assets/data/desktops.json');
-        this.loadJSONData('assets/data/devices.json');
-        this.loadJSONData('assets/data/smartwatches.json');
-        this.loadJSONData('assets/data/laptop.json');
-        this.loadJSONData('assets/data/tv.json');
+        this.loadProductsFromApi();
       } else {
         this.updateFilteredProducts();
         this.updatePagination();
@@ -55,35 +54,36 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  loadJSONData(filePath: string): void {
-    this.http.get<any[]>(filePath).subscribe(
+  loadProductsFromApi(): void {
+    this.http.get<ProductResponse>(`http://localhost:8080/api/products?search=${this.searchTerm}&page=${this.currPage}&size=${this.itemsPerPage}`).subscribe(
       (data) => {
-        const cleanedData = data.map(product => {
-          if (product['Name']) {
-            product['Name'] = product['Name'].split(' - ')[0];
-          }
-          return product;
-        });
-        this.products = [...this.products, ...cleanedData]; // Append new data to the products array
-        this.dataLoaded = true;
+        console.log('Fetched products:', data); // Log the full response
+        this.products = data.content; // Now, this works because 'content' exists on the response object
+        console.log('Assigned products:', this.products); // Verify products data
 
-        // After loading, update filtered products and pagination
+        // Check if all products have the 'name' property
+        this.products.forEach(product => {
+          console.log('Product name:', product.name); // Log the name to verify
+        });
+
+        this.dataLoaded = true;
         this.updateFilteredProducts();
         this.updatePagination();
       },
       (error) => {
-        console.error(`Error loading ${filePath}:`, error);
+        console.error('Error loading products:', error);
       }
     );
   }
 
+
   updateFilteredProducts(): void {
-    // If there is a search term, filter products accordingly
     this.filteredProducts = this.products.filter(product =>
-      product.Name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      product.name?.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
 
-    // Apply sorting to filtered products
+    console.log('Filtered products:', this.filteredProducts);
+
     this.sortProducts(this.currentSort);
   }
 
@@ -141,19 +141,19 @@ export class ProductListComponent implements OnInit {
   }
 
   sortProducts(sortOption: string): void {
-    switch (sortOption) {
-      case 'name':
-        this.filteredProducts.sort((a, b) => a.Name.localeCompare(b.Name));
-        break;
-      case 'priceAsc':
-        this.filteredProducts.sort((a, b) => a.Price - b.Price);
-        break;
-      case 'priceDesc':
-        this.filteredProducts.sort((a, b) => b.Price - a.Price);
-        break;
-      case 'brand':
-        this.filteredProducts.sort((a, b) => a.Brand.localeCompare(b.Brand));
-        break;
+    console.log('Sorting products by:', sortOption);
+
+    // Check if 'name' exists
+    this.filteredProducts.forEach(product => {
+      if (!product.name) {
+        console.warn('Missing name property for product:', product);
+      }
+    });
+
+    if (sortOption === 'name_asc') {
+      this.filteredProducts.sort((a, b) => a.name?.localeCompare(b.name));
+    } else if (sortOption === 'name_desc') {
+      this.filteredProducts.sort((a, b) => b.name?.localeCompare(a.name));
     }
   }
 
@@ -163,11 +163,10 @@ export class ProductListComponent implements OnInit {
   }
 
   toggleFilter(filter: string): void {
-    console.log('Toggling filter: ', filter);  // Add a log here to check if it's triggered.
+    console.log('Toggling filter: ', filter);
     this.activeFilters[filter] = !this.activeFilters[filter];
 
-    // Check if the activeFilters state is being updated correctly
-    console.log('activeFilters: ', this.activeFilters); // This will give us a quick look at the filter status
+    console.log('activeFilters: ', this.activeFilters);
 
     const filterElement = document.getElementById(filter);
     if (filterElement) {

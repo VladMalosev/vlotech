@@ -131,19 +131,14 @@
 
     <!-- Products Display -->
     <div class="products">
-      <div
-        class="product-card"
-        *ngFor="let product of pagProducts"
-        (click)="navigateToProductDetails()"
-      >
-        <img [src]="product['Image URL']" alt="{{ product['Name'] }}" class="product-image" />
-        <h4 class="product-name">{{ product['Name'] }}</h4>
-        <p class="product-description">Brand: {{ product['Brand'] }}</p>
-        <p class="product-price">Price: €{{ product['Price'] }}</p>
-        <p class="product-availability">Availability: {{ product['Availability'] }}</p>
+      <div class="product-card" *ngFor="let product of pagProducts" (click)="navigateToProductDetails()">
+        <img [src]="product.imageUrl" alt="{{ product.name }}" class="product-image" />
+        <h4 class="product-name">{{ product.name }}</h4>
+        <p class="product-description">Brand: {{ product.brand }}</p>
+        <p class="product-price">Price: €{{ product.price }}</p>
+        <p class="product-availability">Availability: {{ product.availability }}</p>
       </div>
     </div>
-  </div>
 
   <!-- Right Sidebar for Ads -->
   <div class="ads-sidebar"></div>
@@ -151,19 +146,7 @@
 
 <!-- Pagination Controls -->
 <div class="pagination">
-  <button
-    (click)="previousPage()"
-    [disabled]="currPage === 1"
-    class="pagination-btn"
-  >
-    Previous
-  </button>
+  <button (click)="previousPage()" [disabled]="currPage === 1" class="pagination-btn">Previous</button>
   <span>Page {{ currPage }} of {{ Math.ceil(filteredProducts.length / itemsPerPage) }}</span>
-  <button
-    (click)="nextPage()"
-    [disabled]="currPage === Math.ceil(products.length / itemsPerPage)"
-    class="pagination-btn"
-  >
-    Next
-  </button>
+  <button (click)="nextPage()" [disabled]="currPage === Math.ceil(products.length / itemsPerPage)" class="pagination-btn">Next</button>
 </div>

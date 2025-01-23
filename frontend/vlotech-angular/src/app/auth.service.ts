@@ -17,6 +17,7 @@ export interface User {
 export class AuthService {
   private apiUrl =  'http://localhost:8080/api/auth/register';
   private loginUrl = 'http://localhost:8080/api/auth/login'
+  private logoutUrl = 'http://localhost:8080/api/auth/logout'
 
 
   constructor(private http: HttpClient) { }
@@ -26,6 +27,14 @@ export class AuthService {
   }
 
   loginUser(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post<any>(this.loginUrl, credentials);
+    return this.http.post<any>(this.loginUrl, credentials, {
+      withCredentials: true,
+    });
   }
+  logoutUser(): Observable<any> {
+    return this.http.post<any>(this.logoutUrl, {}, {
+      withCredentials: true,
+    });
+  }
+
 }
