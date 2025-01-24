@@ -1,11 +1,15 @@
 .product-list-container {
   display: flex;
   justify-content: space-between;
-
+  margin-top: 20px;
   font-family: 'Arial', sans-serif;
   width: 100%;
 }
-
+.pagination-btn.active {
+  background-color: var(--color-gray);
+  color: var(--color-black);
+  border: 1px solid #000000;
+}
 .filter-sidebar,
 .ads-sidebar {
   width: 20%;
@@ -125,11 +129,12 @@
   gap: 10px;
 }
 
+
 .pagination-btn {
   padding: 10px 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+  background-color: var(--color-grayish);
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -141,12 +146,14 @@
 }
 
 .pagination-btn:hover:not(:disabled) {
-  background-color: #0056b3;
+  background-color: #ffffff;
 }
 
 .filter-group {
   margin-bottom: 20px;
 }
+
+
 
 .filter-subtitle {
   font-size: 18px;

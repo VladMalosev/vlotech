@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,14 +18,13 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
+
     public boolean isProductExists(String productCode) {
         return productRepository.existsByProductCode(productCode);
     }
-
 
     public List<Product> getProductsByCategory(String category) {
         return productRepository.findByCategory(category);
@@ -42,8 +42,9 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public Page<Product> getProducts(String searchTerm, int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
+    // Updated method to include Sort parameter
+    public Page<Product> getProducts(String searchTerm, int page, int size, Sort sort) {
+        Pageable pageable = PageRequest.of(page, size, sort);
 
         if (searchTerm != null && !searchTerm.isEmpty()) {
             return productRepository.findByNameContainingIgnoreCase(searchTerm, pageable);

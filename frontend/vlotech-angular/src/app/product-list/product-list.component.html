@@ -122,10 +122,10 @@
     <div class="sort-container">
       <label for="sort" class="sort-label">Sort by:</label>
       <select id="sort" class="sort-select" (change)="onSortChange($event)">
-        <option value="name">Name (A-Z)</option>
-        <option value="priceAsc">Price (Low to High)</option>
-        <option value="priceDesc">Price (High to Low)</option>
-        <option value="brand">Brand (A-Z)</option>
+        <option value="name_asc" [selected]="currentSort === 'name,asc'">Name (A-Z)</option>
+        <option value="name_desc" [selected]="currentSort === 'name,desc'">Brand (A-Z)</option>
+        <option value="price_asc" [selected]="currentSort === 'price,asc'">Price (Low to High)</option>
+        <option value="price_desc" [selected]="currentSort === 'price,desc'">Price (High to Low)</option>
       </select>
     </div>
 
@@ -139,14 +139,33 @@
         <p class="product-availability">Availability: {{ product.availability }}</p>
       </div>
     </div>
-
+  </div>
   <!-- Right Sidebar for Ads -->
   <div class="ads-sidebar"></div>
 </div>
 
-<!-- Pagination Controls -->
 <div class="pagination">
-  <button (click)="previousPage()" [disabled]="currPage === 1" class="pagination-btn">Previous</button>
-  <span>Page {{ currPage }} of {{ Math.ceil(filteredProducts.length / itemsPerPage) }}</span>
-  <button (click)="nextPage()" [disabled]="currPage === Math.ceil(products.length / itemsPerPage)" class="pagination-btn">Next</button>
+  <!-- First Page Button -->
+  <button *ngIf="currPage > 2" (click)="goToFirstPage()" class="pagination-btn">1</button>
+
+  <!-- Previous Page Button (only shown when there are 3 pages) -->
+  <button *ngIf="totalPages === 3 && currPage > 1" (click)="goToPage(currPage - 1)" class="pagination-btn">Previous</button>
+
+  <!-- Page Buttons for previous, current, and next pages -->
+  <button *ngFor="let page of pageNumbers"
+          [class.active]="page === currPage"
+          (click)="goToPage(page)"
+          class="pagination-btn">
+    {{ page }}
+  </button>
+
+  <!-- Next Page Button (only shown when there are 3 pages) -->
+  <button *ngIf="totalPages === 3 && currPage < totalPages" (click)="goToPage(currPage + 1)" class="pagination-btn">Next</button>
+
+  <!-- Last Page Button -->
+  <button *ngIf="currPage < totalPages - 1" (click)="goToLastPage()" class="pagination-btn">{{ totalPages }}</button>
 </div>
+
+
+
+

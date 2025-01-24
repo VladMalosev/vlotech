@@ -5,8 +5,10 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 
+/*expected structure of the product data returned by the API*/
 interface ProductResponse {
   content: any[];
+  totalElements: number;
 }
 
 
@@ -17,34 +19,33 @@ interface ProductResponse {
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products: any[] = [];
+  products: any[] = []; /*stores all fetched products*/
   materials: any[] = []; // placeholders
   colors: any[] = ['Red', 'Blue', 'Green']; // example color options
-  sizes: any[] = ['S', 'M', 'L', 'XL']; // example size options
-  filteredProducts: any[] = [];
-  pagProducts: any[] = [];
-  searchTerm: string = '';
+  filteredProducts: any[] = []; /*hold products after applying fitlers*/
+  pagProducts: any[] = []; /*curr page of products being displayed*/
+  searchTerm: string = ''; /*holds the search query*/
   activeFilters: { [key: string]: boolean } = {};
-
+  totalPages: number = 0;
   currPage: number = 1;
   itemsPerPage: number = 40;
-
-  // Current sorting option
   currentSort: string = 'name';
-
-  // Flag to track if data has been loaded
   dataLoaded: boolean = false;
+  pageNumbers: number[] = [];
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit(): void {
-    // Check query params on load
     this.route.queryParams.subscribe(params => {
+      /*listens for changes to query parameters from the URL
+      * when parameters are available -> updates teh state*/
       this.currPage = params['page'] || 1;
-      this.searchTerm = params['search'] || ''; // Get search term from query params
+      this.searchTerm = params['search'] || '';
       this.currentSort = params['sort'] || 'name';
 
-      // Load JSON data only once if not loaded
+      window.scrollTo(0, 0);
+
       if (!this.dataLoaded) {
         this.loadProductsFromApi();
       } else {
@@ -55,19 +56,14 @@ export class ProductListComponent implements OnInit {
   }
 
   loadProductsFromApi(): void {
-    this.http.get<ProductResponse>(`http://localhost:8080/api/products?search=${this.searchTerm}&page=${this.currPage}&size=${this.itemsPerPage}`).subscribe(
-      (data) => {
-        console.log('Fetched products:', data); // Log the full response
-        this.products = data.content; // Now, this works because 'content' exists on the response object
-        console.log('Assigned products:', this.products); // Verify products data
-
-        // Check if all products have the 'name' property
-        this.products.forEach(product => {
-          console.log('Product name:', product.name); // Log the name to verify
-        });
-
-        this.dataLoaded = true;
-        this.updateFilteredProducts();
+    const apiUrl = `http://localhost:8080/api/products?search=${this.searchTerm}&page=${this.currPage}&size=${this.itemsPerPage}&sort=${this.currentSort}`;
+    this.http.get<ProductResponse>(apiUrl, {withCredentials: true}).subscribe(
+      (data: any) => {
+        console.log('Fetched products:', data);
+        this.products = data.content;
+        this.totalPages = data.totalPages;
+        this.generatePageNumbers();
+        this.currPage = data.number + 1; /*Backend page is zero-based, convert to one-based*/
         this.updatePagination();
       },
       (error) => {
@@ -83,77 +79,43 @@ export class ProductListComponent implements OnInit {
     );
 
     console.log('Filtered products:', this.filteredProducts);
-
-    this.sortProducts(this.currentSort);
   }
 
   updatePagination(): void {
-    const totalPages = Math.ceil(this.filteredProducts.length / this.itemsPerPage);
-
-    // Ensure that currPage doesn't exceed the total number of pages
-    if (this.currPage > totalPages) {
-      this.currPage = totalPages;
-    }
-
-    const startIndex = (this.currPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    this.pagProducts = this.filteredProducts.slice(startIndex, endIndex);
+    this.pagProducts = this.products;
   }
 
-  nextPage(): void {
-    if (this.currPage < Math.ceil(this.filteredProducts.length / this.itemsPerPage)) {
-      this.currPage++;
-      this.updatePagination();
-      this.updateUrl();
-    }
-  }
-
-  previousPage(): void {
-    if (this.currPage > 1) {
-      this.currPage--;
-      this.updatePagination();
-      this.updateUrl();
-    }
-  }
 
   updateUrl(): void {
-    // Update the URL query parameters without reloading the page
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { page: this.currPage, sort: this.currentSort, search: this.searchTerm },
+      queryParams: {
+        page: this.currPage,
+        search: this.searchTerm,
+        sort: this.currentSort,
+      },
       queryParamsHandling: 'merge',
     });
   }
 
-  onSearch(searchTerm: string): void {
-    this.searchTerm = searchTerm;
-    this.currPage = 1; // Reset to first page for new search
-    this.updateFilteredProducts();
-    this.updateUrl();
-  }
 
   onSortChange(event: any): void {
     const sortOption = event.target.value;
-    this.currentSort = sortOption; // Update the current sorting option
-    this.updateFilteredProducts(); // Apply the sorting
-    this.updatePagination();
-    this.updateUrl();
-  }
 
-  sortProducts(sortOption: string): void {
-    console.log('Sorting products by:', sortOption);
+    const sortMapping: { [key: string]: string } = {
+      name_asc: 'name,asc',
+      name_desc: 'name,desc',
+      price_asc: 'price,asc',
+      price_desc: 'price,desc',
+    };
 
-    // Check if 'name' exists
-    this.filteredProducts.forEach(product => {
-      if (!product.name) {
-        console.warn('Missing name property for product:', product);
-      }
-    });
+    const newSort = sortMapping[sortOption] || 'name,asc'; /*def to asc*/
 
-    if (sortOption === 'name_asc') {
-      this.filteredProducts.sort((a, b) => a.name?.localeCompare(b.name));
-    } else if (sortOption === 'name_desc') {
-      this.filteredProducts.sort((a, b) => b.name?.localeCompare(a.name));
+    if (newSort !== this.currentSort) {
+      this.currentSort = newSort;
+      this.currPage = 1;
+      this.updateUrl();
+      this.loadProductsFromApi();
     }
   }
 
@@ -163,23 +125,18 @@ export class ProductListComponent implements OnInit {
   }
 
   toggleFilter(filter: string): void {
-    console.log('Toggling filter: ', filter);
     this.activeFilters[filter] = !this.activeFilters[filter];
-
-    console.log('activeFilters: ', this.activeFilters);
-
     const filterElement = document.getElementById(filter);
+
     if (filterElement) {
-      console.log('Toggling element: ', filterElement);
       const parentFilterElement = filterElement?.parentElement;
       if (parentFilterElement) {
-        console.log('Toggling parent element: ', parentFilterElement);
         parentFilterElement.classList.toggle('active', this.activeFilters[filter]);
-      }    }
+      }
+    }
   }
 
-
-
+/*checks if the filter is active*/
   isActive(option: string): boolean {
     return this.activeFilters[option] === true;
   }
@@ -188,12 +145,37 @@ export class ProductListComponent implements OnInit {
     this.activeFilters[option] = !this.activeFilters[option];
   }
 
+  generatePageNumbers(): void {
+    const pagesToShow = 5;
+    const startPage = Math.max(1, this.currPage - Math.floor(pagesToShow / 2));
+    const endPage = Math.min(this.totalPages, startPage + pagesToShow - 1);
 
+    this.pageNumbers = [];
 
-  protected readonly Math = Math;
+    if (this.totalPages <= 2) {
+      this.pageNumbers = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+    } else {
+      for (let i = startPage; i <= endPage; i++) {
+        this.pageNumbers.push(i);
+      }
+    }
+  }
+
+  goToPage(page: number): void {
+    this.currPage = page;
+    this.updateUrl();
+    this.loadProductsFromApi();
+  }
+
+  goToFirstPage(): void {
+    this.currPage = 1;
+    this.updateUrl();
+    this.loadProductsFromApi();
+  }
+
+  goToLastPage(): void {
+    this.currPage = this.totalPages;
+    this.updateUrl();
+    this.loadProductsFromApi();
+  }
 }
-
-
-
-
-
