@@ -13,6 +13,7 @@ export const routes: Routes = [
   { path: 'search', component: ProductListComponent},
   { path: 'login', component: LoginComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'product/:id', component: ProductDetailsComponent },
   { path: 'register', component: RegisterComponent },
   { path: '**', redirectTo: 'home' }
 ];

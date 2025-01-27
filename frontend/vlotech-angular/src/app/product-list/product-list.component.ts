@@ -32,9 +32,17 @@ export class ProductListComponent implements OnInit {
   currentSort: string = 'name';
   dataLoaded: boolean = false;
   pageNumbers: number[] = [];
+  selectedCategory: string = '';
+  selectedBrand: string = '';
+  selectedAvailability: string = '';
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
   }
+
+  navigateToProductDetails(productId: number): void {
+    this.router.navigate(['/product', productId]);
+  }
+
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -43,6 +51,9 @@ export class ProductListComponent implements OnInit {
       this.currPage = params['page'] || 1;
       this.searchTerm = params['search'] || '';
       this.currentSort = params['sort'] || 'name';
+      this.selectedAvailability = params['availability'] || '';
+      this.selectedBrand = params['brand'] || '';
+      this.selectedCategory = params['category'] || '';
 
       window.scrollTo(0, 0);
 
@@ -56,7 +67,7 @@ export class ProductListComponent implements OnInit {
   }
 
   loadProductsFromApi(): void {
-    const apiUrl = `http://localhost:8080/api/products?search=${this.searchTerm}&page=${this.currPage}&size=${this.itemsPerPage}&sort=${this.currentSort}`;
+    const apiUrl = `http://localhost:8080/api/products?page=${this.currPage}&size=${this.itemsPerPage}&search=${this.searchTerm}&category=${this.selectedCategory}&brand=${this.selectedBrand}&availability=${this.selectedAvailability}&sort=${this.currentSort}`;
     this.http.get<ProductResponse>(apiUrl, {withCredentials: true}).subscribe(
       (data: any) => {
         console.log('Fetched products:', data);
@@ -120,9 +131,7 @@ export class ProductListComponent implements OnInit {
   }
 
 
-  navigateToProductDetails(): void {
-    // to-do
-  }
+
 
   toggleFilter(filter: string): void {
     this.activeFilters[filter] = !this.activeFilters[filter];
@@ -178,4 +187,6 @@ export class ProductListComponent implements OnInit {
     this.updateUrl();
     this.loadProductsFromApi();
   }
+
+
 }

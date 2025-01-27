@@ -11,6 +11,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class ProductService {
@@ -26,9 +28,6 @@ public class ProductService {
         return productRepository.existsByProductCode(productCode);
     }
 
-    public List<Product> getProductsByCategory(String category) {
-        return productRepository.findByCategory(category);
-    }
 
     @Transactional
     public void addProductFromJson(Product product) {
@@ -42,14 +41,30 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    // Updated method to include Sort parameter
-    public Page<Product> getProducts(String searchTerm, int page, int size, Sort sort) {
+    public Page<Product> getProducts(String searchTerm, String category, String availability, String brand, int page, int size, Sort sort) {
         Pageable pageable = PageRequest.of(page, size, sort);
+
+        if (category != null && !category.isEmpty()) {
+            return productRepository.findByCategoryIgnoreCase(category, pageable);
+        }
+
+        if (brand != null && !brand.isEmpty()) {
+            return productRepository.findByBrandIgnoreCase(brand, pageable);
+        }
+
+        if (availability != null && !availability.isEmpty()) {
+            return productRepository.findByAvailabilityIgnoreCase(availability, pageable);
+        }
 
         if (searchTerm != null && !searchTerm.isEmpty()) {
             return productRepository.findByNameContainingIgnoreCase(searchTerm, pageable);
         }
 
         return productRepository.findAll(pageable);
+    }
+
+    public Product getProductById(String Id) {
+        Optional<Product> product = productRepository.findById(Id);
+        return product.orElse(null);
     }
 }

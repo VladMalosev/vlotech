@@ -1,12 +1,54 @@
-<!--
+<div class="container">
+  <div class="grid second-nav">
+    <div class="column-xs-12">
+      <nav>
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="/search">Home</a></li>
+          <li class="breadcrumb-item active">{{ product?.name }}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div class="grid product">
+    <div class="column-xs-12 column-md-7">
+      <div class="product-gallery">
+        <div class="product-image">
+          <img *ngIf="product" class="active" [src]="product.imageUrl" alt="{{ product.name }}" />
+        </div>
+        <ul class="image-list">
+          <li class="image-item">
+            <img *ngIf="product" class="active" [src]="product.imageUrl" alt="{{ product.name }}" />
+          </li>
+          <li class="image-item">
+            <img *ngIf="product" class="active" [src]="product.imageUrl" alt="{{ product.name }}" />
+          </li>
+          <li class="image-item">
+            <img *ngIf="product" class="active" [src]="product.imageUrl" alt="{{ product.name }}" />
+          </li>
+        </ul>
+      </div>
+    </div>
 
-<div class="products">
-  <div class="product-card" *ngFor="let product of pagProducts" [routerLink]="['/product', product.id]">
-  <img [src]="product['Image URL']" alt="{{ product['Name'] }}" class="product-image" />
-  <h4 class="product-name">{{ product['Name'] }}</h4>
-  <p class="product-description">Brand: {{ product['Brand'] }}</p>
-  <p class="product-price">Price: €{{ product['Price'] }}</p>
-  <p class="product-availability">Availability: {{ product['Availability'] }}</p>
+    <div class="column-xs-12 column-md-5">
+      <h1>{{ product?.name }}</h1>
+      <h2>€{{ product?.price }}</h2>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci asperiores autem consequuntur, cumque cupiditate est ex in libero minima nostrum obcaecati quisquam rem repellat repellendus sit veniam vero voluptates. Alias consectetur earum exercitationem, iusto minus nostrum odit possimus tenetur. Amet aspernatur assumenda blanditiis dicta dolores eaque esse exercitationem iusto necessitatibus nisi nulla quas quidem quos rem repellat, sit suscipit, vel. Debitis, sunt, vel!</p>
+      </div>
+      <button class="add-to-cart">Add To Cart</button>
+    </div>
+  </div>
+  <div class="product-details-container">
+    <div class="details-container">
+      <h1>Specifications:</h1>
+      <p><strong>Product name:</strong> {{ product?.name }}</p>
+      <p><strong>Brand:</strong> {{ product?.brand }}</p>
+      <p><strong>Price:</strong> ${{ product?.price }}</p>
+      <p><strong>Availability:</strong> {{ product?.availability }}</p>
+      <p><strong>Category:</strong> {{ product?.category }}</p>
+      <p><strong>Product Code:</strong> {{ product?.productCode }}</p>
+
+    </div>
+  </div>
+
 </div>
-</div>
--->

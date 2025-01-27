@@ -11,9 +11,10 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
     // You can add custom queries here if needed
-    List<Product> findByCategory(String category);
-    List<Product> findByBrand(String brand);
+    Page<Product> findByCategoryIgnoreCase(String category, Pageable pageable);
+    Page<Product> findByBrandIgnoreCase(String brand, Pageable pageable);
     boolean existsByProductCode(String productCode);
+    Page<Product> findByAvailabilityIgnoreCase(String availability, Pageable pageable);
 
     // Find products containing a search term (case insensitive)
     Page<Product> findByNameContainingIgnoreCase(String name, Pageable pageable);

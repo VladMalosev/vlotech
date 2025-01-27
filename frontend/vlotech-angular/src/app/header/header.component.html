@@ -61,19 +61,18 @@
       <li>
         <a href="#">All Products</a>
         <div class="submenu">
-          <a href="#">Laptops</a>
-          <a href="#">Desktops</a>
-          <a href="#">Monitors</a>
-          <a href="#">Keyboards</a>
-          <a href="#">Mice</a>
+          <a [routerLink]="['/search']" [queryParams]="{ category: 'laptop', page: 1, search: '' }">Laptops</a>
+          <a [routerLink]="['/search']" [queryParams]="{ category: 'desktops', page: 1, search: '' }">Desktops</a>
+          <a [routerLink]="['/search']" [queryParams]="{ category: 'devices', page: 1, search: '' }">PC Devices</a>
+          <a [routerLink]="['/search']" [queryParams]="{ category: 'smartwatches', page: 1, search: '' }">Smartwatches</a>
+          <a [routerLink]="['/search']" [queryParams]="{ category: 'tv', page: 1, search: '' }">TVs</a>
         </div>
       </li>
       <li>
         <a href="#">Phones</a>
         <div class="submenu">
-          <a href="#">Smartphones</a>
-          <a href="#">Feature Phones</a>
-          <a href="#">Accessories</a>
+          <a [routerLink]="['/search']" [queryParams]="{ category: 'phones', page: 1, search: '' }">Phones</a>
+          <a [routerLink]="['/search']" [queryParams]="{ category: 'accessories', page: 1, search: '' }">Accessories</a>
         </div>
       </li>
       <li>

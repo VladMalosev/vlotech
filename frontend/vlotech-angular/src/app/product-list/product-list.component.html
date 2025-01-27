@@ -131,7 +131,7 @@
 
     <!-- Products Display -->
     <div class="products">
-      <div class="product-card" *ngFor="let product of pagProducts" (click)="navigateToProductDetails()">
+      <div class="product-card" *ngFor="let product of pagProducts" (click)="navigateToProductDetails(product.id)">
         <img [src]="product.imageUrl" alt="{{ product.name }}" class="product-image" />
         <h4 class="product-name">{{ product.name }}</h4>
         <p class="product-description">Brand: {{ product.brand }}</p>
