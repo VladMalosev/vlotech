@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 import {ProductService} from '../product.service';
 import {CommonModule} from '@angular/common';
+import {AuthService} from '../auth.service';
+import {CartService} from '../cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -17,12 +19,11 @@ export class ProductDetailsComponent implements OnInit {
   product: any; // obj to hold product data
 
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) {
+  constructor(private route: ActivatedRoute, private productService: ProductService, private router: Router, private authService: AuthService, private cartService: CartService) {
   }
 
 
-
-  activeImage: HTMLImageElement  | null = null;
+  activeImage: HTMLImageElement | null = null;
   productImages: NodeListOf<HTMLImageElement> | null = null;
 
   ngOnInit(): void {
@@ -33,7 +34,6 @@ export class ProductDetailsComponent implements OnInit {
         this.product = data; // Set the product data to be displayed
       });
     }
-
 
 
     this.activeImage = document.querySelector('.product-image .active');
@@ -61,5 +61,24 @@ export class ProductDetailsComponent implements OnInit {
     if (target && target.nextElementSibling) {
       target.nextElementSibling.classList.toggle('active');
     }
+  }
+
+  addToCart(productId: string, quantity: number): void {
+    this.authService.isAuthenticated().subscribe((isAuthenticated: boolean) => {
+      if (isAuthenticated) {
+        // Send request to backend to add the product to the cart
+        this.cartService.addToCart(productId, quantity).subscribe({
+          next: () => {
+            console.log(`Product ${productId} added to cart.`);
+          },
+          error: (error) => {
+            console.error('Error adding product to cart:', error);
+          },
+        });
+      } else {
+        // Navigate to login if the user is not authenticated
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }

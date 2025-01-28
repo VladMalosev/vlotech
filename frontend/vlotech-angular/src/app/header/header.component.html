@@ -59,7 +59,7 @@
   <div class="mega-menu">
     <ul class="main-menu">
       <li>
-        <a href="#">All Products</a>
+        <a [routerLink]="['/search']" [queryParams]="{ category: '', page: 1, search: '' }">All Products</a>
         <div class="submenu">
           <a [routerLink]="['/search']" [queryParams]="{ category: 'laptop', page: 1, search: '' }">Laptops</a>
           <a [routerLink]="['/search']" [queryParams]="{ category: 'desktops', page: 1, search: '' }">Desktops</a>
@@ -69,7 +69,7 @@
         </div>
       </li>
       <li>
-        <a href="#">Phones</a>
+        <a [routerLink]="['/search']" [queryParams]="{ category: 'phones', page: 1, search: '' }">Phones</a>
         <div class="submenu">
           <a [routerLink]="['/search']" [queryParams]="{ category: 'phones', page: 1, search: '' }">Phones</a>
           <a [routerLink]="['/search']" [queryParams]="{ category: 'accessories', page: 1, search: '' }">Accessories</a>
@@ -89,4 +89,6 @@
       </li>
     </ul>
   </div>
+
+
 </header>
