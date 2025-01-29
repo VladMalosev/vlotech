@@ -4,11 +4,14 @@
   <div class="cart-items" *ngFor="let item of cartItems">
     <div class="cart-item">
       <div class="item-image">
-        <img [src]="item.image" alt="Product Image" />
+        <!-- Correct the source of the image -->
+        <img [src]="item.product.imageUrl" alt="Product Image" />
       </div>
       <div class="item-details">
-        <h3 class="item-name">{{ item.name }}</h3>
-        <p class="item-price">Price: ${{ item.price }}</p>
+        <!-- Access the product name correctly -->
+        <h3 class="item-name">{{ item.product.name }}</h3>
+        <!-- Access the unit price correctly -->
+        <p class="item-price">Price per Item: ${{ item.product.price }}</p>
         <div class="quantity-controls">
           <button (click)="decreaseQuantity(item)">-</button>
           <span>{{ item.quantity }}</span>
@@ -17,7 +20,8 @@
         <button class="remove-btn" (click)="removeItem(item)">Remove</button>
       </div>
       <div class="item-total">
-        <p>Total: ${{ item.price * item.quantity }}</p>
+        <!-- Total price calculation is correct -->
+        <p>Total: ${{ item.totalPrice }}</p>
       </div>
     </div>
   </div>

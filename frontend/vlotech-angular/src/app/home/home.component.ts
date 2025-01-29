@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy{
     {src: 'assets/banner/banner2.jpg', alt: 'Banner 2'},
     {src: 'assets/banner/banner3.jpg', alt: 'Banner 3'},
   ];
-
+  constructor(private router: Router) {}
   currentSlide = 0;
   sliderTransition = 'transform 0.5s ease-in-out'; //smooth trans between banners
   sliderTransform = 'translateX(0%)'; //init
@@ -55,5 +56,9 @@ export class HomeComponent implements OnInit, OnDestroy{
     this.currentSlide = index;
     this.updateSliderTransform();
     this.resetAutoSlide();
+  }
+  navigateToCategory(category: string) {
+    // Navigates to the search page with the selected category
+    this.router.navigate(['/search'], { queryParams: { category, page: 1, search: '' } });
   }
 }

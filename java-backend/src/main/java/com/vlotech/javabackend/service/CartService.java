@@ -9,6 +9,7 @@ import com.vlotech.javabackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,7 +41,7 @@ public class CartService {
             throw new IllegalArgumentException("Product not found with ID: " + productId);
         }
 
-        // check if already in the cart
+
         Optional<CartItem> existingCartItem = cartItemRepository.findByUser(user.get())
                 .stream()
                 .filter(cartItem -> cartItem.getProduct().getId().equals(productId))
@@ -60,4 +61,19 @@ public class CartService {
         return cartItemRepository.save(cartItem);
     }
 
+
+    public List<CartItem> getCartItemsForUser(User user) {
+        return cartItemRepository.findByUser(user);
+    }
+
+    public boolean removeFromCart(String cartItemId) {
+        Optional<CartItem> cartItem = cartItemRepository.findById(cartItemId);
+
+        if (cartItem.isPresent()) {
+            cartItemRepository.delete(cartItem.get());
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

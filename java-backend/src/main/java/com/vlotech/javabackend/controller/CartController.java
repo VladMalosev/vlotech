@@ -11,11 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -64,4 +62,32 @@ public class CartController {
 
         return ResponseEntity.ok(cartItem);
     }
+
+    @GetMapping("/items")
+    public ResponseEntity<List<CartItem>> getCartItem(@AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        String userId = userDetails.getUsername();
+        Optional<User> optionalUser = userService.findByEmail(userId);
+
+        if (optionalUser.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        User user = optionalUser.get();
+        List<CartItem> cartItems = cartService.getCartItemsForUser(user);
+        return ResponseEntity.ok(cartItems);
+    }
+    @DeleteMapping("/remove")
+    public ResponseEntity<Void> removeFromCart(@RequestParam String cartItemId) {
+        boolean isRemoved = cartService.removeFromCart(cartItemId);
+
+        if (isRemoved) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 }

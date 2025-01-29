@@ -25,37 +25,36 @@
 </div>
 
 
-  <!-- Categories Section -->
-  <div class="categories">
-    <h2>Shop by Category</h2>
-    <div class="category-list">
-      <div class="category-card">
-        <img src="assets/images/laptop.jpg" alt="Laptops">
-        <h3>Laptops</h3>
-      </div>
-      <div class="category-card">
-        <img src="assets/images/phone.jpg" alt="Smartphones">
-        <h3>Smartphones</h3>
-      </div>
-      <div class="category-card">
-        <img src="assets/images/accessories.jpg" alt="Accessories">
-        <h3>Accessories</h3>
-      </div>
-      <div class="category-card">
-        <img src="assets/images/desktop.jpg" alt="Desktops">
-        <h3>Desktops</h3>
-      </div>
-      <div class="category-card">
-        <img src="assets/images/headphones.jpg" alt="Headphones">
-        <h3>Headphones</h3>
-      </div>
-      <div class="category-card">
-        <img src="assets/images/smartwatches.jpg" alt="Smartwatches">
-        <h3>Smartwatches</h3>
-      </div>
+<!-- Categories Section -->
+<div class="categories">
+  <h2>Shop by Category</h2>
+  <div class="category-list">
+    <div class="category-card" (click)="navigateToCategory('laptop')">
+      <img src="assets/images/laptop.jpg" alt="Laptops">
+      <h3>Laptops</h3>
+    </div>
+    <div class="category-card" (click)="navigateToCategory('phones')">
+      <img src="assets/images/phone.jpg" alt="Smartphones">
+      <h3>Smartphones</h3>
+    </div>
+    <div class="category-card" (click)="navigateToCategory('accessories')">
+      <img src="assets/images/accessories.jpg" alt="Accessories">
+      <h3>Accessories</h3>
+    </div>
+    <div class="category-card" (click)="navigateToCategory('desktops')">
+      <img src="assets/images/desktop.jpg" alt="Desktops">
+      <h3>Desktops</h3>
+    </div>
+    <div class="category-card" (click)="navigateToCategory('devices')">
+      <img src="assets/images/headphones.jpg" alt="Headphones">
+      <h3>Headphones</h3>
+    </div>
+    <div class="category-card" (click)="navigateToCategory('smartwatches')">
+      <img src="assets/images/smartwatches.jpg" alt="Smartwatches">
+      <h3>Smartwatches</h3>
     </div>
   </div>
-
+</div>
 
 
   <!-- Call to Action -->

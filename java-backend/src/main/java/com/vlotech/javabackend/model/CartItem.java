@@ -29,6 +29,9 @@ public class CartItem {
     @Column(name = "total_price", nullable = false)
     private BigDecimal totalPrice;
 
+    @Column(name = "unit_price", nullable = false)
+    private BigDecimal unitPrice;
+
     public String getId() {
         return id;
     }
@@ -59,10 +62,17 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        this.unitPrice = product.getPrice();  // Assuming product has a price field
         this.totalPrice = product.getPrice().multiply(BigDecimal.valueOf(quantity));
     }
 
     public BigDecimal getTotalPrice() {
         return totalPrice;
     }
+
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
+
+
 }
