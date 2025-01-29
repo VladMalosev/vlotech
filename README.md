@@ -16,7 +16,7 @@ Login:
 ![image](https://github.com/user-attachments/assets/b6f301f8-b827-40c2-a490-60807af4a392)
 
 Register:
-![image](https://github.com/user-attachments/assets/959a61a7-4c68-4018-a67b-8a52ae21b517)
+![image](https://github.com/user-attachments/assets/7d723ce7-8811-4f22-bd8f-d62465581d95)
 
 
 ### How to start website in docker:
