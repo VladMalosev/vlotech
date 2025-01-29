@@ -13,6 +13,7 @@ import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static javax.crypto.Cipher.SECRET_KEY;
 
@@ -39,11 +40,13 @@ public class UserService {
     }
 
     public String loginUser(String email, String password) throws Exception {
-        User user = userRepository.findByEmail(email);
+        Optional<User> optionalUser = userRepository.findByEmail(email);
 
-        if (user == null) {
+        if (optionalUser.isEmpty()) {
             throw new Exception("User not found with email: " + email);
         }
+
+        User user = optionalUser.get();
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new Exception("Invalid password for email: " + email);
@@ -71,6 +74,24 @@ public class UserService {
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 hours
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
+    }
+
+    public void validateToken(String token) {
+        if (secretKey == null || secretKey.isEmpty()) {
+            throw new IllegalStateException("JWT secret key is not configured");
+        }
+
+        SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
+
+        Jwts.parser()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token);
+    }
+
+
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 }

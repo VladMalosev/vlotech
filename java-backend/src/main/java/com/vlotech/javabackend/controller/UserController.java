@@ -37,6 +37,7 @@ public class UserController {
 
             ResponseCookie cookie = ResponseCookie.from("jwt", token)
                     .httpOnly(true)                     // Prevent access from JavaScript
+                    .secure(false)                      // Set to true if using HTTPS
                     .path("/")
                     .maxAge(10 * 60 * 60)              // 10h
                     .sameSite("Strict")                // CSRF protection
@@ -50,6 +51,24 @@ public class UserController {
                     .body(Map.of("message", e.getMessage()));
         }
     }
+
+    @PostMapping("/validate-token")
+    public ResponseEntity<Map<String, String>> validateToken(@CookieValue(name= "jwt", required = false) String jwt) {
+       if (jwt == null) {
+           return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                   .body(Map.of("message", "Unauthorized"));
+       }
+       try {
+           userService.validateToken(jwt);
+           return ResponseEntity.ok(Map.of("message", "Successfully logged in."));
+       } catch (Exception e) {
+           return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                   .body(Map.of("message", e.getMessage()));
+       }
+    }
+
+
+
 
 
     @PostMapping("/logout")
