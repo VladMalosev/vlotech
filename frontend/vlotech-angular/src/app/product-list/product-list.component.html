@@ -7,111 +7,86 @@
 
 
     <!-- Brand Filter -->
+
     <div class="filter-group">
       <h4 class="filter-subtitle expandable" (click)="toggleFilter('brand')">
         Brand
-        <span class="btn-section">
-      {{ activeFilters['brand'] ? '-' : '+' }}
-    </span>
+        <span class="btn-section">{{ activeFilters['brand'] ? '-' : '+' }}</span>
       </h4>
       <div class="expandable-content" id="brand">
-        <div class="filter-item">
-          <input type="checkbox" id="brand1" name="brand1" />
-          <label for="brand1">Brand 1</label>
-        </div>
-        <div class="filter-item">
-          <input type="checkbox" id="brand2" name="brand2" />
-          <label for="brand2">Brand 2</label>
-        </div>
-        <div class="filter-item">
-          <input type="checkbox" id="brand3" name="brand3" />
-          <label for="brand3">Brand 3</label>
+        <div class="filter-item" *ngFor="let brand of brands">
+          <input
+            type="checkbox"
+            [id]="brand"
+            [value]="brand"
+            (change)="onBrandChange(brand, $event)"
+            [checked]="selectedBrand.includes(brand)" />
+          <label [for]="brand">{{ brand }}</label>
         </div>
       </div>
     </div>
+
     <span class="line"></span>
 
     <!-- Availability Filter -->
     <div class="filter-group">
       <h4 class="filter-subtitle expandable" (click)="toggleFilter('availability')">Availability <span class="btn-section">
-        {{ activeFilters['availability'] ? '-' : '+' }}
-      </span></h4>
+    {{ activeFilters['availability'] ? '-' : '+' }}
+  </span></h4>
       <div class="expandable-content" id="availability">
         <div class="filter-item">
-          <input type="radio" id="in-stock" name="availability" />
+          <input
+            type="checkbox"
+            id="in-stock"
+            name="availability"
+            value="in stock"
+            (change)="onAvailabilityChange($event)"
+            [checked]="selectedAvailability === 'in stock'" />
           <label for="in-stock">In Stock</label>
         </div>
         <div class="filter-item">
-          <input type="radio" id="out-of-stock" name="availability" />
-          <label for="out-of-stock">Out of Stock</label>
+          <input
+            type="checkbox"
+            id="on-order"
+            name="availability"
+            value="on order"
+            (change)="onAvailabilityChange($event)"
+            [checked]="selectedAvailability === 'on order'" />
+          <label for="on-order">On Order</label>
         </div>
       </div>
     </div>
+
     <span class="line"></span>
 
-    <!-- Color Filter -->
-    <div class="filter-group">
-      <h4 class="filter-subtitle expandable" (click)="toggleFilter('color')">Color <span class="btn-section">
-        {{ activeFilters['color'] ? '-' : '+' }}
-      </span></h4>
-      <div class="expandable-content" id="color">
-        <div class="wrapper">
-          <!-- Loop color options -->
-          <a href="#" class="color-picker" *ngFor="let color of colors" [ngClass]="{ selected: isActive(color) }" (click)="setActive(color)"></a>
-        </div>
-      </div>
-    </div>
-    <span class="line"></span>
 
-    <!-- Size Filter -->
-    <div class="filter-group">
-      <h4 class="filter-subtitle expandable" (click)="toggleFilter('size')">Size <span class="btn-section">
-        {{ activeFilters['size'] ? '-' : '+' }}
-      </span></h4>
-
-    </div>
-    <span class="line"></span>
-
-    <!-- Material Filter -->
-    <div class="filter-group">
-      <h4 class="filter-subtitle expandable" (click)="toggleFilter('material')">Material <span class="btn-section">
-        {{ activeFilters['material'] ? '-' : '+' }}
-      </span></h4>
-      <div class="expandable-content" id="material">
-        <div *ngFor="let material of materials" class="checkbox">
-          <label>
-            <input type="checkbox" />
-            <span class="checkbox-material"><span class="check"></span></span> {{ material }}
-          </label>
-        </div>
-      </div>
-    </div>
-    <span class="line"></span>
 
     <!-- Feature Filter -->
     <div class="filter-group">
-      <h4 class="filter-subtitle expandable" (click)="toggleFilter('feature')">Feature <span class="btn-section">
-        {{ activeFilters['feature'] ? '-' : '+' }}
-      </span></h4>
-      <div class="expandable-content" id="feature">
-        <!-- Add feature filter options here -->
+      <h4 class="filter-subtitle expandable" (click)="toggleFilter('category')">
+        Category <span class="btn-section">
+      {{ activeFilters['category'] ? '-' : '+' }}
+    </span>
+      </h4>
+      <div class="expandable-content" id="category">
+        <div class="filter-item" *ngFor="let category of categories">
+          <input
+            type="checkbox"
+            [id]="category"
+            [value]="category"
+            (change)="onCategoryChange(category, $event)"
+            [checked]="selectedCategory.includes(category)" />
+          <label [for]="category">{{ category }}</label>
+        </div>
       </div>
     </div>
+
     <span class="line"></span>
 
-    <!-- Feeling Filter -->
-    <div class="filter-group">
-      <h4 class="filter-subtitle expandable" (click)="toggleFilter('feeling')">Feeling <span class="btn-section">
-        {{ activeFilters['feeling'] ? '-' : '+' }}
-      </span></h4>
-      <div class="expandable-content" id="feeling">
-        <!-- Add feeling filter options here -->
-      </div>
-    </div>
-    <span class="line"></span>
+
 
     <!-- Reset Filters Button -->
-    <button class="filter-reset-btn">Reset Filters</button>
+    <button class="filter-reset-btn" (click)="resetFilters()">Reset Filters</button>
   </div>
 
 

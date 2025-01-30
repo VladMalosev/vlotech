@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,27 +45,40 @@ public class ProductService {
     public Page<Product> getProducts(String searchTerm, String category, String availability, String brand, int page, int size, Sort sort) {
         Pageable pageable = PageRequest.of(page, size, sort);
 
-        if (category != null && !category.isEmpty()) {
-            return productRepository.findByCategoryIgnoreCase(category, pageable);
-        }
+        Specification<Product> spec = Specification.where(null);
 
         if (brand != null && !brand.isEmpty()) {
-            return productRepository.findByBrandIgnoreCase(brand, pageable);
+            spec = spec.and((root, query, cb) -> cb.equal(cb.upper(root.get("brand")), brand.toUpperCase()));
+        }
+
+        if (category != null && !category.isEmpty()) {
+            spec = spec.and((root, query, cb) -> cb.equal(cb.upper(root.get("category")), category.toUpperCase()));
         }
 
         if (availability != null && !availability.isEmpty()) {
-            return productRepository.findByAvailabilityIgnoreCase(availability, pageable);
+            spec = spec.and((root, query, cb) -> cb.equal(cb.upper(root.get("availability")), availability.toUpperCase()));
         }
 
         if (searchTerm != null && !searchTerm.isEmpty()) {
-            return productRepository.findByNameContainingIgnoreCase(searchTerm, pageable);
+            spec = spec.and((root, query, cb) -> cb.like(cb.upper(root.get("name")), "%" + searchTerm.toUpperCase() + "%"));
         }
 
-        return productRepository.findAll(pageable);
+        return productRepository.findAll(spec, pageable);
     }
+
+
 
     public Product getProductById(String Id) {
         Optional<Product> product = productRepository.findById(Id);
         return product.orElse(null);
+    }
+
+    public List<String> getAllCategories() {
+        return productRepository.findDistinctCategories();
+    }
+
+
+    public List<String> getAllBrands() {
+        return productRepository.findDistinctBrands();
     }
 }

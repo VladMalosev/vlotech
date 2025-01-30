@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {catchError, map, Observable} from 'rxjs';
+import {catchError, map, Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
 
 export interface User {
@@ -42,10 +42,7 @@ export class AuthService {
   isAuthenticated(): Observable<boolean> {
     return this.http.post(`${this.API_URL}/validate-token`, {}, { withCredentials: true }).pipe(
       map(() => true),
-      catchError(() => {
-        this.router.navigate(['/login']); // Redirect if not authenticated
-        return [false]; // Return false if authentication fails
-      })
+      catchError(() => of(false)) // Just return false instead of redirecting
     );
   }
 

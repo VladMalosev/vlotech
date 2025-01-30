@@ -45,11 +45,15 @@
       <a href="/cart" title="Cart">
         <img src="assets/icons/shopping-cart.png" alt="Cart Icon" />
       </a>
+      <a *ngIf="isAuthenticated; else loginLink" (click)="navigateToProfileOrLogin()" title="User">
+        <img src="assets/icons/user.png" alt="User Icon" />
+      </a>
+    </nav>
+    <ng-template #loginLink>
       <a href="/login" title="Login">
         <img src="assets/icons/user.png" alt="Login Icon" />
       </a>
-    </nav>
-
+    </ng-template>
 
 
 

@@ -7,13 +7,24 @@ import {RegisterComponent} from './register/register.component';
 import {ProductDetailsComponent} from './product-details/product-details.component';
 import {CartComponent} from './cart/cart.component';
 import {AuthGuard} from './auth.guard';
+import {UserProfileComponent} from './user-profile/user-profile.component';
+import {RedirectIfAuthenticatedGuard} from './RedirectIfAuthenticatedGuard';
 
 export const routes: Routes = [
-  { path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent },
-  { path: 'search', component: ProductListComponent},
-  { path: 'login', component: LoginComponent },
+  { path: 'search', component: ProductListComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [RedirectIfAuthenticatedGuard]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [RedirectIfAuthenticatedGuard]
+  },
   { path: 'product/:id', component: ProductDetailsComponent },
-  { path: 'register', component: RegisterComponent },
   { path: '**', redirectTo: 'home' }
 ];

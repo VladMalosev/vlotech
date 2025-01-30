@@ -1,7 +1,8 @@
-import { Component, EventEmitter, HostListener, Output } from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {Router, RouterLink} from '@angular/router';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,16 +10,23 @@ import {Router, RouterLink} from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   @Output() searchEvent = new EventEmitter<string>();
   searchTerm: string = '';
 
   isBannerHidden: boolean = false;
   isHeaderHidden: boolean = false;
   lastScrollTop: number = 0;
+  isAuthenticated: boolean = false;
 
   // Inject Router into the constructor
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.authService.isAuthenticated().subscribe((authStatus) => {
+      this.isAuthenticated = authStatus;
+    });
+  }
 
 
   @HostListener('window:scroll', [])
@@ -39,5 +47,11 @@ export class HeaderComponent {
       queryParams: { search: this.searchTerm },
     });
   }
-
+  navigateToProfileOrLogin(): void {
+    if (this.isAuthenticated) {
+      this.router.navigate(['/user']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
 }

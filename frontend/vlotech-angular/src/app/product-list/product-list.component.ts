@@ -20,8 +20,6 @@ interface ProductResponse {
 })
 export class ProductListComponent implements OnInit {
   products: any[] = []; /*stores all fetched products*/
-  materials: any[] = []; // placeholders
-  colors: any[] = ['Red', 'Blue', 'Green']; // example color options
   filteredProducts: any[] = []; /*hold products after applying fitlers*/
   pagProducts: any[] = []; /*curr page of products being displayed*/
   searchTerm: string = ''; /*holds the search query*/
@@ -35,8 +33,70 @@ export class ProductListComponent implements OnInit {
   selectedCategory: string = '';
   selectedBrand: string = '';
   selectedAvailability: string = '';
+  brands: string[] = [];
+  sortedBrands: string[] = [];
+  categories: string[] = [];
+  sortedCategories: string[] = [];
+
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
+  }
+
+
+  resetFilters(): void {
+    this.selectedBrand = '';
+    this.selectedCategory = '';
+    this.selectedAvailability = '';
+    this.searchTerm = '';
+    this.currPage = 1;
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        page: this.currPage,
+        search: this.searchTerm,
+        sort: this.currentSort
+      },
+      queryParamsHandling: 'merge',
+    });
+
+    this.loadProductsFromApi();
+  }
+
+  onAvailabilityChange(event: Event): void {
+    const availability = (event.target as HTMLInputElement).value;
+
+    // Update the selectedAvailability filter
+    this.selectedAvailability = availability;
+
+    // Apply the filter
+    this.applyFilters();
+  }
+
+  fetchBrands(): void {
+    const brandsUrl = `http://localhost:8080/api/products/brands`;
+    this.http.get<string[]>(brandsUrl, { withCredentials: true }).subscribe(
+      (data) => {
+        this.brands = data;
+        this.sortedBrands = this.brands.sort();
+      },
+      (error) => {
+        console.error('Error fetching brands:', error);
+      }
+    );
+  }
+
+  fetchCategories(): void {
+    const brandsUrl = `http://localhost:8080/api/products/categories`;
+    this.http.get<string[]>(brandsUrl, { withCredentials: true }).subscribe(
+      (data) => {
+        this.categories = data;
+        this.sortedCategories = this.categories.sort();
+      },
+      (error) => {
+        console.error('Error fetching categories:', error);
+      }
+    );
   }
 
   navigateToProductDetails(productId: number): void {
@@ -44,7 +104,36 @@ export class ProductListComponent implements OnInit {
   }
 
 
+  onBrandChange(brand: string, event: Event): void {
+    const isChecked = (event.target as HTMLInputElement).checked;
+
+    if (isChecked) {
+      this.selectedBrand = brand;
+    } else {
+      this.selectedBrand = '';
+    }
+
+    this.applyFilters();
+  }
+
+  onCategoryChange(category: string, event: Event): void {
+    const isChecked = (event.target as HTMLInputElement).checked;
+
+    if (isChecked) {
+      this.selectedCategory = category;
+    } else {
+      this.selectedCategory = '';
+    }
+
+    this.applyFilters();
+  }
+
+
+
   ngOnInit(): void {
+    this.fetchBrands();
+    this.fetchCategories();
+
     this.route.queryParams.subscribe(params => {
       /*listens for changes to query parameters from the URL
       * when parameters are available -> updates teh state*/
@@ -66,9 +155,27 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  applyFilters(): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        page: this.currPage,
+        search: this.searchTerm,
+        sort: this.currentSort,
+        brand: this.selectedBrand,
+      },
+      queryParamsHandling: 'merge',
+    });
+
+    this.loadProductsFromApi();
+  }
+
+
+
   loadProductsFromApi(): void {
     const apiUrl = `http://localhost:8080/api/products?page=${this.currPage}&size=${this.itemsPerPage}&search=${this.searchTerm}&category=${this.selectedCategory}&brand=${this.selectedBrand}&availability=${this.selectedAvailability}&sort=${this.currentSort}`;
-    this.http.get<ProductResponse>(apiUrl, {withCredentials: true}).subscribe(
+    console.log("Sending brand: ", this.selectedBrand); // Add this line to check the selected brand
+    this.http.get<ProductResponse>(apiUrl, { withCredentials: true }).subscribe(
       (data: any) => {
         console.log('Fetched products:', data);
         this.products = data.content;
@@ -82,6 +189,7 @@ export class ProductListComponent implements OnInit {
       }
     );
   }
+
 
 
   updateFilteredProducts(): void {
