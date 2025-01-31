@@ -1,0 +1,257 @@
+.profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.tab-menu {
+  ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    cursor: pointer;
+
+    li {
+      a {
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        color: #444;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 14px;
+        position: relative;
+        transition: all 0.3s ease;
+
+        &.active {
+          color: #ffffff;
+          background-color: #007bff;
+          box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+        }
+
+        &:hover {
+          color: #007bff;
+          background-color: #f7f7f7;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 2px;
+          background-color: #007bff;
+          transform: scaleX(0);
+          transition: transform 0.3s ease;
+          transform-origin: bottom right;
+        }
+
+        &:hover:after {
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+      }
+    }
+  }
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+
+  .user-details {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+
+    strong {
+      color: #333;
+    }
+  }
+
+  .account-stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    justify-content: center;
+    border-bottom: 1px solid black;
+
+    .stat-item {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 40px;
+
+      .stat-number {
+        font-size: 30px;
+        font-weight: 600;
+        color: #007bff;
+      }
+
+      a {
+        display: block;
+        color: #555;
+        font-size: 16px;
+        margin-top: 10px;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #007bff;
+        }
+      }
+    }
+  }
+}
+
+.account-benefits {
+  margin-top: 50px;
+  border-bottom: 1px solid black;
+
+  h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      margin-bottom: 10px;
+
+      &::before {
+        content: "✔";
+        margin-right: 12px;
+        color: #4caf50;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.order-statistics {
+  margin-top: 50px;
+  text-align: center;
+
+  h2 {
+    font-size: 24px;
+    color: #333;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+
+    li {
+      font-size: 18px;
+      padding: 8px 0;
+      color: #555;
+    }
+  }
+}
+
+.edit-profile, .manage-services, .change-password, .change-email {
+  margin-top: 50px;
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form label {
+  font-size: 18px;
+  color: #333;
+}
+
+form input {
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: #f7f7f7;
+}
+
+form input:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #ffffff;
+}
+
+form button {
+  padding: 14px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+form button:disabled {
+  background-color: #b0c6e3;
+  cursor: not-allowed;
+}
+.account-management {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.exit-account, .delete-account {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.exit-account {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.exit-account:hover {
+  background-color: #ff4d4d;
+}
+
+.delete-account {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-account:hover {
+  background-color: #d32f2f;
+}

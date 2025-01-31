@@ -28,7 +28,6 @@ export class LoginComponent {
       this.authService.loginUser({ email, password }).subscribe(
         (response) => {
           //  will change to cookies later
-          localStorage.setItem('authToken', response.token);
           alert('Login successful!');
           this.router.navigate(['/home']); //placeholder for now
         },

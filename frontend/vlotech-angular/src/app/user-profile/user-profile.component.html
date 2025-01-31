@@ -1,1 +1,114 @@
-<p>user-profile works!</p>
+<div class="profile-container">
+  <h1 class="page-title">My Profile</h1>
+
+  <div class="tab-menu">
+    <ul>
+      <li><a (click)="selectedTab = 'info'" [class.active]="selectedTab === 'info'">My Information</a></li>
+      <li><a (click)="selectedTab = 'edit'" [class.active]="selectedTab === 'edit'">Edit Profile</a></li>
+      <li><a (click)="selectedTab = 'services'" [class.active]="selectedTab === 'services'">Manage Services</a></li>
+      <li><a (click)="selectedTab = 'change-password'" [class.active]="selectedTab === 'change-password'">Change Password</a></li>
+      <li><a (click)="selectedTab = 'change-email'" [class.active]="selectedTab === 'change-email'">Change Email</a></li>
+    </ul>
+  </div>
+
+  <!-- Existing Profile Content -->
+  <div class="user-info">
+    <div class="user-details" *ngIf="selectedTab === 'info'">
+      <p><strong>Full Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Phone Number:</strong> {{ user.phoneNumber }}</p>
+    </div>
+
+
+    <div class="account-stats" *ngIf="selectedTab === 'info'">
+      <div class="stat-item">
+        <span class="stat-number">0</span>
+        <a routerLink="/orders">Orders</a>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">0</span>
+        <a routerLink="/orders?status=in-progress">In Progress</a>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">0</span>
+        <a routerLink="/loyalty">Loyalty Points</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="account-benefits" *ngIf="selectedTab === 'info'">
+    <h3>Your Benefits</h3>
+    <ul>
+      <li>Earn 0.5% back as loyalty points on purchases.</li>
+      <li>30-day return policy.</li>
+      <li>Exclusive discounts and deals.</li>
+    </ul>
+  </div>
+
+  <div class="order-statistics" *ngIf="selectedTab === 'info'">
+    <h2>No Purchases Yet</h2>
+    <p>Follow these steps to place your first order:</p>
+    <ul>
+      <li>Choose your product</li>
+      <li>Select a delivery option</li>
+      <li>Pick a payment method</li>
+      <li>Complete your purchase</li>
+    </ul>
+  </div>
+
+  <!-- Account Management Section (Exit & Delete Buttons) -->
+  <div class="account-management" *ngIf="selectedTab === 'info'">
+    <button class="exit-account" (click)="logout()">Exit Account</button>
+    <button class="delete-account" (click)="deleteAccount()">Delete Account</button>
+  </div>
+
+
+  <!-- Edit Profile Section -->
+  <div class="edit-profile" *ngIf="selectedTab === 'edit'">
+    <h2>Edit Profile</h2>
+    <form >
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" [(ngModel)]="user.firstName" name="firstName" placeholder="Enter your full name" required>
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" [(ngModel)]="user.lastName" name="lastName" placeholder="Enter your last name" required>
+
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" id="phoneNumber" [(ngModel)]="user.phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+
+  <!-- Manage Services Section -->
+  <div class="manage-services" *ngIf="selectedTab === 'services'">
+    <h2>Manage Services</h2>
+    <p>Here you can manage your subscribed services.</p>
+    <!-- Add services management logic here -->
+  </div>
+
+  <!-- Change Password Section -->
+  <div class="change-password" *ngIf="selectedTab === 'change-password'">
+    <h2>Change Password</h2>
+    <form>
+      <label for="old-password">Old Password:</label>
+      <input type="password" id="old-password" name="old-password" placeholder="Enter your old password">
+
+      <label for="new-password">New Password:</label>
+      <input type="password" id="new-password" name="new-password" placeholder="Enter your new password">
+
+      <button type="submit">Change Password</button>
+    </form>
+  </div>
+
+  <!-- Change Email Section -->
+  <div class="change-email" *ngIf="selectedTab === 'change-email'">
+    <h2>Change Email</h2>
+    <form>
+      <label for="new-email">New Email:</label>
+      <input type="email" id="new-email" name="new-email" placeholder="Enter your new email">
+
+      <button type="submit">Change Email</button>
+    </form>
+  </div>
+</div>

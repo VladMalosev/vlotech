@@ -94,4 +94,22 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
+    public String getUserEmailFromToken(String token) {
+        if (secretKey == null || secretKey.isEmpty()) {
+            throw new IllegalStateException("JWT secret key is not configured");
+        }
+
+        SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
+
+        String email = Jwts.parser()
+                .setSigningKey(key)
+                .build()
+                .parseSignedClaims(token)
+                .getBody()
+                .get("email", String.class);
+
+        return email;
+    }
+
+
 }
