@@ -20,7 +20,7 @@ import static javax.crypto.Cipher.SECRET_KEY;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    public final PasswordEncoder passwordEncoder;
 
     @Value("${JWT_SECRET_KEY}")  // have to think about the placement, placeholder atm
     private String secretKey;
@@ -77,16 +77,20 @@ public class UserService {
     }
 
     public void validateToken(String token) {
-        if (secretKey == null || secretKey.isEmpty()) {
-            throw new IllegalStateException("JWT secret key is not configured");
+        try {
+            if (secretKey == null || secretKey.isEmpty()) {
+                throw new IllegalStateException("JWT secret key is not configured");
+            }
+
+            SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
+            Jwts.parser()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token);
+        } catch (Exception e) {
+            System.err.println("Token validation failed: " + e.getMessage());
+            throw new IllegalArgumentException("Invalid token");
         }
-
-        SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
-
-        Jwts.parser()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(token);
     }
 
 
@@ -111,5 +115,13 @@ public class UserService {
         return email;
     }
 
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public boolean isEmailAvailable(String email) {
+        Optional<User> existingUser = userRepository.findByEmail(email);
+        return existingUser.isEmpty();
+    }
 
 }

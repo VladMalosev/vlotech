@@ -17,4 +17,13 @@ export class UserService {
   updateUser(user: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/update`, user, { withCredentials: true });
   }
+  changePassword(changePasswordData: any) {
+    return this.http.put(`${this.apiUrl}/update-password`, changePasswordData, { withCredentials: true });
+  }
+  changeEmail(newEmail: string) {
+    return this.http.put(`${this.apiUrl}/update-email`, { email: newEmail }, { withCredentials: true });
+  }
+  checkEmailAvailability(newEmail: string) {
+    return this.http.get<{ isAvailable: boolean }>(`${this.apiUrl}/check-email`, { params: { email: newEmail }, withCredentials: true });
+  }
 }

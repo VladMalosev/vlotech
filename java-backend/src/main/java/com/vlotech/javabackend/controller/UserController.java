@@ -109,6 +109,133 @@ public class UserController {
                     .body(null);
         }
     }
+    @PutMapping("/update")
+    public ResponseEntity<?> updateUserProfile(@CookieValue(name = "jwt", required = false) String jwt, @RequestBody User updatedUser) {
+        if (jwt == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("message", "Unauthorized"));
+        }
+
+        try {
+            String email = userService.getUserEmailFromToken(jwt);
+            Optional<User> existingUser = userService.findByEmail(email);
+
+            if (existingUser.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(Map.of("message", "User not found"));
+            }
+
+            User user = existingUser.get();
+            user.setFirstName(updatedUser.getFirstName());
+            user.setLastName(updatedUser.getLastName());
+            user.setPhoneNumber(updatedUser.getPhoneNumber());
+
+            User savedUser = userService.updateUser(user);
+            return ResponseEntity.ok(savedUser);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "Error updating user profile"));
+        }
+    }
+
+    @GetMapping("/check-email")
+    public ResponseEntity<Map<String, Boolean>> checkEmailAvailability(@RequestParam String email) {
+        boolean isAvailable = userService.isEmailAvailable(email);
+        return ResponseEntity.ok(Map.of("isAvailable", isAvailable));
+    }
+
+    @PutMapping("/update-email")
+    public ResponseEntity<?> updateEmail(@CookieValue(name = "jwt", required = false) String jwt, @RequestBody Map<String, String> emailData) {
+        if (jwt == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("message", "Unauthorized"));
+        }
+
+        try {
+            String email = userService.getUserEmailFromToken(jwt);
+            Optional<User> existingUser = userService.findByEmail(email);
+
+            if (existingUser.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(Map.of("message", "User not found"));
+            }
+
+            String newEmail = emailData.get("email");
+            if (userService.findByEmail(newEmail).isPresent()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(Map.of("message", "Email is already in use"));
+            }
+
+            User user = existingUser.get();
+            user.setEmail(newEmail);
+
+            userService.updateUser(user);
+
+            // Clear JWT cookie to log out user
+            ResponseCookie cookie = ResponseCookie.from("jwt", "")
+                    .httpOnly(true)
+                    .secure(false)
+                    .path("/")
+                    .maxAge(0) // Expire immediately
+                    .sameSite("Strict")
+                    .build();
+
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                    .body(Map.of("message", "Email updated successfully. Please log in again."));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "Error updating user email"));
+        }
+    }
+
+
+    @PutMapping("/update-password")
+    public ResponseEntity<?> updatePassword(@CookieValue(name = "jwt", required = false) String jwt, @RequestBody Map<String, String> passwordData) {
+        if (jwt == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("message", "Unauthorized"));
+        }
+
+        try {
+            String email = userService.getUserEmailFromToken(jwt);
+            Optional<User> existingUser = userService.findByEmail(email);
+
+            if (existingUser.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(Map.of("message", "User not found"));
+            }
+
+            User user = existingUser.get();
+            String oldPassword = passwordData.get("oldPassword");
+            String newPassword = passwordData.get("newPassword");
+
+            if (!userService.passwordEncoder.matches(oldPassword, user.getPassword())) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(Map.of("message", "Incorrect current password"));
+            }
+
+            user.setPassword(userService.passwordEncoder.encode(newPassword));
+            userService.updateUser(user);
+
+            // Log out by clearing the JWT cookie
+            ResponseCookie cookie = ResponseCookie.from("jwt", "")
+                    .httpOnly(true)
+                    .secure(false)
+                    .path("/")
+                    .maxAge(0) // Expire immediately
+                    .sameSite("Strict")
+                    .build();
+
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                    .body(Map.of("message", "Password updated successfully. Please log in again."));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "Error updating password"));
+        }
+    }
+
 
 
 }
