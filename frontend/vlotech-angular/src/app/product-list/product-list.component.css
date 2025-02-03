@@ -213,3 +213,15 @@
 .filter-reset-btn:hover {
   background-color: #0056b3;
 }
+.wishlist-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.wishlist-image {
+  width: 24px;
+  height: 24px;
+}

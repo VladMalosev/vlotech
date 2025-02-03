@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
+import {WishlistService} from '../wishlistService';
 
 /*expected structure of the product data returned by the API*/
 interface ProductResponse {
@@ -39,7 +40,7 @@ export class ProductListComponent implements OnInit {
   sortedCategories: string[] = [];
 
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private wishlistService: WishlistService) {
   }
 
 
@@ -296,5 +297,15 @@ export class ProductListComponent implements OnInit {
     this.loadProductsFromApi();
   }
 
+  toggleWishlist(product: any, event: Event) {
+    event.stopPropagation(); 
 
+    product.inWishlist = !product.inWishlist;
+
+    if (product.inWishlist) {
+      console.log(`${product.name} added to wishlist`);
+    } else {
+      console.log(`${product.name} removed from wishlist`);
+    }
+  }
 }

@@ -48,9 +48,6 @@ docker-compose down --rmi all
 
 
 #### TODO
-- Fix header(hide login when not authenticated):
-- Add User page
-- Create filtering (rn just placeholder)
-- Implement checkout page
+- fix heart icons, right now broken
 - Add wishlist (rn only cart)
 
