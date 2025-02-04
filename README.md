@@ -4,13 +4,13 @@ Main page:
 ![image](https://github.com/user-attachments/assets/bf048179-ccc1-46af-9217-cbfdafd4c7c1)
 
 Product-list:
-![image](https://github.com/user-attachments/assets/b5bf424c-ce81-49c7-9505-fc0d27ae83a7)
+![image](https://github.com/user-attachments/assets/bccfdbd4-b131-4b5f-b982-b1877fbc1734)
 
 Product-details:
-![image](https://github.com/user-attachments/assets/096d2eee-c7e1-42c7-a3a0-28327fd24f49)
+![image](https://github.com/user-attachments/assets/8d6a8bed-a3ca-40ee-9452-521ea0894536)
 
 Cart:
-![image](https://github.com/user-attachments/assets/51e9da7b-fc97-4cc3-9a0f-685cb0d647ed)
+![image](https://github.com/user-attachments/assets/535a30db-41ab-4840-bf4f-e0a60f190043)
 
 Login:
 ![image](https://github.com/user-attachments/assets/b6f301f8-b827-40c2-a490-60807af4a392)
