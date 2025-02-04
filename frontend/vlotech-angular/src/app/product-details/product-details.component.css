@@ -213,3 +213,20 @@ nav {
   background-color: #0056b3;
 }
 
+.add-to-wishlist {
+  position: relative;
+  display: inline-block;
+  background-color: var(--color-red);
+  color: white;
+  border: none;
+  padding: 1.25rem 2.5rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  letter-spacing: 0.0625rem;
+  margin-left: 10px;
+}
+
+.add-to-wishlist:hover {
+  background-color: darkred;
+}

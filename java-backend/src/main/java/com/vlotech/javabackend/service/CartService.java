@@ -26,6 +26,7 @@ public class CartService {
     }
 
     public CartItem addToCart(String userId, String productId, int quantity) {
+        // Log the user, product, and quantity for debugging
         System.out.println("userId: " + userId);
         System.out.println("productId: " + productId);
         System.out.println("quantity: " + quantity);
@@ -33,15 +34,11 @@ public class CartService {
         Optional<User> user = userRepository.findByEmail(userId);
         Optional<Product> product = productRepository.findById(productId);
 
-        if (user.isEmpty() && product.isEmpty()) {
-            throw new IllegalArgumentException("Both user and product not found");
-        } else if (user.isEmpty()) {
-            throw new IllegalArgumentException("User not found with ID: " + userId);
-        } else if (product.isEmpty()) {
-            throw new IllegalArgumentException("Product not found with ID: " + productId);
+        if (user.isEmpty() || product.isEmpty()) {
+            throw new IllegalArgumentException("User or product not found");
         }
 
-
+        // Check for existing cart item
         Optional<CartItem> existingCartItem = cartItemRepository.findByUser(user.get())
                 .stream()
                 .filter(cartItem -> cartItem.getProduct().getId().equals(productId))
@@ -50,7 +47,8 @@ public class CartService {
         CartItem cartItem;
         if (existingCartItem.isPresent()) {
             cartItem = existingCartItem.get();
-            cartItem.setQuantity(cartItem.getQuantity() + quantity);
+            // If the item already exists in the cart, just update the quantity correctly
+            cartItem.setQuantity(quantity);
         } else {
             cartItem = new CartItem();
             cartItem.setUser(user.get());
@@ -58,8 +56,10 @@ public class CartService {
             cartItem.setQuantity(quantity);
         }
 
+        // Save the updated cart item
         return cartItemRepository.save(cartItem);
     }
+
 
 
     public List<CartItem> getCartItemsForUser(User user) {

@@ -81,4 +81,10 @@ export class ProductDetailsComponent implements OnInit {
       }
     });
   }
+
+  addToWishlist(productId: number) {
+    // todo
+    console.log(`Product ${productId} added to wishlist!`);
+  }
+
 }

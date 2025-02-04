@@ -1,34 +1,109 @@
-<div class="cart-container">
-  <h1>Your Shopping Cart</h1>
+<section class="cart-container">
+  <div class="container">
+    <div class="cart-wrapper">
 
-  <div class="cart-items" *ngFor="let item of cartItems">
-    <div class="cart-item">
-      <div class="item-image">
-        <!-- Correct the source of the image -->
-        <img [src]="item.product.imageUrl" alt="Product Image" />
+      <!-- Cart Table (Left Side - 70%) -->
+      <div class="cart-table-container">
+        <table class="table-cart">
+          <thead>
+          <tr>
+            <th class="thumbnail-col"></th>
+            <th class="product-col">Product</th>
+            <th class="price-col">Price</th>
+            <th class="qty-col">Quantity</th>
+            <th class="text-right">Subtotal</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="product-row" *ngFor="let item of cartItems">
+            <td>
+              <figure class="product-image-container">
+                <img [src]="item.product.imageUrl" alt="{{ item.product.name }}">
+                <button class="btn-remove" (click)="removeItem(item)">✖</button>
+              </figure>
+            </td>
+            <td class="product-col">
+              <h5 class="product-title">{{ item.product.name }}</h5>
+            </td>
+            <td>${{ item.product.price }}</td>
+            <td>
+              <div class="quantity-wrapper">
+                <button (click)="decreaseQuantity(item)">-</button>
+                <input type="text" [value]="item.quantity" readonly>
+                <button (click)="increaseQuantity(item)">+</button>
+              </div>
+            </td>
+            <td class="text-right">
+              <span class="subtotal-price">${{ item.totalPrice }}</span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="item-details">
-        <!-- Access the product name correctly -->
-        <h3 class="item-name">{{ item.product.name }}</h3>
-        <!-- Access the unit price correctly -->
-        <p class="item-price">Price per Item: ${{ item.product.price }}</p>
-        <div class="quantity-controls">
-          <button (click)="decreaseQuantity(item)">-</button>
-          <span>{{ item.quantity }}</span>
-          <button (click)="increaseQuantity(item)">+</button>
+
+      <!-- Cart Summary (Right Side - Fixed 30%) -->
+      <div class="cart-summary">
+        <h3>CART SUMMARY</h3>
+
+        <!-- Promo Code Input -->
+        <div class="promo-section">
+          <input type="text" [(ngModel)]="promoCode" placeholder="Enter promo code">
+          <button (click)="applyPromoCode()">Apply</button>
         </div>
-        <button class="remove-btn" (click)="removeItem(item)">Remove</button>
+
+        <!-- Delivery Options -->
+        <div class="delivery-section">
+          <label for="delivery">Delivery Option:</label>
+          <select id="delivery" [(ngModel)]="selectedDelivery" (change)="updateTotal()">
+            <option value="standard">Standard (Free)</option>
+            <option value="express">Express (+$10.00)</option>
+          </select>
+        </div>
+
+        <!-- Price Breakdown -->
+        <table class="table-totals">
+          <tbody>
+          <tr>
+            <td>Subtotal</td>
+            <td>${{ calculateSubtotal() }}</td>
+          </tr>
+          <tr>
+            <td>Discount</td>
+            <td>- ${{ discount }}</td>
+          </tr>
+          <tr>
+            <td>Delivery Charges</td>
+            <td>${{ deliveryCharge }}</td>
+          </tr>
+          <tr class="total-row">
+            <td><b>Total</b></td>
+            <td><b>${{ calculateTotal() }}</b></td>
+          </tr>
+          </tbody>
+        </table>
+
+        <!-- Additional Information Section -->
+        <div class="additional-info">
+          <p>
+            Please make sure to review your cart before proceeding to checkout. We offer a range of secure payment methods to ensure your transactions are smooth and safe. Once you place your order, we will send you a confirmation email with all your order details.
+          </p>
+          <p>
+            For faster delivery, we recommend choosing the express shipping option. You can track your order through the tracking number provided once your package is dispatched. If you have any questions or need assistance, don't hesitate to contact our support team.
+          </p>
+        </div>
+
+
+        <!-- Terms and Conditions Agreement -->
+        <div class="terms-agreement">
+          <label>
+            <input type="checkbox" [(ngModel)]="isAgreed" /> I agree to the <a href="/terms" target="_blank">terms and conditions</a>.
+          </label>
+        </div>
+
+        <!-- Proceed to Checkout Button -->
+        <button class="btn btn-dark btn-block" [disabled]="!isAgreed" (click)="checkout()">Proceed to Checkout</button>
       </div>
-      <div class="item-total">
-        <!-- Total price calculation is correct -->
-        <p>Total: ${{ item.totalPrice }}</p>
-      </div>
+
     </div>
   </div>
-
-  <div class="cart-summary">
-    <h2>Cart Summary</h2>
-    <p>Subtotal: ${{ calculateSubtotal() }}</p>
-    <button class="checkout-btn">Proceed to Checkout</button>
-  </div>
-</div>
+</section>
