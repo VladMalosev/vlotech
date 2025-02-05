@@ -106,13 +106,11 @@
 
     <!-- Products Display -->
     <div class="products">
-      <div class="product-card" *ngFor="let product of pagProducts" (click)="navigateToProductDetails(product.id)">
-
+      <div class="product-card" *ngFor="let product of products" (click)="navigateToProductDetails(product.id)">
         <!-- Wishlist Icon -->
         <span class="wishlist-icon" (click)="toggleWishlist(product, $event)">
-      <img [src]="product.inWishlist ? 'assets/icons/filledheart.png' : 'assets/icons/heart.png'" alt="Wishlist"  class="wishlist-image"/>
-        </span>
-
+      <img [src]="product.inWishlist ? 'assets/icons/filledheart.png' : 'assets/icons/heart.png'" alt="Wishlist" class="wishlist-image"/>
+    </span>
         <img [src]="product.imageUrl" alt="{{ product.name }}" class="product-image" />
         <h4 class="product-name">{{ product.name }}</h4>
         <p class="product-description">Brand: {{ product.brand }}</p>
@@ -120,6 +118,7 @@
         <p class="product-availability">Availability: {{ product.availability }}</p>
       </div>
     </div>
+
 
   </div>
   <!-- Right Sidebar for Ads -->

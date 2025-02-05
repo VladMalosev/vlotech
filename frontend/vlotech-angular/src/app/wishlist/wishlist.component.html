@@ -1,0 +1,29 @@
+<div *ngIf="dataLoaded; else loading">
+  <div class="wishlist-header">
+    <h2>Your Wishlist</h2>
+    <p *ngIf="wishlistItems.length === 0" class="empty-message">Your wishlist is empty. Start adding products to your wishlist!</p>
+  </div>
+
+  <div class="wishlist-items-container">
+    <div *ngFor="let item of wishlistItems" class="wishlist-item-card">
+      <div class="wishlist-item-image-container">
+        <img [src]="item.product.imageUrl" alt="{{ item.product.name }}" class="wishlist-item-image" />
+      </div>
+
+      <div class="wishlist-item-details">
+        <h3 class="wishlist-item-title">{{ item.product.name }}</h3>
+        <p class="wishlist-item-description">{{ item.product.description }}</p>
+        <p class="wishlist-item-price"><strong>Price: ${{ item.product.price }}</strong></p>
+
+        <button (click)="toggleWishlistItem(item)" class="wishlist-button">
+          {{ item.inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Loading Spinner -->
+<ng-template #loading>
+  <div class="loading">Loading your wishlist...</div>
+</ng-template>

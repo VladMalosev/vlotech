@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
-import {WishlistService} from '../wishlistService';
+import {WishlistService} from '../wishlist.service';
+import {AuthService} from '../auth.service';
 
 /*expected structure of the product data returned by the API*/
 interface ProductResponse {
@@ -40,7 +41,7 @@ export class ProductListComponent implements OnInit {
   sortedCategories: string[] = [];
 
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private wishlistService: WishlistService) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private wishlistService: WishlistService, private authService: AuthService) {
   }
 
 
@@ -171,26 +172,44 @@ export class ProductListComponent implements OnInit {
     this.loadProductsFromApi();
   }
 
-
-
   loadProductsFromApi(): void {
     const apiUrl = `http://localhost:8080/api/products?page=${this.currPage}&size=${this.itemsPerPage}&search=${this.searchTerm}&category=${this.selectedCategory}&brand=${this.selectedBrand}&availability=${this.selectedAvailability}&sort=${this.currentSort}`;
-    console.log("Sending brand: ", this.selectedBrand); // Add this line to check the selected brand
+
     this.http.get<ProductResponse>(apiUrl, { withCredentials: true }).subscribe(
       (data: any) => {
         console.log('Fetched products:', data);
         this.products = data.content;
-        this.totalPages = data.totalPages;
-        this.generatePageNumbers();
-        this.currPage = data.number + 1; /*Backend page is zero-based, convert to one-based*/
-        this.updatePagination();
+
+        // Check if the user is authenticated before fetching wishlist items
+        this.authService.isAuthenticated().subscribe(isAuthenticated => {
+          if (isAuthenticated) {
+            // If authenticated, fetch wishlist items
+            this.wishlistService.getWishlistItems().subscribe((wishlistItems) => {
+              const wishlistProductIds = new Set(wishlistItems.map((item: any) => item.product.id));
+
+              this.products.forEach(product => {
+                product.inWishlist = wishlistProductIds.has(product.id);
+              });
+
+              this.totalPages = data.totalPages;
+              this.generatePageNumbers();
+              this.currPage = data.number + 1; // Convert backend zero-based page to one-based
+              this.updatePagination();
+            });
+          } else {
+            // If not authenticated, skip wishlist fetching
+            this.totalPages = data.totalPages;
+            this.generatePageNumbers();
+            this.currPage = data.number + 1;
+            this.updatePagination();
+          }
+        });
       },
       (error) => {
         console.error('Error loading products:', error);
       }
     );
   }
-
 
 
   updateFilteredProducts(): void {
@@ -297,15 +316,49 @@ export class ProductListComponent implements OnInit {
     this.loadProductsFromApi();
   }
 
-  toggleWishlist(product: any, event: Event) {
-    event.stopPropagation(); 
+  toggleWishlist(product: any, event: Event): void {
+    event.stopPropagation();
 
-    product.inWishlist = !product.inWishlist;
+    // Check if the user is authenticated before proceeding
+    this.authService.isAuthenticated().subscribe(isAuthenticated => {
+      if (!isAuthenticated) {
+        // If not authenticated, navigate to the login page
+        this.router.navigate(['/login']);
+        return; // Prevent further code execution
+      }
 
-    if (product.inWishlist) {
-      console.log(`${product.name} added to wishlist`);
-    } else {
-      console.log(`${product.name} removed from wishlist`);
-    }
+      // If authenticated, proceed with the wishlist logic
+      const wasInWishlist = product.inWishlist;
+      product.inWishlist = !product.inWishlist;
+
+      // Make API call to add or remove from wishlist based on the updated product state
+      if (product.inWishlist) {
+        this.wishlistService.addToWishlist(product.id).subscribe(
+          () => {
+            console.log(`${product.name} added to wishlist`);
+          },
+          (error) => {
+            console.error('Error adding to wishlist:', error);
+            // Revert UI update if request fails
+            product.inWishlist = wasInWishlist;
+          }
+        );
+      } else {
+        this.wishlistService.removeFromWishlist(product.id).subscribe(
+          () => {
+            console.log(`${product.name} removed from wishlist`);
+          },
+          (error) => {
+            console.error('Error removing from wishlist:', error);
+            // Revert UI update if request fails
+            product.inWishlist = wasInWishlist;
+          }
+        );
+      }
+    });
   }
+
+
+
+
 }

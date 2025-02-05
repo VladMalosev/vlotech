@@ -9,9 +9,11 @@ import {CartComponent} from './cart/cart.component';
 import {AuthGuard} from './auth.guard';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import {RedirectIfAuthenticatedGuard} from './RedirectIfAuthenticatedGuard';
+import {WishlistComponent} from './wishlist/wishlist.component';
 
 export const routes: Routes = [
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent },
   { path: 'search', component: ProductListComponent },
