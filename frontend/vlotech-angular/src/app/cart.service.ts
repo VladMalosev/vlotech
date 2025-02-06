@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -20,6 +20,19 @@ export class CartService {
       { withCredentials: true }
     );
   }
+
+  updateCartItem(cartItemId: string, quantity: number): Observable<any> {
+    const params = new HttpParams()
+      .set('cartItemId', cartItemId)
+      .set('quantity', quantity.toString());
+
+    return this.http.post(
+      `${this.apiUrl}/update`,
+      params,
+      { withCredentials: true }
+    );
+  }
+
   getCartItems(): Observable<any[]> {
     return this.http.get<any[]>(
       `${this.apiUrl}/items`,

@@ -18,7 +18,7 @@
 .tab-menu {
   ul {
     display: flex;
-    gap: 25px;
+    gap: 15px;
     list-style: none;
     padding: 0;
     margin-bottom: 30px;

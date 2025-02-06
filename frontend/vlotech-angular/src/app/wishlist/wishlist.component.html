@@ -1,29 +1,59 @@
-<div *ngIf="dataLoaded; else loading">
-  <div class="wishlist-header">
-    <h2>Your Wishlist</h2>
-    <p *ngIf="wishlistItems.length === 0" class="empty-message">Your wishlist is empty. Start adding products to your wishlist!</p>
-  </div>
+<section class="wishlist-container">
+  <div class="container">
+    <div class="wishlist-wrapper">
 
-  <div class="wishlist-items-container">
-    <div *ngFor="let item of wishlistItems" class="wishlist-item-card">
-      <div class="wishlist-item-image-container">
-        <img [src]="item.product.imageUrl" alt="{{ item.product.name }}" class="wishlist-item-image" />
+      <!-- Wishlist Items (Left Side - 70%) -->
+      <div class="wishlist-items-container">
+        <table class="table-wishlist" *ngIf="wishlistItems.length > 0; else emptyWishlist">
+          <thead>
+          <tr>
+            <th class="thumbnail-col"></th>
+            <th class="product-col">Product</th>
+            <th class="price-col">Price</th>
+            <th class="availability-col">Availability</th>
+            <th class="text-right">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="wishlist-row" *ngFor="let item of wishlistItems">
+            <td>
+              <figure class="product-image-container">
+                <!-- Clicking on image navigates to product details page -->
+                <img [src]="item.product.imageUrl" alt="{{ item.product.name }}" (click)="navigateToProductDetails(item.product.id)">
+                <button class="btn-remove" (click)="removeFromWishlist(item); $event.stopPropagation()">✖</button>
+              </figure>
+            </td>
+            <td class="product-col">
+              <h5 class="product-title">{{ item.product.name }}</h5>
+            </td>
+            <td class="wishlist-price">${{ item.product.price }}</td>
+            <td>
+                <span [ngClass]="{'in-stock': item.product.availability === 'in stock', 'out-of-stock': item.product.availability !== 'in stock'}">
+                  {{ item.product.availability }}
+                </span>
+            </td>
+            <td class="text-right">
+              <button class="btn-move-to-cart" (click)="moveToCart(item.product.id, 1); $event.stopPropagation()">Move to Cart</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="wishlist-item-details">
-        <h3 class="wishlist-item-title">{{ item.product.name }}</h3>
-        <p class="wishlist-item-description">{{ item.product.description }}</p>
-        <p class="wishlist-item-price"><strong>Price: ${{ item.product.price }}</strong></p>
-
-        <button (click)="toggleWishlistItem(item)" class="wishlist-button">
-          {{ item.inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' }}
+      <!-- Wishlist Summary (Right Side - 30%) -->
+      <div class="wishlist-summary">
+        <h3>WISHLIST SUMMARY</h3>
+        <p>Save your favorite products for later! Easily move items to your cart when you're ready to purchase.</p>
+        <button class="btn-clear-wishlist" (click)="clearWishlist()" [disabled]="wishlistItems.length === 0">
+          Clear Wishlist
         </button>
       </div>
+
     </div>
   </div>
-</div>
+</section>
 
-<!-- Loading Spinner -->
-<ng-template #loading>
-  <div class="loading">Loading your wishlist...</div>
+<!-- Empty Wishlist Message -->
+<ng-template #emptyWishlist>
+  <div class="empty-message">Your wishlist is empty. Start adding products to your wishlist!</div>
 </ng-template>

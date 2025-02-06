@@ -11,9 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./cart.component.css'],
 })
 
-
-
-
 export class CartComponent implements OnInit {
   isAgreed: boolean = false;
   cartItems: any[] = [];
@@ -47,15 +44,17 @@ export class CartComponent implements OnInit {
   }
 
   private updateQuantity(item: any, newQuantity: number): void {
-    if (!item.productId) {
+    if (!item.id) {
       console.error('Product ID is undefined');
       return;
     }
 
+    // Update the cart item locally first
     item.quantity = newQuantity;
-    item.totalPrice = item.unitPrice * item.quantity;
+    item.totalPrice = item.product.price * item.quantity;
 
-    this.cartService.addToCart(item.productId, item.quantity).subscribe(
+    // Call the service to update the backend (use `updateCartItem` for updating the quantity)
+    this.cartService.updateCartItem(item.id, item.quantity).subscribe(
       () => {
         this.updateTotal();
       },
@@ -66,9 +65,9 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(item: any): void {
-    this.cartService.removeFromCart(item.productId).subscribe(
+    this.cartService.removeFromCart(item.id).subscribe(
       () => {
-        this.cartItems = this.cartItems.filter(cartItem => cartItem.productId !== item.productId);
+        this.cartItems = this.cartItems.filter(cartItem => cartItem.id !== item.id);
         this.updateTotal();
       },
       (error) => {

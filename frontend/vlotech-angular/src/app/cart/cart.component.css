@@ -71,6 +71,7 @@
   border: none;
   color: red;
   cursor: pointer;
+  position: absolute;
 }
 
 .btn-dark {

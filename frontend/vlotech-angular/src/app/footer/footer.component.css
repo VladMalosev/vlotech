@@ -1,42 +1,117 @@
-/* Flexbox layout for sticky footer */
-html, body {
-
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-}
-
-
-.container {
-  flex: 1;
-}
-
-
-
-
-.footer {
+/* Footer Style */
+.site-footer {
   background-color: #1e293b;
-  color: white;
-  text-align: center;
-  padding: 20px 10px;
-  border-top: 2px solid #3b82f6;
-  margin-top: auto;
+  padding: 45px 20px 20px;
+  font-size: 15px;
+  line-height: 24px;
+  color: #737373;
+  text-align: left;
 }
 
-.footer p {
-  margin: 0;
-  font-size: 0.9rem;
+.site-footer hr {
+  border-top-color: #bbb;
+  opacity: 0.5;
 }
 
-.footer-nav a {
-  color: #60a5fa;
+.site-footer h6 {
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+
+.site-footer a {
+  color: #737373;
+}
+
+.site-footer a:hover {
+  color: #3366cc;
   text-decoration: none;
-  margin: 0 10px;
-  font-size: 0.9rem;
 }
 
-.footer-nav a:hover {
-  text-decoration: underline;
+.footer-links {
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.footer-links li {
+  display: block;
+}
+
+.footer-links a {
+  color: #9a9a9a;
+  display: block;
+  margin-bottom: 8px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+
+.copyright-text {
+  margin: 0;
+  padding-top: 15px;
+}
+
+/* Flexbox layout for footer sections */
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-col {
+  flex: 1;
+  margin: 0 10px;
+  min-width: 220px;
+}
+
+.footer-col .footer-links {
+  padding-left: 0;
+}
+
+.footer-col .footer-links a {
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .site-footer .footer-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-col {
+    margin-bottom: 30px;
+  }
+
+  .footer-col.social-icons {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-footer {
+    padding-bottom: 0;
+  }
+  .site-footer .copyright-text, .site-footer {
+    text-align: center;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+
 }
