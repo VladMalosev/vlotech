@@ -79,16 +79,20 @@
   gap: 1rem;
 
 }
+
 .input-group {
-  width: 100%; /* Ensure inputs take up full width */
+  width: 100%;
+  position: relative;
 }
+
 .input-group input {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid #ccc;
-  border-radius: 2rem;
+  border-radius: 5px;
   background-color: var(--color-light);
   font-size: 1rem;
+  box-sizing: border-box;
 }
 
 .input-group input:focus {
@@ -196,4 +200,70 @@
 
 .method .method-action i {
   margin-right: 0.65rem;
+}
+
+
+
+
+.input-control {
+  position: relative;
+  width: 100%;
+}
+
+
+
+.toggle-password-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.password-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* Optional: Style for input focus */
+.input-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Optional: Additional styling for the button hover effect */
+.toggle-password-btn:hover .password-icon {
+  opacity: 0.7;
+}
+
+small {
+  color: red;
+  font-size: 0.8rem;
+}
+.form-message {
+  font-size: 12px;
+  color: #6c757d;
+  margin-top: 5px;
+  display: block;
+}
+
+.error-wrapper {
+  border: 1px solid #ff4d4d;
+  width: 100%;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+  padding: 2px;
+
 }

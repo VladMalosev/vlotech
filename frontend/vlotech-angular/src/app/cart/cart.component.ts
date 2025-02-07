@@ -77,7 +77,7 @@ export class CartComponent implements OnInit {
   }
 
   calculateSubtotal(): number {
-    return this.cartItems.reduce((subtotal, item) => subtotal + item.totalPrice, 0);
+    return (this.cartItems.reduce((subtotal, item) => subtotal + item.totalPrice, 0).toFixed(2));
   }
 
   calculateTotal(): number {

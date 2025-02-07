@@ -46,4 +46,18 @@ export class RegisterComponent {
       }
     );
   }
+  togglePasswordVisibility(field: string): void {
+    const passwordField = document.getElementById(field) as HTMLInputElement;
+    const passwordIcon = document.getElementById(`${field}Icon`) as HTMLImageElement;
+
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text';
+      passwordIcon.src = 'assets/icons/hide.png';
+    } else {
+      passwordField.type = 'password';
+      passwordIcon.src = 'assets/icons/eye.png';
+    }
+  }
+
+
 }

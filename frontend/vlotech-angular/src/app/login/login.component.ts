@@ -40,5 +40,20 @@ export class LoginComponent {
       alert('Please fill in the form correctly.');
     }
   }
+  toggleMasterPasswordVisibility(): void {
+    const masterPasswordField = document.getElementById('password') as HTMLInputElement;
+    const masterPasswordIcon = document.getElementById('masterPasswordIcon') as HTMLImageElement;
+
+    if (masterPasswordField.type === 'password') {
+      masterPasswordField.type = 'text';
+      masterPasswordIcon.src = 'assets/icons/hide.png';
+    } else {
+      masterPasswordField.type = 'password';
+      masterPasswordIcon.src = 'assets/icons/eye.png';
+    }
+  }
+
+
+
 }
 

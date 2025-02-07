@@ -44,7 +44,22 @@
       <div class="wishlist-summary">
         <h3>WISHLIST SUMMARY</h3>
         <p>Save your favorite products for later! Easily move items to your cart when you're ready to purchase.</p>
-        <button class="btn-clear-wishlist" (click)="clearWishlist()" [disabled]="wishlistItems.length === 0">
+
+        <div class="wishlist-info">
+          <p><strong>Total Items:</strong> {{ wishlistItems.length }}</p>
+          <p><strong>Total Value:</strong> ${{ calculateWishlistTotal() }}</p>
+        </div>
+
+        <div class="extra-info">
+          <p>Your wishlist is a great way to keep track of products you like. Come back anytime to view or purchase these items.</p>
+          <p>If you have a question about a product, feel free to reach out to our support team for more information.</p>
+        </div>
+
+        <button class="btn btn-dark btn-block" (click)="moveAllToCart()" [disabled]="wishlistItems.length === 0">
+          Move All to Cart
+        </button>
+
+        <button class="btn btn-light btn-block" (click)="clearWishlist()" [disabled]="wishlistItems.length === 0">
           Clear Wishlist
         </button>
       </div>

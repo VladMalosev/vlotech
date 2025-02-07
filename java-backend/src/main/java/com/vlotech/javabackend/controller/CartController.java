@@ -89,5 +89,33 @@ public class CartController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+    @PostMapping("/update")
+    public ResponseEntity<CartItem> updateCartItemQuantity(@AuthenticationPrincipal UserDetails userDetails,
+                                                           @RequestParam String cartItemId,
+                                                           @RequestParam int quantity) {
+        if (userDetails == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        String userId = userDetails.getUsername();
+        Optional<User> optionalUser = userService.findByEmail(userId);
+        if (optionalUser.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        User user = optionalUser.get();
+
+        // Find the CartItem by ID
+        Optional<CartItem> optionalCartItem = cartService.getCartItemById(cartItemId);
+        if (optionalCartItem.isEmpty() || !optionalCartItem.get().getUser().getId().equals(user.getId())) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        CartItem cartItem = optionalCartItem.get();
+        cartItem.setQuantity(quantity);  // Update the quantity
+        cartService.save(cartItem);  // Save the updated cart item
+
+        return ResponseEntity.ok(cartItem);
+    }
 
 }

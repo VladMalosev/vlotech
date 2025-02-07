@@ -20,7 +20,9 @@ export class WishlistService {
   }
 
   removeFromWishlist(wishlistItemId: string): Observable<any> {
-    return this.http.delete(`http://localhost:8080/api/wishlist/remove/${wishlistItemId}`, { withCredentials: true });
+    return this.http.delete(`${this.baseUrl}/remove/${wishlistItemId}`, { withCredentials: true });
   }
-
+  clearWishlist(): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/clear`, { withCredentials: true });
+  }
 }

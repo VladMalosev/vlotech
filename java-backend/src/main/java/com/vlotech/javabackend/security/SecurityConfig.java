@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**", "/api/products/**").permitAll()
-                        .requestMatchers("/api/cart/**").authenticated()
+                        .requestMatchers("/api/cart/**", "/api/wishlist/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

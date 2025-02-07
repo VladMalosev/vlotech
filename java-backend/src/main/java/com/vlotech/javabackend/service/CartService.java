@@ -26,11 +26,6 @@ public class CartService {
     }
 
     public CartItem addToCart(String userId, String productId, int quantity) {
-        // Log the user, product, and quantity for debugging
-        System.out.println("userId: " + userId);
-        System.out.println("productId: " + productId);
-        System.out.println("quantity: " + quantity);
-
         Optional<User> user = userRepository.findByEmail(userId);
         Optional<Product> product = productRepository.findById(productId);
 
@@ -47,18 +42,17 @@ public class CartService {
         CartItem cartItem;
         if (existingCartItem.isPresent()) {
             cartItem = existingCartItem.get();
-            // If the item already exists in the cart, just update the quantity correctly
-            cartItem.setQuantity(quantity);
+            cartItem.setQuantity(cartItem.getQuantity() + quantity); // Update the quantity if item already exists
         } else {
             cartItem = new CartItem();
             cartItem.setUser(user.get());
             cartItem.setProduct(product.get());
-            cartItem.setQuantity(quantity);
+            cartItem.setQuantity(quantity); // Add new item if it doesn't exist
         }
 
-        // Save the updated cart item
-        return cartItemRepository.save(cartItem);
+        return cartItemRepository.save(cartItem);  // Save to database
     }
+
 
 
 
@@ -75,5 +69,13 @@ public class CartService {
         } else {
             return false;
         }
+    }
+    public Optional<CartItem> getCartItemById(String cartItemId) {
+        return cartItemRepository.findById(cartItemId);
+    }
+
+    // Method to save cart item (used for updating quantity)
+    public CartItem save(CartItem cartItem) {
+        return cartItemRepository.save(cartItem);
     }
 }

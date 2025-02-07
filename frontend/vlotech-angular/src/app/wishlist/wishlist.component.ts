@@ -53,7 +53,25 @@ export class WishlistComponent implements OnInit {
   }
 
 
-  clearWishlist(): void {}
+  clearWishlist(): void {
+    this.authService.isAuthenticated().subscribe(isAuthenticated => {
+      if (!isAuthenticated) {
+        this.router.navigate(['/login']);
+        return;
+      }
+
+      this.wishlistService.clearWishlist().subscribe({
+        next: () => {
+          console.log('Wishlist cleared');
+          this.wishlistItems = []; // Clear UI
+        },
+        error: (error) => {
+          console.error('Error clearing wishlist:', error);
+        }
+      });
+    });
+  }
+
 
   removeFromWishlist(item: any): void {
     // Stop event propagation to prevent triggering navigation
@@ -106,5 +124,15 @@ export class WishlistComponent implements OnInit {
     this.wishlistItems = this.wishlistItems.filter(item => item.product.id !== productId);
   }
 
+  calculateWishlistTotal(): number {
+    return this.wishlistItems.reduce((total, item) => total + item.product.price, 0).toFixed(2);
+  }
 
+  moveAllToCart(): void {
+    this.wishlistItems.forEach(item => {
+      this.moveToCart(item.product.id, 1);
+    });
+
+    this.wishlistItems = [];
+  }
 }

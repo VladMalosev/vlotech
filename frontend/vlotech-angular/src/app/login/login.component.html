@@ -4,26 +4,37 @@
     <section class="wrapper">
       <div class="heading">
         <h1 class="text text-large">Sign In</h1>
-        <p class="text text-normal">New user? <span><a href="/register" class="text text-links">Create an account</a></span>
-        </p>
+        <p class="text text-normal">New user? <span><a href="/register" class="text text-links">Create an account</a></span></p>
       </div>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
         <!-- Email Input -->
-        <div class="input-control">
+        <div [ngClass]="{'error-wrapper': loginForm.get('email')?.touched && loginForm.get('email')?.errors}" class="input-control">
           <label for="email" class="input-label" hidden>Email Address</label>
-          <input type="email" name="email" id="email" class="input-field" placeholder="Email Address" formControlName="email" >
+          <input type="email" name="email" id="email" class="input-field" placeholder="Email Address" formControlName="email">
+          <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']" class="error-message">
+            Email is required.
+          </div>
+          <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['email']" class="error-message">
+            Please enter a valid email address.
+          </div>
         </div>
 
         <!-- Password Input -->
-        <div class="input-control">
-          <label for="password" class="input-label" hidden>Password</label>
-          <input type="password" name="password" id="password" class="input-field" placeholder="Password" formControlName="password">
+        <div [ngClass]="{'error-wrapper': loginForm.get('password')?.touched && loginForm.get('password')?.errors}" class="input-control">
+          <div class="password-container">
+            <input type="password" name="password" id="password" class="input-field" placeholder="Password" formControlName="password" aria-label="Password">
+            <button type="button" class="toggle-password-btn" (click)="toggleMasterPasswordVisibility()">
+              <img src="assets/icons/eye.png" alt="Show Password" id="masterPasswordIcon" class="password-icon">
+            </button>
+          </div>
+          <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']" class="error-message">
+            Password is required.
+          </div>
         </div>
 
         <!-- Forgot Password Link -->
         <a href="#" class="text text-links forgot-password">Forgot Password</a>
-
 
         <div class="input-control horizontal">
           <button type="submit" [disabled]="loginForm.invalid" class="input-submit">Sign In</button>
