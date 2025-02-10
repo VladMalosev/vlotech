@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { AuthService } from '../auth.service';
 import { UserService } from '../user.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+
+declare var google: any;
 
 @Component({
   selector: 'app-user-profile',
@@ -11,7 +13,9 @@ import { Router } from '@angular/router';
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css'
 })
-export class UserProfileComponent implements OnInit {
+
+export class UserProfileComponent implements OnInit, AfterViewInit {
+  @ViewChild('mapContainer', { static: false }) mapContainer!: ElementRef; // Access the map container
   selectedTab: string = 'info'; // Default selected tab is "My Information"
   user: any = {};
   editUser: any = {};
@@ -19,14 +23,111 @@ export class UserProfileComponent implements OnInit {
   changeEmailData = { newEmail: '' };
   emailError: string = ''; // Error message for email validation
   savedLocations: { lat: number; lng: number; address: string }[] = [];
-  private GOOGLE_MAPS_API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY'; // TEST
-  private googleMapsLoaded = false;
+  newLocation: { address: string, name: string } = { address: '', name: '' };
+  private map: any;
+  private marker: any;
+
+
+
+
 
   constructor(private authService: AuthService, private userService: UserService, private router: Router) {}
 
+
+
   ngOnInit(): void {
     this.loadUserProfile();
+    if (this.selectedTab === 'saved-location') {
+      setTimeout(() => this.loadGoogleMapScript(), 500);
+    }
   }
+
+  ngAfterViewInit(): void {
+    if (this.selectedTab === 'saved-location') {
+      this.loadGoogleMapScript();
+    }
+  }
+
+
+  loadGoogleMapScript(): void {
+    if (typeof google !== 'undefined' && google.maps) {
+      this.initMap();
+      return;
+    }
+
+    const existingScript = document.querySelector('script[src*="maps.googleapis.com"]');
+    if (!existingScript) {
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/{API_KEY}}&libraries=places,marker`;
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        this.initMap();
+      };
+      document.body.appendChild(script);
+    } else {
+      this.initMap();
+    }
+  }
+
+
+  selectSavedLocationTab(): void {
+    this.selectedTab = 'saved-location';
+
+    this.loadGoogleMapScript();
+  }
+
+  initMap(): void {
+    if (!this.mapContainer || !this.mapContainer.nativeElement) {
+      console.error("mapContainer is not available.");
+      return;
+    }
+
+    const mapOptions = {
+      center: {lat: 40.730610, lng: -73.935242}, // Default center (New York)
+      zoom: 15,
+      mapId: 'DEMO_MAP_ID',
+    };
+
+    this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
+
+    // Initialize Places Autocomplete
+    const input = document.getElementById('autocomplete-input') as HTMLInputElement;
+    const autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.bindTo('bounds', this.map); // Bound the autocomplete results to the map bounds
+
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      if (!place.geometry) {
+        console.error("No geometry available for this place.");
+        return;
+      }
+      this.map.setCenter(place.geometry.location);
+      this.map.setZoom(15);
+
+      this.placeMarker(place.geometry.location);
+      this.savedLocations.push({
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng(),
+        address: place.formatted_address
+      });
+    });
+  }
+
+  placeMarker(location: any): void {
+    if (this.marker) {
+      this.marker.setMap(null);
+    }
+
+    this.marker = new google.maps.marker.AdvancedMarkerElement({
+      position: location,
+      map: this.map,
+      title: 'Selected Location',
+    });
+  }
+
+
 
   loadUserProfile() {
     this.userService.getUserProfile().subscribe((data) => {
@@ -120,6 +221,16 @@ export class UserProfileComponent implements OnInit {
       console.log("Account deleted");
     }
   }
+  editLocation(index: number): void {
+    console.log('Editing location:', this.savedLocations[index]);
+    // Implement logic to edit location
+  }
 
-
+  deleteAddress(index: number): void {
+    const confirmDelete = confirm("Are you sure you want to delete this address?");
+    if (confirmDelete) {
+      this.savedLocations.splice(index, 1); // Remove the address from the list
+      console.log('Deleted address:', this.savedLocations[index]);
+    }
+  }
 }
