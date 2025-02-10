@@ -42,6 +42,7 @@
 .product-image-container img {
   max-width: 80px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .product-title {

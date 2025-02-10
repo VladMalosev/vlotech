@@ -18,7 +18,7 @@
           <tr class="product-row" *ngFor="let item of cartItems">
             <td>
               <figure class="product-image-container">
-                <img [src]="item.product.imageUrl" alt="{{ item.product.name }}">
+                <img [src]="item.product.imageUrl" alt="{{ item.product.name }}" (click)="navigateToProductDetails(item.product.id)">
                 <button class="btn-remove" (click)="removeItem(item)">✖</button>
               </figure>
             </td>

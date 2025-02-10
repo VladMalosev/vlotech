@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -19,7 +20,7 @@ export class CartComponent implements OnInit {
   selectedDelivery: string = "standard";
   deliveryCharge: number = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.cartService.getCartItems().subscribe(
@@ -105,4 +106,8 @@ export class CartComponent implements OnInit {
       alert("You must agree to the terms and conditions.");
     }
   }
+  navigateToProductDetails(productId: string): void {
+    this.router.navigate(['/product', productId]);
+  }
+
 }

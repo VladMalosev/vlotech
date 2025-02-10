@@ -14,59 +14,69 @@
   color: #333;
   margin-bottom: 20px;
 }
+.tab-menu ul {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap if needed */
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+  justify-content: center; /* Centers the tabs */
+}
 
-.tab-menu {
-  ul {
-    display: flex;
-    gap: 15px;
-    list-style: none;
-    padding: 0;
-    margin-bottom: 30px;
-    cursor: pointer;
+.tab-menu ul li {
+  flex-grow: 1; /* Ensures tabs distribute evenly */
+  text-align: center;
+}
 
-    li {
-      a {
-        text-decoration: none;
-        padding: 12px 20px;
-        border-radius: 8px;
-        color: #444;
-        font-weight: 500;
-        text-transform: uppercase;
-        font-size: 14px;
-        position: relative;
-        transition: all 0.3s ease;
+.tab-menu ul li a {
+  display: block; /* Makes the anchor a block for proper spacing */
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: #444;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Prevents text from wrapping */
+}
 
-        &.active {
-          color: #ffffff;
-          background-color: #007bff;
-          box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-        }
+.tab-menu ul li a.active {
+  color: #ffffff;
+  background-color: #007bff;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
 
-        &:hover {
-          color: #007bff;
-          background-color: #f7f7f7;
-        }
+.tab-menu ul li a:hover {
+  color: #007bff;
+  background-color: #f7f7f7;
+}
 
-        &:after {
-          content: '';
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: 2px;
-          background-color: #007bff;
-          transform: scaleX(0);
-          transition: transform 0.3s ease;
-          transform-origin: bottom right;
-        }
+.tab-menu ul li a:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #007bff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: bottom right;
+}
 
-        &:hover:after {
-          transform: scaleX(1);
-          transform-origin: bottom left;
-        }
-      }
-    }
-  }
+
+.profile-container > div {
+  margin-top: 20px;
+}
+
+/* Ensure section headings do not overlap */
+.profile-container h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: left;
 }
 
 .user-info {

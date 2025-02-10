@@ -18,6 +18,9 @@ export class UserProfileComponent implements OnInit {
   changePasswordData = { oldPassword: '', newPassword: '' };
   changeEmailData = { newEmail: '' };
   emailError: string = ''; // Error message for email validation
+  savedLocations: { lat: number; lng: number; address: string }[] = [];
+  private GOOGLE_MAPS_API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY'; // TEST
+  private googleMapsLoaded = false;
 
   constructor(private authService: AuthService, private userService: UserService, private router: Router) {}
 
@@ -117,4 +120,6 @@ export class UserProfileComponent implements OnInit {
       console.log("Account deleted");
     }
   }
+
+
 }

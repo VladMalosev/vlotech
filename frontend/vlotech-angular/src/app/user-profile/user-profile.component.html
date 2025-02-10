@@ -8,6 +8,7 @@
       <li><a (click)="selectedTab = 'services'" [class.active]="selectedTab === 'services'">Manage Services</a></li>
       <li><a (click)="selectedTab = 'change-password'" [class.active]="selectedTab === 'change-password'">Change Password</a></li>
       <li><a (click)="selectedTab = 'change-email'" [class.active]="selectedTab === 'change-email'">Change Email</a></li>
+      <li><a (click)="selectedTab = 'saved-location'" [class.active]="selectedTab === 'saved-location'">Saved Delivery Locations</a></li>
     </ul>
   </div>
 
@@ -19,42 +20,6 @@
       <p><strong>Phone Number:</strong> {{ user.phoneNumber }}</p>
     </div>
 
-    <div class="account-stats">
-      <div class="stat-item">
-        <span class="stat-number">0</span>
-        <a routerLink="/orders">Orders</a>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">0</span>
-        <a routerLink="/orders?status=in-progress">In Progress</a>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">0</span>
-        <a routerLink="/loyalty">Loyalty Points</a>
-      </div>
-    </div>
-
-    <div class="account-benefits">
-      <h3>Your Benefits</h3>
-      <ul>
-        <li>Earn 0.5% back as loyalty points on purchases.</li>
-        <li>30-day return policy.</li>
-        <li>Exclusive discounts and deals.</li>
-        <li>Access to premium customer support.</li>
-      </ul>
-    </div>
-
-    <div class="order-statistics">
-      <h2>No Purchases Yet</h2>
-      <p>Follow these steps to place your first order:</p>
-      <ul>
-        <li>Choose your product from a variety of categories.</li>
-        <li>Select a delivery option that suits you best.</li>
-        <li>Pick a secure payment method.</li>
-        <li>Complete your purchase with ease.</li>
-      </ul>
-    </div>
-
     <div class="account-management">
       <button class="exit-account" (click)="logout()">Exit Account</button>
       <button class="delete-account" (click)="deleteAccount()">Delete Account</button>
@@ -64,16 +29,15 @@
   <!-- Edit Profile Section -->
   <div class="edit-profile" *ngIf="selectedTab === 'edit'">
     <h2>Edit Profile</h2>
-    <p>Update your information to ensure your account is always up to date. Change your name, phone number, and more.</p>
     <form (submit)="updateProfile()">
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" [(ngModel)]="editUser.firstName" name="firstName" placeholder="Enter your full name" required>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" [(ngModel)]="editUser.firstName" name="firstName" required>
 
       <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" [(ngModel)]="editUser.lastName" name="lastName" placeholder="Enter your last name" required>
+      <input type="text" id="lastName" [(ngModel)]="editUser.lastName" name="lastName" required>
 
       <label for="phoneNumber">Phone Number:</label>
-      <input type="text" id="phoneNumber" [(ngModel)]="editUser.phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+      <input type="text" id="phoneNumber" [(ngModel)]="editUser.phoneNumber" name="phoneNumber" required>
 
       <button type="submit">Save Changes</button>
     </form>
@@ -82,56 +46,40 @@
   <!-- Manage Services Section -->
   <div class="manage-services" *ngIf="selectedTab === 'services'">
     <h2>Manage Services</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores aspernatur assumenda commodi consectetur cumque deleniti dolore dolores error incidunt iure magnam mollitia natus nihil officia pariatur, quasi reprehenderit sit temporibus tenetur! Aperiam aut autem corporis deserunt eaque error, ex expedita quis ratione rem sed similique suscipit ut veniam vero. Alias amet culpa cum eligendi fuga laboriosam nihil numquam obcaecati quas rerum! Accusantium alias cumque ea hic inventore labore libero maiores maxime minus molestiae obcaecati omnis perspiciatis quasi qui, quibusdam quisquam, rem reprehenderit tempora vel veritatis. Accusamus corporis enim libero nihil non, numquam omnis sed voluptate. Architecto error et iusto nisi soluta velit? Dolores ducimus eius eligendi enim excepturi exercitationem itaque iure labore laudantium minus, modi, natus pariatur possimus rerum, sequi vel veritatis? Ad commodi doloribus magni officiis?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores aspernatur assumenda commodi consectetur cumque deleniti dolore dolores error incidunt iure magnam mollitia natus nihil officia pariatur, quasi reprehenderit sit temporibus tenetur! Aperiam aut autem corporis deserunt eaque error, ex expedita quis ratione rem sed similique suscipit ut veniam vero. Alias amet culpa cum eligendi fuga laboriosam nihil numquam obcaecati quas rerum! Accusantium alias cumque ea hic inventore labore libero maiores maxime minus molestiae obcaecati omnis perspiciatis quasi qui, quibusdam quisquam, rem reprehenderit tempora vel veritatis. Accusamus corporis enim libero nihil non, numquam omnis sed voluptate. Architecto error et iusto nisi soluta velit? Dolores ducimus eius eligendi enim excepturi exercitationem itaque iure labore laudantium minus, modi, natus pariatur possimus rerum, sequi vel veritatis? Ad commodi doloribus magni officiis?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores aspernatur assumenda commodi consectetur cumque deleniti dolore dolores error incidunt iure magnam mollitia natus nihil officia pariatur, quasi reprehenderit sit temporibus tenetur! Aperiam aut autem corporis deserunt eaque error, ex expedita quis ratione rem sed similique suscipit ut veniam vero. Alias amet culpa cum eligendi fuga laboriosam nihil numquam obcaecati quas rerum! Accusantium alias cumque ea hic inventore labore libero maiores maxime minus molestiae obcaecati omnis perspiciatis quasi qui, quibusdam quisquam, rem reprehenderit tempora vel veritatis. Accusamus corporis enim libero nihil non, numquam omnis sed voluptate. Architecto error et iusto nisi soluta velit? Dolores ducimus eius eligendi enim excepturi exercitationem itaque iure labore laudantium minus, modi, natus pariatur possimus rerum, sequi vel veritatis? Ad commodi doloribus magni officiis?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+  </div>
 
-    <!-- Add services management logic here -->
+  <!-- Saved Location Section -->
+  <div class="saved-location" *ngIf="selectedTab === 'saved-location'">
+    <h2>Saved Delivery Locations</h2>
+    <p>Manage your saved delivery addresses.</p>
+
+    <div #mapContainer class="map-container"></div>
   </div>
 
   <!-- Change Password Section -->
   <div class="change-password" *ngIf="selectedTab === 'change-password'">
     <h2>Change Password</h2>
-
-    <div class="info-box">
-      <p>Changing your password is an essential step in keeping your account secure. A strong password helps protect your personal information, orders, and payment details from unauthorized access. It’s recommended to use a password that contains at least <strong>12 characters</strong>, including uppercase and lowercase letters, numbers, and special symbols. Avoid using easily guessable passwords, such as your name, birth date, or common words.</p>
-
-      <p>For security reasons, you will need to enter your <strong>current password</strong> before setting a new one. This step ensures that only authorized users can modify the account credentials. If you have forgotten your current password, you can reset it via the <a routerLink="/forgot-password">forgot password</a> option on the login page.</p>
-
-      <p>Once your password is successfully changed, you will be <strong>logged out of all active sessions</strong> as an extra security measure. You will need to log in again using your new password. If you receive a password change notification but didn’t request it, <strong>contact customer support</strong> immediately.</p>
-    </div>
-
     <form (submit)="changePassword()">
       <label for="old-password">Old Password:</label>
-      <input type="password" id="old-password" [(ngModel)]="changePasswordData.oldPassword" name="old-password" placeholder="Enter your old password" required>
+      <input type="password" id="old-password" [(ngModel)]="changePasswordData.oldPassword" name="oldPassword" required>
 
       <label for="new-password">New Password:</label>
-      <input type="password" id="new-password" [(ngModel)]="changePasswordData.newPassword" name="new-password" placeholder="Enter your new password" required>
+      <input type="password" id="new-password" [(ngModel)]="changePasswordData.newPassword" name="newPassword" required>
 
       <button type="submit">Change Password</button>
     </form>
   </div>
 
-
   <!-- Change Email Section -->
   <div class="change-email" *ngIf="selectedTab === 'change-email'">
     <h2>Change Email</h2>
-
-    <div class="info-box">
-      <p>Updating your email address ensures you continue to receive important notifications regarding your account, including <strong>order confirmations, password resets, and security alerts</strong>. Before proceeding, make sure the new email address is valid and accessible, as you will need to verify it.</p>
-
-      <p>To update your email, you must enter a <strong>new, unused email address</strong> that is not already associated with another account. After submitting the change, a <strong>verification link</strong> will be sent to the new email. You will need to click the link to confirm the update before the change takes effect. If you don’t receive the verification email within a few minutes, check your spam or junk folder.</p>
-
-      <p>For security reasons, after changing your email, you will be <strong>automatically logged out</strong>, and you must <strong>log in again using the new email</strong>. If you receive an email change notification but did not request it, <strong>report the issue immediately</strong> to prevent unauthorized access.</p>
-    </div>
-
     <form (submit)="changeEmail()">
       <label for="new-email">New Email:</label>
-      <input type="email" id="new-email" [(ngModel)]="changeEmailData.newEmail" name="new-email" placeholder="Enter your new email" required>
+      <input type="email" id="new-email" [(ngModel)]="changeEmailData.newEmail" name="new-email" required>
 
       <button type="submit">Change Email</button>
     </form>
-
     <div *ngIf="emailError" class="error-message">{{ emailError }}</div>
   </div>
 </div>
