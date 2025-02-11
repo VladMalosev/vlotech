@@ -142,7 +142,7 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
     const existingScript = document.querySelector('script[src*="maps.googleapis.com"]');
     if (!existingScript) {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyA3BSq2Md0AZG41QujAinXvmEqzUhXV4_k&libraries=places,marker`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=&libraries=places,marker`;
       script.async = true;
       script.defer = true;
       script.onload = () => {

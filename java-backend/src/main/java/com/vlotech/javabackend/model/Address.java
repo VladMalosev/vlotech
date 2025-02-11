@@ -1,5 +1,6 @@
 package com.vlotech.javabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -13,28 +14,24 @@ public class Address {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @NotBlank(message = "Country cannot be blank")
     @Size(max = 100, message = "Country cannot exceed 100 characters")
     @Column(name = "country", nullable = false, length = 100)
     private String country;
 
-    @NotBlank(message = "City cannot be blank")
     @Size(max = 100, message = "City cannot exceed 100 characters")
     @Column(name = "city", nullable = false, length = 100)
     private String city;
 
-    @NotBlank(message = "Street cannot be blank")
     @Size(max = 255, message = "Street cannot exceed 255 characters")
     @Column(name = "street", nullable = false, length = 255)
     private String street;
 
-    @NotBlank(message = "House cannot be blank")
-    @Size(max = 50, message = "House cannot exceed 50 characters")
-    @Column(name = "house", nullable = false, length = 50)
-    private String house;
+    @Size(max = 50, message = "Street number cannot exceed 50 characters")
+    @Column(name = "street_number", length = 50)  // Now it's not mandatory
+    private String streetNumber;
 
     @Size(max = 50, message = "Flat cannot exceed 50 characters")
-    @Column(name = "flat", length = 50)
+    @Column(name = "flat", length = 50)  // Optional flat field
     private String flat;
 
     @Size(max = 20, message = "Zip code cannot exceed 20 characters")
@@ -47,8 +44,14 @@ public class Address {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private User user;
 
+    @Column(name = "is_primary", nullable = false)
+    private boolean isPrimary = false; // Default is false (not the primary address)
+
+
+    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -81,12 +84,12 @@ public class Address {
         this.street = street;
     }
 
-    public String getHouse() {
-        return house;
+    public String getStreetNumber() {
+        return streetNumber;
     }
 
-    public void setHouse(String house) {
-        this.house = house;
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
     }
 
     public String getFlat() {
@@ -97,13 +100,6 @@ public class Address {
         this.flat = flat;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
     public String getZipCode() {
         return zipCode;
     }
@@ -118,5 +114,21 @@ public class Address {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public boolean isPrimary() {
+        return isPrimary;
+    }
+
+    public void setPrimary(boolean primary) {
+        isPrimary = primary;
     }
 }
