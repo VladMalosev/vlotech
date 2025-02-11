@@ -26,12 +26,6 @@ export class UserService {
   checkEmailAvailability(newEmail: string) {
     return this.http.get<{ isAvailable: boolean }>(`${this.apiUrl}/check-email`, { params: { email: newEmail }, withCredentials: true });
   }
-  updateAddress(address: any) {
-    return this.http.put('/api/user/address', address);
-  }
 
-  deleteAddress(address: any) {
-    return this.http.delete('/api/user/address', { params: { address: address.address } });
-  }
 
 }

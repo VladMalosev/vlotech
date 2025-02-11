@@ -84,7 +84,7 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
   </div>
 
-  <!-- Delivery Locations Section -->
+  <!-- Saved Delivery Locations Section -->
   <div class="saved-location" *ngIf="selectedTab === 'saved-location'">
     <h2>Saved Delivery Locations</h2>
     <p>Manage your saved delivery addresses.</p>
@@ -96,14 +96,71 @@
     <div #mapContainer class="map-container" style="height: 400px; width: 100%;"></div>
 
     <!-- Displaying saved locations -->
-    <div *ngFor="let location of savedLocations; let i = index">
-      <div class="location-item">
-        <p>{{ location.address }}</p>
+    <div *ngIf="savedLocations.length === 0">
+      <p>You have no saved delivery locations.</p>
+    </div>
+
+    <div *ngIf="savedLocations.length > 0">
+      <div *ngFor="let location of savedLocations; let i = index" class="location-item">
+        <p><strong>House Number:</strong> {{ location.streetNumber }}</p>
+        <p><strong>Street:</strong> {{ location.street }}</p>
+        <p><strong>City:</strong> {{ location.city }}</p>
+        <p><strong>State:</strong> {{ location.state }}</p>
+        <p><strong>Zipcode:</strong> {{ location.zipcode }}</p>
+        <p><strong>Country:</strong> {{ location.country }}</p>
+        <p><strong>Flat Number:</strong> {{ location.flatNumber || 'N/A' }}</p>
+
+        <!-- Edit and Primary buttons -->
         <button (click)="editLocation(i)">Edit</button>
         <button (click)="deleteAddress(i)">Delete Address</button>
+        <button (click)="setPrimary(i)" [disabled]="location.isPrimary">Set as Primary</button>
       </div>
     </div>
+
+    <!-- Edit Location Form -->
+    <div *ngIf="editingLocation !== null">
+      <h3>Edit Location</h3>
+      <form (submit)="saveLocationChanges()">
+        <!-- Location Name -->
+        <label for="location-name">Location Name:</label>
+        <input type="text" [(ngModel)]="savedLocations[editingLocation].name" id="location-name" name="location-name" required>
+
+        <!-- House Number -->
+        <label for="location-house-number">House Number:</label>
+        <input type="text" [(ngModel)]="savedLocations[editingLocation].streetNumber" id="location-house-number" name="location-house-number">
+
+        <!-- Street Address -->
+        <label for="location-street">Street:</label>
+        <input type="text" [(ngModel)]="savedLocations[editingLocation].street" id="location-street" name="location-street" required>
+
+        <!-- City -->
+        <label for="location-city">City:</label>
+        <input type="text" [(ngModel)]="savedLocations[editingLocation].city" id="location-city" name="location-city" required>
+
+        <!-- State -->
+        <label for="location-state">State:</label>
+        <input type="text" [(ngModel)]="savedLocations[editingLocation].state" id="location-state" name="location-state" required>
+
+        <!-- Zipcode -->
+        <label for="location-zipcode">Zipcode:</label>
+        <input type="text" [(ngModel)]="savedLocations[editingLocation].zipcode" id="location-zipcode" name="location-zipcode" required>
+
+        <!-- Country -->
+        <label for="location-country">Country:</label>
+        <input type="text" [(ngModel)]="savedLocations[editingLocation].country" id="location-country" name="location-country" required>
+
+        <!-- Flat Number -->
+        <label for="location-flat-number">Flat Number (Optional):</label>
+        <input type="text" [(ngModel)]="savedLocations[editingLocation].flatNumber" id="location-flat-number" name="location-flat-number">
+
+        <button type="submit">Save Changes</button>
+        <button type="button" (click)="cancelEditingLocation()">Cancel</button>
+      </form>
+    </div>
+
+
   </div>
+
 
 
 
