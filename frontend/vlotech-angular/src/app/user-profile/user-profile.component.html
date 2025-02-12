@@ -117,7 +117,7 @@
         <button (click)="setPrimary(i)" [disabled]="location.primary">Set as Primary</button>
 
         <!-- Editable Form - Initially hidden, only shown when the user wants to edit the address -->
-        <div *ngIf="editingLocation === i">
+        <div *ngIf="editingLocation === i" class="editing-location-form">
           <h3>Edit Location</h3>
           <form (submit)="saveLocationChanges()">
             <label for="location-house-number">House Number:</label>
@@ -157,6 +157,13 @@
   <!-- Change Password Section -->
   <div class="change-password" *ngIf="selectedTab === 'change-password'">
     <h2>Change Password</h2>
+
+    <p>
+      Changing your password will require reauthentication. Make sure to remember your old password
+      as you will need it to confirm this change. After successfully changing your password, you may need
+      to log in again to access your account.
+    </p>
+
     <form (submit)="changePassword()">
       <label for="old-password">Old Password:</label>
       <input type="password" id="old-password" [(ngModel)]="changePasswordData.oldPassword" name="oldPassword" required>
@@ -171,6 +178,14 @@
   <!-- Change Email Section -->
   <div class="change-email" *ngIf="selectedTab === 'change-email'">
     <h2>Change Email</h2>
+
+    <p>
+      Changing your email address requires you to verify the new email address. A verification email will
+      be sent to the new email address you provide. Please check your inbox and follow the instructions
+      in the email to complete the change. You may need to log in again after updating your email.
+    </p>
+
+
     <form (submit)="changeEmail()">
       <label for="new-email">New Email:</label>
       <input type="email" id="new-email" [(ngModel)]="changeEmailData.newEmail" name="new-email" required>
