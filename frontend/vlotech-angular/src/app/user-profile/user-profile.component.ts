@@ -23,36 +23,37 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
   changeEmailData = { newEmail: '' };
   emailError: string = ''; // Error message for email validation
   savedLocations: {
+    id?: number;
     lat: number;
     lng: number;
     street: string;
     city: string;
     state: string;
-    zipcode: string;
+    zipCode: string;
     country: string;
     name: string;
     contact?: string;
     streetNumber: string;
-    flatNumber: string;
-    isPrimary?: boolean;
+    flat: string;
+    primary?: boolean;
   }[] = [];
   newLocation: {
     streetNumber: string,
     street: string,
     city: string,
     state: string,
-    zipcode: string,
+    zipCode: string,
     country: string,
-    flatNumber: string,
+    flat: string,
     name: string,
   } = {
     streetNumber: '',
     street: '',
     city: '',
     state: '',
-    zipcode: '',
+    zipCode: '',
     country: '',
-    flatNumber: '',
+    flat: '',
     name: ''
   };
   private map: any;
@@ -70,32 +71,6 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
     this.editingLocation = index; // Set the location index for editing
   }
 
-  saveLocationChanges(): void {
-    if (this.editingLocation === null) {
-      console.error('No location is being edited.');
-      return;
-    }
-
-    const updatedLocation = this.savedLocations[this.editingLocation];
-
-    console.log('Saving updated location:', JSON.stringify(updatedLocation, null, 2));
-
-    this.addressService.updateAddress(updatedLocation).subscribe({
-      next: (response) => {
-        console.log('Location updated successfully:', JSON.stringify(response, null, 2));
-        this.editingLocation = null;
-        this.loadSavedAddresses();
-      },
-      error: (error) => {
-        console.error('Error updating location:', error);
-        if (error.error) {
-          console.error('Error details:', JSON.stringify(error.error, null, 2));
-        }
-      }
-    });
-  }
-
-
 
   loadSavedAddresses(): void {
     console.log('Fetching saved addresses from AddressService...');
@@ -110,12 +85,34 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
       },
       error: (error) => {
         console.error('Error fetching saved addresses:', error);
-        if (error.status) {
-          console.error(`HTTP Error Status: ${error.status}, Message: ${error.message}`);
-        }
       }
     });
   }
+
+
+  saveLocationChanges(): void {
+    if (this.editingLocation !== null) {
+      const addressToUpdate = this.savedLocations[this.editingLocation];
+      const addressId = addressToUpdate.id;
+
+      if (addressId !== undefined) {
+        this.addressService.updateAddress(addressId, addressToUpdate).subscribe({
+          next: () => {
+            console.log('Address updated successfully.');
+            this.editingLocation = null;
+            this.loadSavedAddresses();  // Reload addresses to reflect changes
+          },
+          error: (error) => {
+            console.error('Error updating address:', error);
+          }
+        });
+      } else {
+        console.error('Address ID is undefined, cannot update address.');
+      }
+    }
+  }
+
+
 
 
 
@@ -167,7 +164,7 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
     }
 
     const mapOptions = {
-      center: { lat: 40.730610, lng: -73.935242 }, // Default center (New York)
+      center: { lat: 59.436962, lng: 24.753574 },
       zoom: 15,
       mapId: 'DEMO_MAP_ID',
     };
@@ -200,7 +197,7 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
         component.types.includes('locality'))?.long_name || '';
       const state = place.address_components.find((component: any) =>
         component.types.includes('administrative_area_level_1'))?.long_name || '';
-      const zipcode = place.address_components.find((component: any) =>
+      const zipCode = place.address_components.find((component: any) =>
         component.types.includes('postal_code'))?.long_name || '';
       const country = place.address_components.find((component: any) =>
         component.types.includes('country'))?.long_name || '';
@@ -219,29 +216,29 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
         streetNumber: streetNumber,
         city: city,
         state: state,
-        zipcode: zipcode,
+        zipCode: zipCode,
         country: country,
         name: this.newLocation.name,
         contact: '',
-        flatNumber: ''
+        flat: ''
       };
-
-      // Push the new location to saved locations array
-      this.savedLocations.push(newLocation);
 
       // Send the new address to the backend
       const userId = this.user.id;
-
       this.addressService.addAddress(userId, newLocation).subscribe({
         next: (response) => {
           console.log('Address added:', response);
+
+          // Once the new address is added successfully, reload the addresses
+          this.loadSavedAddresses();
         },
         error: (error) => {
           console.error('Error adding address:', error);
         }
       });
     });
-}
+  }
+
 
   placeMarker(location: any): void {
     if (this.marker) {
@@ -343,64 +340,73 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
       console.log('Account deleted');
     }
   }
-
   deleteAddress(index: number): void {
     const confirmDelete = confirm('Are you sure you want to delete this address?');
     if (confirmDelete) {
-      this.savedLocations.splice(index, 1); // Remove the address from the list
-      console.log('Deleted address:', this.savedLocations[index]);
+      const address = this.savedLocations[index];
+      console.log('Deleting address:', address);
+
+      // Check if address.id is valid
+      const addressId = address.id;
+      if (addressId && addressId !== null && addressId !== undefined) {
+        this.addressService.deleteAddress(addressId).subscribe({
+          next: () => {
+            console.log('Address deleted successfully:', addressId);
+            // Reload saved addresses to ensure it's in sync
+            this.loadSavedAddresses();
+          },
+          error: (error) => {
+            console.error('Error deleting address:', error);
+          }
+        });
+      } else {
+        console.error('Address ID is undefined or invalid, cannot delete address.');
+      }
     }
   }
-  addNewLocation(): void {
 
-    const userId = this.user.id;  // Assuming the user object has an id property
 
-    // Prepare the data for the new location
-    const newLocation = {
-      streetNumber: this.newLocation.streetNumber,
-      street: this.newLocation.street,
-      city: this.newLocation.city,
-      state: this.newLocation.state,
-      zipcode: this.newLocation.zipcode,
-      country: this.newLocation.country,
-      flatNumber: this.newLocation.flatNumber,
-    };
 
-    // Call the AddressService to save the new address
-    console.log('Adding new location:', this.newLocation);
-    this.addressService.addAddress(userId, newLocation).subscribe({
-      next: (response) => {
-        console.log('New address added:', response);
-        this.loadSavedAddresses();
-      },
-      error: (error) => {
-        console.error('Error adding new address:', error);
-      }
-    });
-  }
+
 
 
   cancelEditingLocation(): void {
-    // Cancel the editing by setting editingLocation back to null
     this.editingLocation = null;
-
-    // Optionally, remove the newly added empty location if it wasn't saved
-    if (this.savedLocations.length > 0) {
-      this.savedLocations.pop();
-    }
   }
 
 // Method to set a location as primary
   setPrimary(index: number): void {
-    // Set all locations as non-primary first
-    this.savedLocations.forEach(location => {
-      location.isPrimary = false;
-    });
+    const selectedLocation = this.savedLocations[index];
 
-    // Mark the selected location as primary
-    this.savedLocations[index].isPrimary = true;
-    console.log('Set location as primary:', this.savedLocations[index]);
+    // Check if this location is already primary
+    if (selectedLocation.primary) {
+      console.log('This location is already set as primary.');
+      return;
+    }
+
+    // Find the current primary address (if any)
+    const currentPrimary = this.savedLocations.find(location => location.primary);
+    if (currentPrimary) {
+      currentPrimary.primary = false; // Unset the current primary address
+    }
+
+    selectedLocation.primary = true;
+
+    if (selectedLocation.id !== undefined && selectedLocation.id !== null) {
+      const userId = this.user.id;  // Assuming `this.user.id` contains the logged-in user's ID
+
+      this.addressService.setPrimaryAddress(userId, selectedLocation.id).subscribe({
+        next: () => {
+          console.log('Address set as primary successfully.');
+          this.loadSavedAddresses(); // To ensure the UI reflects the changes
+        },
+        error: (error) => {
+          console.error('Error setting address as primary:', error);
+        }
+      });
+    } else {
+      console.error('Address ID is undefined, cannot set primary address.');
+    }
   }
-
 
 }

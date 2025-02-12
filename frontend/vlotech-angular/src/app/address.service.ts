@@ -27,14 +27,26 @@ export class AddressService {
     return this.http.post(`${this.apiUrl}/add?userId=${userId}`, body, { withCredentials: true });
   }
 
-  // Set primary address
   setPrimaryAddress(userId: string, addressId: number): Observable<string> {
-    return this.http.put<string>(`${this.apiUrl}/set-primary?userId=${userId}&addressId=${addressId}`, {});
+    return this.http.put<string>(
+      `${this.apiUrl}/set-primary?userId=${userId}&addressId=${addressId}`,
+      {},
+      { withCredentials: true }
+    );
   }
 
+
   // Delete address
-  deleteAddress(address: { lat: number; lng: number; address: string }): Observable<any> {
-    return this.http.request('delete', this.apiUrl, { body: address });
+  deleteAddress(addressId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/delete/${addressId}`, { withCredentials: true }).pipe(
+      tap((response) => {
+        console.log(`Deleted address with ID: ${addressId}`, response);
+      }),
+      catchError((error) => {
+        console.error('Error deleting address:', error);
+        return throwError(() => new Error('Error deleting address'));
+      })
+    );
   }
 
   // Get all addresses
@@ -49,9 +61,14 @@ export class AddressService {
   }
 
 
-
   // Update an existing address
-  updateAddress(address: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/update`, address);
+  updateAddress(addressId: number, updatedAddress: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/update/${addressId}`, updatedAddress, { withCredentials: true }).pipe(
+      tap(() => console.log(`Updated address with ID: ${addressId}`)),
+      catchError((error) => {
+        console.error('Error updating address:', error);
+        return throwError(() => new Error('Error updating address'));
+      })
+    );
   }
 }
