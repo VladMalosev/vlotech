@@ -1,0 +1,117 @@
+<div class="checkout-container">
+  <div class="checkout-left">
+    <h2>Select Delivery Address</h2>
+    <!-- Address Form -->
+    <div *ngIf="savedLocations.length === 0">
+      <h3>Add New Address</h3>
+      <form (submit)="addNewAddress()">
+        <input type="text" [(ngModel)]="newLocation.streetNumber" placeholder="Street Number" name="streetNumber">
+        <input type="text" [(ngModel)]="newLocation.street" placeholder="Street" name="street">
+        <input type="text" [(ngModel)]="newLocation.city" placeholder="City" name="city">
+        <input type="text" [(ngModel)]="newLocation.state" placeholder="State" name="state">
+        <input type="text" [(ngModel)]="newLocation.zipCode" placeholder="Zip Code" name="zipCode">
+        <input type="text" [(ngModel)]="newLocation.country" placeholder="Country" name="country">
+        <input type="text" [(ngModel)]="newLocation.flat" placeholder="Flat Number" name="flat">
+        <input type="text" [(ngModel)]="newLocation.name" placeholder="Address Name" name="name">
+        <button type="submit">Add Address</button>
+      </form>
+    </div>
+
+    <!-- Saved Addresses -->
+    <div *ngIf="savedLocations.length > 0">
+      <div *ngFor="let address of savedLocations" class="address-option" [ngClass]="{'selected': address.id === selectedAddressId, 'primary': address.isPrimary}">
+        <input type="radio" [value]="address.id" name="selectedAddress" (change)="selectAddress(address.id)" [checked]="address.id === selectedAddressId">
+        <label>
+          {{ address.streetNumber }} {{ address.street }}, {{ address.city }},
+          {{ address.state }}, {{ address.zipCode }}, {{ address.country }}
+          <span *ngIf="address.isPrimary" class="primary-label">Primary</span>
+        </label>
+        <button class="delete-btn" (click)="deleteAddress(address.id)">
+          <span class="delete-icon">&times;</span>
+        </button>
+      </div>
+      <button class="add-new-address-btn" (click)="toggleAddAddressForm()">Add New Address</button>
+    </div>
+
+    <!-- Add New Address Form Toggle -->
+    <div *ngIf="isAddAddressFormVisible">
+      <h3>Add New Address</h3>
+      <form (submit)="addNewAddress()">
+        <input type="text" [(ngModel)]="newLocation.streetNumber" placeholder="Street Number" name="streetNumber">
+        <input type="text" [(ngModel)]="newLocation.street" placeholder="Street" name="street">
+        <input type="text" [(ngModel)]="newLocation.city" placeholder="City" name="city">
+        <input type="text" [(ngModel)]="newLocation.state" placeholder="State" name="state">
+        <input type="text" [(ngModel)]="newLocation.zipCode" placeholder="Zip Code" name="zipCode">
+        <input type="text" [(ngModel)]="newLocation.country" placeholder="Country" name="country">
+        <input type="text" [(ngModel)]="newLocation.flat" placeholder="Flat Number" name="flat">
+        <input type="text" [(ngModel)]="newLocation.name" placeholder="Address Name" name="name">
+        <button type="submit">Add Address</button>
+      </form>
+    </div>
+
+    <h2>Payment Method</h2>
+    <p>Please select a payment method to proceed with your order. We offer multiple payment options for your convenience. Choose the one that best suits you:</p>
+
+    <div class="payment-method">
+      <input type="radio" name="paymentMethod" id="creditCard" value="creditCard" (change)="onPaymentMethodChange('creditCard')">
+      <label for="creditCard">Credit Card</label>
+
+      <input type="radio" name="paymentMethod" id="paypal" value="paypal" (change)="onPaymentMethodChange('paypal')">
+      <label for="paypal">PayPal</label>
+    </div>
+
+    <!-- Credit Card Payment Form -->
+    <div *ngIf="selectedPaymentMethod === 'creditCard'" class="credit-card-form">
+      <h3>Enter Credit Card Details</h3>
+      <p>Your credit card information will be securely processed for payment. Please ensure all details are correct.</p>
+      <input type="text" placeholder="Card Number" [(ngModel)]="creditCardInfo.cardNumber" name="cardNumber" required>
+      <input type="text" placeholder="Cardholder Name" [(ngModel)]="creditCardInfo.cardholderName" name="cardholderName" required>
+      <input type="text" placeholder="Expiration Date (MM/YY)" [(ngModel)]="creditCardInfo.expiry" name="expiry" required>
+      <input type="text" placeholder="CVV" [(ngModel)]="creditCardInfo.cvv" name="cvv" required>
+    </div>
+
+    <!-- PayPal Payment Form -->
+    <div *ngIf="selectedPaymentMethod === 'paypal'" class="paypal-form">
+      <h3>Enter PayPal Email</h3>
+      <p>Your PayPal email will be used to process your payment. Make sure your PayPal account has sufficient funds or a linked payment method.</p>
+      <input type="email" placeholder="PayPal Email" [(ngModel)]="paypalInfo.email" name="paypalEmail" required>
+    </div>
+  </div>
+
+  <div class="checkout-right">
+    <h3>Cart Summary</h3>
+    <div class="cart-summary">
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <div class="cart-item-image">
+          <img [src]="item.product.imageUrl" alt="{{ item.product.name }}" />
+        </div>
+        <div class="cart-item-details">
+          <p class="item-name">{{ item.product.name }}</p>
+          <p class="item-price">${{ item.totalPrice }}</p>
+        </div>
+      </div>
+      <table class="table-totals">
+        <tbody>
+        <tr>
+          <td>Subtotal</td>
+          <td>${{ calculateSubtotal() }}</td>
+        </tr>
+        <tr>
+          <td>Discount</td>
+          <td>- ${{ discount }}</td>
+        </tr>
+        <tr>
+          <td>Delivery Charges</td>
+          <td>${{ deliveryCharge }}</td>
+        </tr>
+        <tr class="total-row">
+          <td><b>Total</b></td>
+          <td><b>${{ calculateTotal() }}</b></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <button [disabled]="!selectedAddressId">Proceed to Payment</button>
+  </div>
+</div>
+

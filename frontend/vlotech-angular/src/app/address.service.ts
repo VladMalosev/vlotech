@@ -17,7 +17,7 @@ export class AddressService {
       streetNumber: newLocation.streetNumber,
       city: newLocation.city,
       state: newLocation.state,
-      zipCode: newLocation.zipcode,
+      zipCode: newLocation.zipCode,
       country: newLocation.country,
       flatNumber: newLocation.flatNumber,
       name: newLocation.name,

@@ -67,5 +67,30 @@
             return addressRepository.findAll();
         }
 
+        @Transactional
+        public boolean deleteAddress(Long addressId) {
+            if (addressRepository.existsById(addressId)) {
+                addressRepository.deleteById(addressId);
+                return true;
+            }
+            return false;
+        }
 
+        @Transactional
+        public Address updateAddress(Long addressId, Address updatedAddress) {
+            Optional<Address> existingAddressOpt = addressRepository.findById(addressId);
+            if (existingAddressOpt.isPresent()) {
+                Address existingAddress = existingAddressOpt.get();
+                existingAddress.setStreet(updatedAddress.getStreet());
+                existingAddress.setStreetNumber(updatedAddress.getStreetNumber());
+                existingAddress.setFlat(updatedAddress.getFlat());
+                existingAddress.setCity(updatedAddress.getCity());
+                existingAddress.setState(updatedAddress.getState());
+                existingAddress.setZipCode(updatedAddress.getZipCode());
+                existingAddress.setCountry(updatedAddress.getCountry());
+                existingAddress.setPrimary(updatedAddress.isPrimary());
+                return addressRepository.save(existingAddress);
+            }
+            return null;
+        }
     }

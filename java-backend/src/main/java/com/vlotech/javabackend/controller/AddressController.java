@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/addresses")
@@ -20,11 +21,11 @@ public class AddressController {
     }
 
     @PutMapping("/set-primary")
-    public ResponseEntity<String> setPrimaryAddress(
+    public ResponseEntity<Map<String, String>> setPrimaryAddress(
             @RequestParam String userId,
             @RequestParam Long addressId) {
         addressService.setPrimaryAddress(userId, addressId);
-        return ResponseEntity.ok("Primary address updated successfully");
+        return ResponseEntity.ok(Map.of("message", "Primary address updated successfully"));
     }
 
     @PostMapping("/add")
@@ -47,4 +48,24 @@ public class AddressController {
         return ResponseEntity.ok(addresses);
     }
 
+    @DeleteMapping("/delete/{addressId}")
+    public ResponseEntity<Map<String, String>> deleteAddress(@PathVariable Long addressId) {
+        boolean deleted = addressService.deleteAddress(addressId);
+        if (deleted) {
+            return ResponseEntity.ok(Map.of("message", "Address deleted successfully"));
+        } else {
+            return ResponseEntity.status(404).body(Map.of("message", "Address not found"));
+        }
+    }
+
+
+    @PutMapping("/update/{addressId}")
+    public ResponseEntity<Address> updateAddress(@PathVariable Long addressId, @RequestBody Address updatedAddress) {
+        Address address = addressService.updateAddress(addressId, updatedAddress);
+        if (address != null) {
+            return ResponseEntity.ok(address);
+        } else {
+            return ResponseEntity.status(404).body(null);
+        }
+    }
 }

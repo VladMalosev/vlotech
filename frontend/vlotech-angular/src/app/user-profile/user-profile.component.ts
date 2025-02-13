@@ -90,6 +90,7 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
   }
 
 
+
   saveLocationChanges(): void {
     if (this.editingLocation !== null) {
       const addressToUpdate = this.savedLocations[this.editingLocation];
@@ -188,6 +189,9 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
       this.map.setCenter(place.geometry.location);
       this.map.setZoom(15);
 
+
+      console.log('Address Components:', place.address_components);
+
       // Extract address components from the place object
       const streetNumber = place.address_components.find((component: any) =>
         component.types.includes('street_number'))?.long_name || '';
@@ -202,6 +206,8 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
       const country = place.address_components.find((component: any) =>
         component.types.includes('country'))?.long_name || '';
 
+
+      console.log('Extracted Components:', { streetNumber, street, city, state, zipCode, country });
       // Combine street number and street name to form the full address
       const fullStreet = streetNumber ? `${streetNumber} ${street}` : street;
 
@@ -222,6 +228,8 @@ export class UserProfileComponent implements OnInit, AfterViewInit {
         contact: '',
         flat: ''
       };
+
+      console.log('New location to be saved:', newLocation);
 
       // Send the new address to the backend
       const userId = this.user.id;
