@@ -16,6 +16,14 @@
 ### WishList:
 ![Wishlist](https://github.com/user-attachments/assets/e653ddcf-9045-4300-846b-d4742b2f8296)
 
+### Checkout page
+Decided to use stripe for the first time(basically 2 options for adding the card.)
+![image](https://github.com/user-attachments/assets/6ee9785c-2aca-402f-8f63-bceb93fc98ac)
+Complete Payment leads to this page
+![image](https://github.com/user-attachments/assets/60ea5e71-e4db-43c8-a9e7-c74012c0fe42)
+
+
+
 ### Profile page:
 ![Profile page](https://github.com/user-attachments/assets/fc05bd75-78b8-4330-b9e8-7830d5e6a93e)
 All tabs in the profile are working, with corresponding API endpoints and re-encryption based on the new password. You can change the password, email, and user data.
