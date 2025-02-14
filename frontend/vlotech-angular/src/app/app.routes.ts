@@ -12,6 +12,8 @@ import {RedirectIfAuthenticatedGuard} from './RedirectIfAuthenticatedGuard';
 import {WishlistComponent} from './wishlist/wishlist.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 
+
+
 export const routes: Routes = [
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },

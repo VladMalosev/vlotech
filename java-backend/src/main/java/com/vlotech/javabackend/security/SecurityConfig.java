@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/products/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/products/**", "/api/stripe/**").permitAll()
                         .requestMatchers("/api/cart/**", "/api/wishlist/**", "/api/addresses/**").authenticated()
                         .anyRequest().authenticated()
                 )

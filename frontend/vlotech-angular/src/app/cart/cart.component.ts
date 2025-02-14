@@ -98,14 +98,13 @@ export class CartComponent implements OnInit {
     this.deliveryCharge = this.selectedDelivery === "express" ? 10 : 0;
   }
 
-  checkout(): void {
+  checkout() {
     if (this.isAgreed) {
-      // Proceed with checkout logic
-      console.log("Proceeding with checkout");
-    } else {
-      alert("You must agree to the terms and conditions.");
+      sessionStorage.setItem('lastVisitedPage', 'cart');
+      this.router.navigate(['/checkout']);
     }
   }
+
   navigateToProductDetails(productId: string): void {
     this.router.navigate(['/product', productId]);
   }

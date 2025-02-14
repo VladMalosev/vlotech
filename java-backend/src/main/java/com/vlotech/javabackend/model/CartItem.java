@@ -29,10 +29,24 @@ public class CartItem {
     @Column(name = "total_price", nullable = false)
     private BigDecimal totalPrice;
 
+
+
     @Column(name = "unit_price", nullable = false)
     private BigDecimal unitPrice;
 
-    public String getId() {
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+
+
+    public String getId()
+    {
         return id;
     }
 

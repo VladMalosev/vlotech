@@ -54,20 +54,26 @@
 
     <div class="payment-method">
       <input type="radio" name="paymentMethod" id="creditCard" value="creditCard" (change)="onPaymentMethodChange('creditCard')">
-      <label for="creditCard">Credit Card</label>
+      <label for="creditCard">
+        <img src="assets/icons/credit-card.png" alt="Credit Card">
+      </label>
 
       <input type="radio" name="paymentMethod" id="paypal" value="paypal" (change)="onPaymentMethodChange('paypal')">
-      <label for="paypal">PayPal</label>
+      <label for="paypal">
+        <img src="assets/icons/paypal.png" alt="PayPal">
+      </label>
     </div>
+
 
     <!-- Credit Card Payment Form -->
     <div *ngIf="selectedPaymentMethod === 'creditCard'" class="credit-card-form">
-      <h3>Enter Credit Card Details</h3>
+      <h3>Choose paying option</h3>
       <p>Your credit card information will be securely processed for payment. Please ensure all details are correct.</p>
-      <input type="text" placeholder="Card Number" [(ngModel)]="creditCardInfo.cardNumber" name="cardNumber" required>
-      <input type="text" placeholder="Cardholder Name" [(ngModel)]="creditCardInfo.cardholderName" name="cardholderName" required>
-      <input type="text" placeholder="Expiration Date (MM/YY)" [(ngModel)]="creditCardInfo.expiry" name="expiry" required>
-      <input type="text" placeholder="CVV" [(ngModel)]="creditCardInfo.cvv" name="cvv" required>
+
+      <div class="card-details-container">
+        <div id="card-element" class="stripe-card-element"></div>
+
+      </div>
     </div>
 
     <!-- PayPal Payment Form -->
@@ -110,8 +116,18 @@
         </tr>
         </tbody>
       </table>
+      <button
+        type="button"
+        (click)="proceedToCheckout()"
+        [disabled]="!selectedAddressId || !selectedPaymentMethod || (selectedPaymentMethod === 'creditCard' && !isStripeInitialized) || (selectedPaymentMethod === 'paypal' && !paypalInfo.email)"
+      >
+        Complete Payment
+      </button>
+      <div *ngIf="paymentMessage" class="payment-message" [ngClass]="{'success': paymentSuccess, 'error': !paymentSuccess}">
+        {{ paymentMessage }}
+      </div>
     </div>
-    <button [disabled]="!selectedAddressId">Proceed to Payment</button>
   </div>
 </div>
+
 

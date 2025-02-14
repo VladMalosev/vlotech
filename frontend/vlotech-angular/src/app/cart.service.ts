@@ -45,4 +45,7 @@ export class CartService {
       { withCredentials: true }
     );
   }
+  createStripeSession(totalAmount: number) {
+    return this.http.post<{ sessionId: string }>('http://localhost:8080/api/stripe/create-checkout-session', { totalAmount });
+  }
 }

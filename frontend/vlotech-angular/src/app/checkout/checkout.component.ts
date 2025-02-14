@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddressService } from '../address.service';
 import { UserService } from '../user.service';
 import {CartService} from '../cart.service';
+import {loadStripe, Stripe} from '@stripe/stripe-js';
+
+
 
 @Component({
   selector: 'app-checkout',
@@ -11,7 +14,7 @@ import {CartService} from '../cart.service';
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css'
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements OnInit, AfterViewChecked  {
   savedLocations: any[] = [];
   newLocation = {
     streetNumber: '',
@@ -34,15 +37,43 @@ export class CheckoutComponent implements OnInit {
     cardNumber: '',
     cardholderName: '',
     expiry: '',
-    cvv: ''
+    cvv: '',
+    saveCard: false
   };
   paypalInfo = {
     email: ''
   };
 
+  elements: any;
+  card: any;
+  stripe: Stripe | null = null;
+  isStripeInitialized = false;
   constructor(private addressService: AddressService, private userService: UserService, private cartService: CartService) {}
+  paymentMessage: string = '';
+  paymentSuccess: boolean = false;
 
+  ngAfterViewChecked(): void {
+    if (this.selectedPaymentMethod === 'creditCard' && !this.isStripeInitialized) {
+      this.initializeStripe();
+    }
+  }
 
+  initializeStripe() {
+    const cardElement = document.getElementById('card-element');
+    if (cardElement) {
+      loadStripe('pk_test_51Q').then(stripe => {
+        if (stripe) {
+          this.stripe = stripe;
+          this.elements = stripe.elements();
+          this.card = this.elements.create('card');
+          this.card.mount('#card-element');
+          this.isStripeInitialized = true;
+        } else {
+          console.error('Stripe.js failed to load');
+        }
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.loadUserProfile();
@@ -51,10 +82,15 @@ export class CheckoutComponent implements OnInit {
   }
 
   onPaymentMethodChange(paymentMethod: string) {
+    if (this.selectedPaymentMethod === 'creditCard' && this.card) {
+      this.card.destroy();
+      this.isStripeInitialized = false;
+    }
     this.selectedPaymentMethod = paymentMethod;
+    if (paymentMethod === 'creditCard') {
+      this.initializeStripe();
+    }
   }
-
-
 
   updateTotal(): void {
     this.deliveryCharge = 10; // potentially will change
@@ -68,7 +104,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   calculateTotal(): number {
-    return this.calculateSubtotal() - this.discount + this.deliveryCharge;
+    return this.cartItems.reduce(
+      (subtotal, item) => subtotal + item.totalPrice,
+      0
+    );
   }
 
   fetchCartItems(): void {
@@ -100,6 +139,11 @@ export class CheckoutComponent implements OnInit {
       }
     });
   }
+
+
+
+
+
 
   loadSavedAddresses(): void {
     this.addressService.getAddresses().subscribe({
@@ -194,16 +238,91 @@ export class CheckoutComponent implements OnInit {
     };
   }
 
+
   proceedToCheckout(): void {
-    if (this.userId && this.selectedAddressId) {
-      console.log('Proceeding to checkout with user ID:', this.userId, 'and selected address ID:', this.selectedAddressId);
-      // Proceed to checkout logic goes here
+    if (!this.userId || !this.selectedAddressId) {
+      this.paymentMessage = 'Please select an address and ensure user is logged in';
+      this.paymentSuccess = false;
+      return;
+    }
+
+    if (!this.selectedPaymentMethod) {
+      this.paymentMessage = 'Please select a payment method';
+      this.paymentSuccess = false;
+      return;
+    }
+
+    if (this.selectedPaymentMethod === 'creditCard') {
+      this.processCreditCardPayment();
+    } else if (this.selectedPaymentMethod === 'paypal') {
+      this.processPayPalPayment();
     } else {
-      console.log('Please select an address and ensure user is logged in');
+      this.paymentMessage = 'Please select a valid payment method';
+      this.paymentSuccess = false;
     }
   }
 
-  deleteAddress(addressId: number): void {
+  processCreditCardPayment(): void {
+    if (!this.stripe || !this.card) {
+      console.error('Stripe.js or card element is not initialized');
+      return;
+    }
+
+    const totalAmount = this.calculateTotal() * 100; // Convert to cents for Stripe
+
+    // Create a payment intent or session with your backend
+    this.cartService.createStripeSession(totalAmount).subscribe(
+      (response) => {
+        const sessionId = response.sessionId;
+        this.redirectToStripeCheckout(sessionId);
+      },
+      (error) => {
+        console.error('Error creating Stripe session:', error);
+      }
+    );
+  }
+
+  processPayPalPayment(): void {
+    if (!this.paypalInfo.email) {
+      this.paymentMessage = 'Please enter a valid PayPal email';
+      this.paymentSuccess = false;
+      return;
+    }
+
+    const totalAmount = this.calculateTotal();
+
+    console.log('Processing PayPal payment...');
+    this.paymentMessage = 'Processing PayPal payment...';
+    this.paymentSuccess = true;
+
+    setTimeout(() => {
+      this.paymentMessage = 'PayPal payment successful!';
+      this.paymentSuccess = true;
+    }, 2000);
+  }
+
+
+  redirectToStripeCheckout(sessionId: string): void {
+    const stripePromise = loadStripe('pk_test_51Q');
+
+    stripePromise.then(stripe => {
+      if (stripe) {
+        stripe.redirectToCheckout({ sessionId }).then((result) => {
+          if (result.error) {
+            const errorMessage = result.error.message ? result.error.message : 'An unknown error occurred';
+            console.error('Error redirecting to checkout:', errorMessage);
+          }
+        });
+      } else {
+        console.error('Failed to initialize Stripe');
+      }
+    });
+  }
+
+
+
+
+    deleteAddress(addressId: number): void {
     if (confirm('Are you sure you want to delete this address?')) {
       this.addressService.deleteAddress(addressId).subscribe({
         next: (response) => {
