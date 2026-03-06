@@ -68,8 +68,3 @@ docker-compose down --rmi all
 ```
 
 
-
-#### TODO
-- fix heart icons, right now broken
-- Add wishlist (rn only cart)
-
